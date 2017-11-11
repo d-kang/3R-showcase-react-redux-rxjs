@@ -24,12 +24,14 @@
   "extends": [
     "airbnb"
   ],
+  "parser": "babel-eslint",
   "globals": {
     "fetch": false
   },
   "rules": {
-    "indent": ["error", 4, {"SwitchCase": 1}],
-    "react/jsx-indent": ["error", 4],
+    "no-console": 0,
+    "indent": ["error", 2, {"SwitchCase": 1}],
+    "react/jsx-indent": ["error", 2],
     "quote-props": "off",
     "react/sort-comp": 1,
     "func-names": 1,
@@ -104,7 +106,7 @@
     "react/no-unused-prop-types": 1,
     "react/no-children-prop": 1,
     "react/no-find-dom-node": 1,
-    "react/no-array-index": 1,
+    # "react/no-array-index": 1,
     "react/require-default-props": 1,
     "react/jsx-no-bind": 1,
     "react/jsx-curly-brace-presence": ["warn", {"props": "never", "children": "never"}],

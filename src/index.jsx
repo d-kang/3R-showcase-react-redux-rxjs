@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer as Container } from 'react-hot-loader';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route /* Link */ } from 'react-router-dom';
 import store from './store';
 import ConnectedApp from './components/App';
 
@@ -13,7 +13,7 @@ render(
   <Provider store={store}>
     <Container>
       <Router>
-        <Route exact path="/" component={ConnectedApp} />
+        <Route exact path='/' component={ConnectedApp} />
         {/* <ConnectedApp /> */}
       </Router>
     </Container>
@@ -28,7 +28,7 @@ if (module.hot) {
     render(
       <Provider store={store}>
         <Container>
-          <Route exact path="/" component={NextApp} />
+          <Route exact path='/' component={NextApp} />
           {/* <NextApp /> */}
         </Container>
       </Provider>,

@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import PingObservable from './PingObservable';
 
 export class App extends Component {
   state = {
-    hasError: false
+    hasError: false,
   }
   componentDidCatch(err, info) {
     this.setState({ hasError: true });
-    console.log('1111111', err, info);
+    console.log('err >> info >>', err, info);
   }
   render() {
     if (this.state.hasError) {
       return <h1>Something went wrong.</h1>;
     }
-    console.log('<App /> this', this);
     return (
       <div>
         <PingObservable />
@@ -24,10 +23,6 @@ export class App extends Component {
   }
 }
 
-const mapState = (state) => {
-  return {
-    state
-  }
-}
+const mapState = (state) => ({ state });
 
 export default connect(mapState)(App);
