@@ -1,2 +1,4 @@
 node_modules
 bundle.js
+**/dist/*.hot-updates.js
+**/dist/*.hot-updates.json

@@ -1,16 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
-// const DashboardPlugin = require('webpack-dashboard/plugin');
 
 // const nodeExternals = require('webpack-node-externals');
 // const fs = require('fs');
 
 module.exports = {
   entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack/hot/only-dev-server',
-    // 'babel-polyfill',
-    './src/index.js',
+    'react-hot-loader/patch',
+    'webpack/hot/only-dev-server',
+    'babel-polyfill',
+    './src/index.jsx',
   ],
   output: {
     filename: 'bundle.js',
@@ -43,8 +42,7 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    // new DashboardPlugin({ port: 3001 }),
-    // new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
   ],
 };
