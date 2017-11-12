@@ -1,5 +1,12 @@
+/**
+ * @Date:   11.12.17
+ * @Filename: App.jsx
+ * @Last modified time: 11.12.2017 12:58pm
+ */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Main from './Main';
 // import PingObservable from './PingObservable';
 // import BeepObservable from './BeepObservable';
@@ -19,6 +26,7 @@ export class App extends Component {
     }
     return (
       <div>
+        <Link to='/'>Home</Link>
         <Main />
       </div>
     );

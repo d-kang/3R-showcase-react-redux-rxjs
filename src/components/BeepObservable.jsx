@@ -1,5 +1,12 @@
+/**
+ * @Date:   11.12.17
+ * @Filename: BeepObservable.jsx
+ * @Last modified time: 11.12.2017 12:58pm
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 const beep = () => ({ type: 'BEEP' });
 
 const BeepObservable = ({ isBeeping, beep, foo }) => (
@@ -7,6 +14,7 @@ const BeepObservable = ({ isBeeping, beep, foo }) => (
     <h1>is beeping: {isBeeping.toString()}</h1>
     <div>foo: {foo}</div>
     <button onClick={beep}>Start Beep</button>
+    <Link to='/roster'>Back</Link>
   </div>
 );
 

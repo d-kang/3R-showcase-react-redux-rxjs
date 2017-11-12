@@ -5,7 +5,6 @@ import { AppContainer as Container } from 'react-hot-loader';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
 } from 'react-router-dom';
 import 'rxjs';
 import store from './store';
