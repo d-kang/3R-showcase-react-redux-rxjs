@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import PingObservable from './PingObservable';
+import NewObservable from './NewObservable';
 
 export class App extends Component {
   state = {
@@ -18,6 +19,7 @@ export class App extends Component {
     return (
       <div>
         <PingObservable />
+        <NewObservable />
       </div>
     );
   }
