@@ -2,10 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer as Container } from 'react-hot-loader';
-import { BrowserRouter as Router, Route /* Link */ } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 import 'rxjs';
 import store from './store';
 import ConnectedApp from './components/App';
+import PingObservable from './components/PingObservable';
+import BeepObservable from './components/BeepObservable';
 
 const rootElement = document.getElementById('root');
 
@@ -15,7 +21,6 @@ render(
     <Container>
       <Router>
         <Route exact path='/' component={ConnectedApp} />
-        {/* <ConnectedApp /> */}
       </Router>
     </Container>
   </Provider>,

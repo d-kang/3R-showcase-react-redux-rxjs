@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 const beep = () => ({ type: 'BEEP' });
 
-const NewObservable = ({ isBeeping, beep, foo }) => (
+const BeepObservable = ({ isBeeping, beep, foo }) => (
   <div>
     <h1>is beeping: {isBeeping.toString()}</h1>
     <div>foo: {foo}</div>
@@ -16,4 +16,4 @@ const mapState = (state) => ({
   foo: state.beepReducer.foo,
 });
 
-export default connect(mapState, { beep })(NewObservable);
+export default connect(mapState, { beep })(BeepObservable);

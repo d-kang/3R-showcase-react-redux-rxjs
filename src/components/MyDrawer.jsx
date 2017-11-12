@@ -8,19 +8,21 @@ import {
   ListItem,
   Divider,
 } from 'material-ui';
-import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ActionGrade from 'material-ui/svg-icons/action/grade';
-import ContentSend from 'material-ui/svg-icons/content/send';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
-import ActionInfo from 'material-ui/svg-icons/action/info';
+import Folder from 'material-ui/svg-icons/file/folder';
+import { Link } from 'react-router-dom';
 
+import m from 'material-ui';
+console.log('m', m);
 
 export default class MyDrawer extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
   handleToggle = () => this.setState({ open: !this.state.open });
 
+  clicked = () => {
+    console.log('clicked');
+  }
   render() {
     return (
       <MuiThemeProvider>
@@ -31,20 +33,27 @@ export default class MyDrawer extends React.Component {
           />
           <Drawer width={200} openSecondary={true} open={this.state.open} >
             <AppBar title="AppBar" />
+            <RaisedButton
+              label="Toggle Drawer"
+              onClick={this.handleToggle}
+            />
             <List>
-              <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
-              <ListItem primaryText="Starred" leftIcon={<ActionGrade />} />
-              <ListItem primaryText="Sent mail" leftIcon={<ContentSend />} />
-              <ListItem primaryText="Drafts" leftIcon={<ContentDrafts />} />
-              <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
+            <Link to='/pinging'>
+              <ListItem
+                onClick={this.clicked}
+                primaryText="PingPong"
+                leftIcon={<Folder />}
+              />
+            </Link>
+            <Link to='/beeping'>
+              <ListItem
+                onClick={this.clicked}
+                primaryText="BeepBoop"
+                leftIcon={<Folder />}
+              />
+            </Link>
             </List>
             <Divider />
-            <List>
-              <ListItem primaryText="All mail" rightIcon={<ActionInfo />} />
-              <ListItem primaryText="Trash" rightIcon={<ActionInfo />} />
-              <ListItem primaryText="Spam" rightIcon={<ActionInfo />} />
-              <ListItem primaryText="Follow up" rightIcon={<ActionInfo />} />
-            </List>
           </Drawer>
         </div>
       </MuiThemeProvider>
