@@ -27,38 +27,35 @@ const pingReducer = (state = { isPinging: false }, action) => {
   switch (action.type) {
     case PING:
       return { isPinging: true };
-
     case PONG:
       return { isPinging: false };
-
     default:
       return state;
   }
 };
 
-const someEpic = (action$) => (
-  action$.ofType(PING)
+const BEEP = 'BEEP';
+const BOOP = 'BOOP';
+
+const beepEpic = (action$) => (
+  action$.ofType(BEEP)
     .delay(1000) // Asynchronously wait 1000ms then continue
-    .mapTo({ type: PONG })
+    .mapTo({ type: BOOP })
 );
 
-const someReducer = (state = { somePinging: false }, action) => {
+const beepReducer = (state = { isBeeping: 'boop' }, action) => {
   switch (action.type) {
-    case PING:
-      return { somePinging: true };
-
-    case PONG:
-      return { somePinging: false };
-
+    case BEEP:
+      return { isBeeping: 'beep' };
+    case BOOP:
+      return { isBeeping: 'boop' };
     default:
       return state;
   }
 };
 
-const epicMiddleware = createEpicMiddleware(pingEpic, someEpic);
-
-const reducers = combineReducers({ pingReducer, someReducer });
-
+const epicMiddleware = createEpicMiddleware(pingEpic, beepEpic);
+const reducers = combineReducers({ pingReducer, beepReducer });
 
 export default createStore(
   reducers,

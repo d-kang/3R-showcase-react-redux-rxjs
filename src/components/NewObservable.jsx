@@ -4,20 +4,25 @@ import { connect } from 'react-redux';
 class NewObservable extends Component {
 
   render() {
-    const { somePinging, somePing } = this.props;
+    const { isBeeping, beep } = this.props;
+    console.log('beep', beep);
+    console.log('isBeeping', isBeeping);
     return (
       <div>
-        <h1>is pinging: {somePinging.toString()}</h1>
-        <button onClick={somePing}>Start PING</button>
+        <h1>is beeping: {isBeeping}</h1>
+        <button onClick={beep}>Start BEEP</button>
+
       </div>
     );
   }
 }
 
-const somePing = () => ({ type: 'PING' });
+const beep = () => ({ type: 'BEEP' });
+
 
 const mapState = (state) => ({
-  somePinging: state.someReducer.somePinging,
+  log: console.log('this', state),
+  isBeeping: state.beepReducer.isBeeping,
 });
 
-export default connect(mapState, { somePing })(NewObservable);
+export default connect(mapState, { beep })(NewObservable);
