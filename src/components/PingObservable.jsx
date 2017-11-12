@@ -9,6 +9,7 @@ const PingObservable = ({ isPinging, ping }) => (
 );
 
 
+
 const ping = () => ({ type: 'PING' });
 
 // const mapState = ({ isPinging }) => ({ isPinging });

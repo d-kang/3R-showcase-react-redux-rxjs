@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer as Container } from 'react-hot-loader';
 import { BrowserRouter as Router, Route /* Link */ } from 'react-router-dom';
+import 'rxjs';
 import store from './store';
 import ConnectedApp from './components/App';
 

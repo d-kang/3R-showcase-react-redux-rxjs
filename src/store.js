@@ -6,24 +6,13 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 
-import { createEpicMiddleware, combineEpics } from 'redux-observable';
+import epicMiddleware, { PING, PONG, BEEP, BOOP } from './epics';
 // import { switchMap } from 'rxjs/operator/switchMap';
 
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/mapTo';
+// import 'rxjs/add/operator/delay';
+// import 'rxjs/add/operator/mapTo';
 
 
-const PING = 'PING';
-const PONG = 'PONG';
-
-const pingEpic = (action$) => {
-  console.log('pingEpic');
-  return (
-    action$.ofType(PING)
-      .delay(1000) // Asynchronously wait 1000ms then continue
-      .mapTo({ type: PONG })
-  )
-}
 
 
 
@@ -38,35 +27,31 @@ const pingReducer = (state = { isPinging: false }, action) => {
   }
 };
 
-
-const BEEP = 'BEEP';
-const BOOP = 'BOOP';
-
-const beepEpic = (action$) => {
-  console.log('beepEpic')
-  return (
-    action$.ofType(BEEP)
-      .delay(1000) // Asynchronously wait 1000ms then continue
-      .mapTo({ type: BOOP })
-  );
+const beepState = {
+  isBeeping: false,
+  someArr: [1, 2, 3, 4, 5],
+  // foo: 'NaN',
 };
-
-
-const beepReducer = (state = { isBeeping: false }, action) => {
-  console.log('beepReducer')
+const beepReducer = (state = beepState, action) => {
+  console.log('beepReducer action', action);
   switch (action.type) {
     case BEEP:
-      return { isBeeping: true };
+      return {
+        isBeeping: true,
+        someArr: [],
+        // foo: 'NaN'
+      };
     case BOOP:
-      return { isBeeping: false };
+      return {
+        isBeeping: false,
+        someArr: action.foo,
+        foo: action.foo,
+      };
     default:
       return state;
   }
 };
 
-
-const rootEpic = combineEpics(pingEpic, beepEpic);
-const epicMiddleware = createEpicMiddleware(rootEpic);
 const reducers = combineReducers({ pingReducer, beepReducer });
 
 export default createStore(
