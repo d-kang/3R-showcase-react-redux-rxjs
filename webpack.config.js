@@ -1,6 +1,12 @@
+/**
+ * @Date:   11.12.2017 01:25pm
+ * @Filename: webpack.config.js
+ * @Last modified time: 11.12.2017 02:00pm
+ */
+
 const path = require('path');
 const webpack = require('webpack');
-
+const pathToBundle = path.resolve(__dirname, 'dist');
 // const nodeExternals = require('webpack-node-externals');
 // const fs = require('fs');
 
@@ -13,8 +19,8 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: 'dist',
+    path: pathToBundle,
+    publicPath: '',
   },
   devtool: 'eval-source-map',
   resolve: {

@@ -1,27 +1,35 @@
+/**
+ * @Date:   11.12.2017 01:47pm
+ * @Filename: index.jsx
+ * @Last modified time: 11.12.2017 02:48pm
+ */
+
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer as Container } from 'react-hot-loader';
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
 } from 'react-router-dom';
 import 'rxjs';
-import store from './store';
+
+import store, { history } from './store';
 import ConnectedApp from './components/App';
-import PingObservable from './components/PingObservable';
-import BeepObservable from './components/BeepObservable';
+
+import { ConnectedRouter } from 'connected-react-router';
 
 const rootElement = document.getElementById('root');
 
 
+export default history;
 render(
   <Provider store={store}>
-    <Container>
-      <Router>
+    <ConnectedRouter history={history}>
+      <Container>
         <Route exact path='/' component={ConnectedApp} />
-      </Router>
-    </Container>
+      </Container>
+    </ConnectedRouter>
   </Provider>,
   rootElement,
 );
@@ -32,10 +40,14 @@ if (module.hot) {
     const NextApp = require('./components/App').default;
     render(
       <Provider store={store}>
-        <Container>
-          <Route exact path='/' component={NextApp} />
-          {/* <NextApp /> */}
-        </Container>
+        <ConnectedRouter history={history}>
+          <Container>
+            <Router history={history}>
+              <Route exact path='/' component={NextApp} />
+              {/* <NextApp /> */}
+            </Router>
+          </Container>
+        </ConnectedRouter>
       </Provider>,
       rootElement,
     );

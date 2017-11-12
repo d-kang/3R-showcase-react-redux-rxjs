@@ -1,7 +1,7 @@
 /**
  * @Date:   11.11.2017
  * @Filename: Main.jsx
- * @Last modified time: 11.12.2017 12:58pm
+ * @Last modified time: 11.12.2017 02:41pm
  */
 
 import React from 'react';
@@ -16,9 +16,9 @@ const Main = () => (
   <Router>
     <div>
       <MyDrawer />
+      <hr />
       <Route exact path="/pinging" component={PingObservable} />
       <Route exact path="/beeping" component={BeepObservable} />
-      <hr />
     </div>
   </Router>
 );

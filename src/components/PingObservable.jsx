@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: PingObservable.jsx
- * @Last modified time: 11.12.2017 01:07pm
+ * @Last modified time: 11.12.2017 02:45pm
  */
 
 import React from 'react';
@@ -10,9 +10,10 @@ import { Link } from 'react-router-dom';
 
 const PingObservable = ({ isPinging, ping }) => (
   <div>
-    <h1>is pinging: {isPinging.toString()}</h1>,
+    <h1>is pinging: {isPinging.toString()}</h1>
     <button onClick={ping}>Start PING</button>
-    <Link to='/roster'>Back</Link>
+    <hr />
+    <Link to='/'>Back</Link>
   </div>
 );
 

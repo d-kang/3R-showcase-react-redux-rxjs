@@ -1,3 +1,11 @@
+/**
+ * @Author: wiz
+ * @Date:   11.12.2017 02:28pm
+ * @Filename: store.js
+ * @Last modified by:   wiz
+ * @Last modified time: 11.12.2017 02:42pm
+ */
+
 import {
   createStore,
   combineReducers,
@@ -12,7 +20,17 @@ import epicMiddleware, { PING, PONG, BEEP, BOOP } from './epics';
 // import 'rxjs/add/operator/delay';
 // import 'rxjs/add/operator/mapTo';
 
-const pingReducer = (state = { isPinging: false }, action) => {
+const pingState = {
+  isPinging: false,
+};
+const beepState = {
+  isBeeping: false,
+  someArr: [1, 2, 3, 4, 5],
+};
+
+
+
+const pingReducer = (state = pingState, action) => {
   switch (action.type) {
     case PING:
       return { isPinging: true };
@@ -23,11 +41,7 @@ const pingReducer = (state = { isPinging: false }, action) => {
   }
 };
 
-const beepState = {
-  isBeeping: false,
-  someArr: [1, 2, 3, 4, 5],
-  // foo: 'NaN',
-};
+
 const beepReducer = (state = beepState, action) => {
   console.log('beepReducer action', action);
   switch (action.type) {
@@ -49,11 +63,24 @@ const beepReducer = (state = beepState, action) => {
 };
 
 const reducers = combineReducers({ pingReducer, beepReducer });
+import { createBrowserHistory } from 'history';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+export const history = createBrowserHistory();
+
+const historyAndReducer = connectRouter(history)(reducers);
 
 export default createStore(
-  reducers,
+  historyAndReducer,
+  // initialState,
   compose(
-    applyMiddleware(logger, epicMiddleware),
+    applyMiddleware(logger, epicMiddleware, routerMiddleware(history)),
     window.devToolsExtension(),
   ),
 );
+// export default createStore(
+//   reducers,
+//   compose(
+//     applyMiddleware(logger, epicMiddleware),
+//     window.devToolsExtension(),
+//   ),
+// );
