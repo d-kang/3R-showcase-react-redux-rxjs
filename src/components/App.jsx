@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
 import PingObservable from './PingObservable';
 import NewObservable from './NewObservable';
+import MyDrawer from './MyDrawer';
 
 export class App extends Component {
   state = {
@@ -20,6 +21,7 @@ export class App extends Component {
       <div>
         <PingObservable />
         <NewObservable />
+        <MyDrawer />
       </div>
     );
   }

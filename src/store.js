@@ -12,10 +12,6 @@ import epicMiddleware, { PING, PONG, BEEP, BOOP } from './epics';
 // import 'rxjs/add/operator/delay';
 // import 'rxjs/add/operator/mapTo';
 
-
-
-
-
 const pingReducer = (state = { isPinging: false }, action) => {
   switch (action.type) {
     case PING:
