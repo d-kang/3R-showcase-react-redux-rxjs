@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.13.2017 01:21pm
+ * @Last modified time: 11.13.2017 01:24pm
  */
 
 import React from 'react';
@@ -13,8 +13,7 @@ import {
   List,
   Divider,
 } from 'material-ui';
-import Folder from 'material-ui/svg-icons/file/folder';
-import MyListItem from './MyListItem';
+import MyList from './MyList';
 
 class MyDrawer extends React.Component {
   state = {
@@ -57,20 +56,7 @@ class MyDrawer extends React.Component {
               label="Untoggle Drawer"
               onClick={this.handleToggle}
             />
-            <List>
-              {
-                this.listItems.map(({route, primaryText}, i) => {
-                  return (
-                    <MyListItem
-                      route={route}
-                      primaryText={primaryText}
-                      clicked={this.clicked}
-                      leftIcon={<Folder />}
-                    />
-                  )
-                })
-              }
-            </List>
+            <MyList listItems={this.listItems}/>
             <Divider />
           </Drawer>
         </div>
