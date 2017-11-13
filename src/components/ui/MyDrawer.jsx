@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.13.2017 01:24pm
+ * @Last modified time: 11.13.2017 01:27pm
  */
 
 import React from 'react';
@@ -25,28 +25,19 @@ class MyDrawer extends React.Component {
     console.log('clicked');
   }
 
-  listItems = [
-    {
-      route: '/pinging',
-      primaryText: 'PingPong',
+  styling = {
+    raised: {
+      float: 'right',
+      marginTop: '25px',
     },
-    {
-      route: '/beeping',
-      primaryText: 'BeepBoop',
-    },
-  ]
+  }
 
   render() {
     return (
       <MuiThemeProvider>
         <div>
           <RaisedButton
-            style={
-              {
-                float: 'right',
-                marginTop: '25px',
-              }
-            }
+            style={this.styling.raised}
             label="Toggle Drawer"
             onClick={this.handleToggle}
           />
@@ -56,7 +47,7 @@ class MyDrawer extends React.Component {
               label="Untoggle Drawer"
               onClick={this.handleToggle}
             />
-            <MyList listItems={this.listItems}/>
+            <MyList />
             <Divider />
           </Drawer>
         </div>
@@ -64,5 +55,7 @@ class MyDrawer extends React.Component {
     );
   }
 }
+
+
 
 export default MyDrawer;
