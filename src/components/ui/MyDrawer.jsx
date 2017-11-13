@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.13.2017 01:08pm
+ * @Last modified time: 11.13.2017 01:21pm
  */
 
 import React from 'react';
@@ -16,7 +16,7 @@ import {
 import Folder from 'material-ui/svg-icons/file/folder';
 import MyListItem from './MyListItem';
 
-export default class MyDrawer extends React.Component {
+class MyDrawer extends React.Component {
   state = {
     open: true,
   };
@@ -25,6 +25,18 @@ export default class MyDrawer extends React.Component {
   clicked = () => {
     console.log('clicked');
   }
+
+  listItems = [
+    {
+      route: '/pinging',
+      primaryText: 'PingPong',
+    },
+    {
+      route: '/beeping',
+      primaryText: 'BeepBoop',
+    },
+  ]
+
   render() {
     return (
       <MuiThemeProvider>
@@ -42,22 +54,22 @@ export default class MyDrawer extends React.Component {
           <Drawer width={200} openSecondary={true} open={this.state.open}>
             <AppBar title="AppBar" />
             <RaisedButton
-              label="Toggle Drawer"
+              label="Untoggle Drawer"
               onClick={this.handleToggle}
             />
             <List>
-              <MyListItem
-                route='/pinging'
-                clicked={this.clicked}
-                primaryText='PingPong'
-                leftIcon={<Folder />}
-              />
-              <MyListItem
-                route='/beeping'
-                onClick={this.clicked}
-                primaryText="BeepBoop"
-                leftIcon={<Folder />}
-              />
+              {
+                this.listItems.map(({route, primaryText}, i) => {
+                  return (
+                    <MyListItem
+                      route={route}
+                      primaryText={primaryText}
+                      clicked={this.clicked}
+                      leftIcon={<Folder />}
+                    />
+                  )
+                })
+              }
             </List>
             <Divider />
           </Drawer>
@@ -66,3 +78,5 @@ export default class MyDrawer extends React.Component {
     );
   }
 }
+
+export default MyDrawer;
