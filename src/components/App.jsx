@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: App.jsx
- * @Last modified time: 11.12.2017 12:58pm
+ * @Last modified time: 11.13.2017 12:58pm
  */
 
 import React, { Component } from 'react';
@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import Main from './Main';
 // import PingObservable from './PingObservable';
 // import BeepObservable from './BeepObservable';
-import MyDrawer from './MyDrawer';
+import MyDrawer from './ui/MyDrawer';
 
 export class App extends Component {
   state = {
