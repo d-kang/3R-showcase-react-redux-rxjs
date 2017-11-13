@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.12.2017 02:42pm
+ * @Last modified time: 11.13.2017 01:02pm
  */
 
 import {
@@ -49,7 +49,7 @@ const beepReducer = (state = beepState, action) => {
       return {
         isBeeping: true,
         someArr: [],
-        // foo: 'NaN'
+        foo: 'foo',
       };
     case BOOP:
       return {

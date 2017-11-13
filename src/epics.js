@@ -1,3 +1,11 @@
+/**
+ * @Author: wiz
+ * @Date:   11.13.2017 01:02pm
+ * @Filename: epics.js
+ * @Last modified by:   wiz
+ * @Last modified time: 11.13.2017 01:02pm
+ */
+
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 
 export const PING = 'PING';
@@ -15,7 +23,6 @@ const pingEpic = (action$) => {
 };
 
 const beepEpic = (action$) => {
-  console.log('action$', action$)
   return (
     action$.ofType(BEEP)
       .delay(1000) // Asynchronously wait 1000ms then continue
