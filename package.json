@@ -53,6 +53,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.16.0",
+    "rx-dom": "^7.0.3",
     "rxjs": "^5.5.0"
   }
 }

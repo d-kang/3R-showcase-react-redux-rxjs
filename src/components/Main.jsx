@@ -1,7 +1,7 @@
 /**
  * @Date:   11.11.2017
  * @Filename: Main.jsx
- * @Last modified time: 11.13.2017 12:59pm
+ * @Last modified time: 11.13.2017 02:03pm
  */
 
 import React from 'react';
@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import PingObservable from './PingObservable';
 import BeepObservable from './BeepObservable';
+import Github from './Github';
 import MyDrawer from './ui/MyDrawer';
 const Main = () => (
   <Router>
@@ -19,7 +20,7 @@ const Main = () => (
       <hr />
       <Route exact path="/pinging" component={PingObservable} />
       <Route exact path="/beeping" component={BeepObservable} />
-      <Route exact path="/ajaxrxjs" component={BeepObservable} />
+      <Route exact path="/github" component={Github} />
     </div>
   </Router>
 );

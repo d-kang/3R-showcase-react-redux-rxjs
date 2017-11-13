@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:22pm
  * @Filename: MyList.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 01:26pm
+ * @Last modified time: 11.13.2017 02:01pm
  */
 
 import React, { Component } from 'react';
@@ -22,6 +22,10 @@ class MyList extends Component {
     {
       route: '/beeping',
       primaryText: 'BeepBoop',
+    },
+    {
+      route: '/github',
+      primaryText: 'GithubUser',
     },
   ]
 
