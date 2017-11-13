@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.12.2017 12:58pm
+ * @Last modified time: 11.13.2017 12:55pm
  */
 
 import React from 'react';
@@ -17,8 +17,21 @@ import {
 import Folder from 'material-ui/svg-icons/file/folder';
 import { Link } from 'react-router-dom';
 
-import m from 'material-ui';
-console.log('m', m);
+
+class MyListItem extends React.Component {
+  render() {
+    const {route, clicked, primaryText, leftIcon} = this.props
+    return (
+      <Link to={route}>
+        <ListItem
+          onClick={clicked}
+          primaryText={primaryText}
+          leftIcon={leftIcon}
+        />
+      </Link>
+    )
+  }
+}
 
 export default class MyDrawer extends React.Component {
   state = {
@@ -37,27 +50,25 @@ export default class MyDrawer extends React.Component {
             label="Toggle Drawer"
             onClick={this.handleToggle}
           />
-          <Drawer width={200} openSecondary={true} open={this.state.open} >
+          <Drawer width={200} openSecondary={true} open={this.state.open}>
             <AppBar title="AppBar" />
             <RaisedButton
               label="Toggle Drawer"
               onClick={this.handleToggle}
             />
             <List>
-            <Link to='/pinging'>
-              <ListItem
-                onClick={this.clicked}
-                primaryText="PingPong"
+              <MyListItem
+                route='/pinging'
+                clicked={this.clicked}
+                primaryText='PingPong'
                 leftIcon={<Folder />}
               />
-            </Link>
-            <Link to='/beeping'>
-              <ListItem
+              <MyListItem
+                route='/beeping'
                 onClick={this.clicked}
                 primaryText="BeepBoop"
                 leftIcon={<Folder />}
               />
-            </Link>
             </List>
             <Divider />
           </Drawer>
