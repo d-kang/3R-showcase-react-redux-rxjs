@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: SimpleAjaxRx.jsx
- * @Last modified time: 11.13.2017 03:33pm
+ * @Last modified time: 11.13.2017 03:47pm
  */
 
 import React, { Component } from 'react';
@@ -11,13 +11,28 @@ import {
 } from 'material-ui';
 
 import MuiContainer from './ui/MuiContainer';
-
+import {orange500, blue500} from 'material-ui/styles/colors';
 
 class SimpleAjaxRx extends Component {
   state = {
     githubResponse: [],
-    value: 'Property Value',
   }
+
+  styling = {
+    errorStyle: {
+      color: orange500,
+    },
+    underlineStyle: {
+      borderColor: orange500,
+    },
+    floatingLabelStyle: {
+      color: orange500,
+    },
+    floatingLabelFocusStyle: {
+      color: blue500,
+    },
+  }
+
   componentDidMount() {
     console.log('Rx.DOM', Rx.DOM);
     Rx.DOM.ajax('https://api.github.com/users/d-kang')
@@ -38,18 +53,29 @@ class SimpleAjaxRx extends Component {
 
   textField = (
     <TextField
-      id="text-field-controlled"
-      value={this.state.value}
+      // hintText=''
+      hintStyle={this.styling.errorStyle}
+      // value={this.state.value}
       onChange={this.handleChange}
+      floatingLabelText='Github Username'
+      // multiLine={true}
+      rows={1}
     />
   )
+
+  foo = (e) => {
+    e.preventDefault();
+    console.log('hi')
+  }
 
   render() {
     return (
       <div>
         <div>Hi Github!</div>
         <img src="https://developer.github.com/assets/images/electrocat.png" alt=""/>
-        <MuiContainer comp={this.textField} />
+        <form onSubmit={this.foo}>
+          <MuiContainer comp={this.textField} />
+        </form>
 
 
 
@@ -70,5 +96,7 @@ class SimpleAjaxRx extends Component {
   }
 
 }
+
+
 
 export default SimpleAjaxRx;
