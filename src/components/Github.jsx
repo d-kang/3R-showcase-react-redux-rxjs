@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: SimpleAjaxRx.jsx
- * @Last modified time: 11.13.2017 03:47pm
+ * @Last modified time: 11.13.2017 03:50pm
  */
 
 import React, { Component } from 'react';
@@ -16,6 +16,7 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 class SimpleAjaxRx extends Component {
   state = {
     githubResponse: [],
+    value: '',
   }
 
   styling = {
@@ -31,18 +32,6 @@ class SimpleAjaxRx extends Component {
     floatingLabelFocusStyle: {
       color: blue500,
     },
-  }
-
-  componentDidMount() {
-    console.log('Rx.DOM', Rx.DOM);
-    Rx.DOM.ajax('https://api.github.com/users/d-kang')
-      .subscribe((xhr) => {
-        console.log('xhr', xhr);
-        const response = JSON.parse(xhr.response);
-        console.log('response', response);
-        const githubResponse = [...this.state.githubResponse, response];
-        this.setState({ githubResponse });
-      })
   }
 
   handleChange = (event) => {
@@ -65,7 +54,15 @@ class SimpleAjaxRx extends Component {
 
   foo = (e) => {
     e.preventDefault();
-    console.log('hi')
+    const value = this.state.value
+    Rx.DOM.ajax(`https://api.github.com/users/${value}`)
+      .subscribe((xhr) => {
+        console.log('xhr', xhr);
+        const response = JSON.parse(xhr.response);
+        console.log('response', response);
+        const githubResponse = [...this.state.githubResponse, response];
+        this.setState({ githubResponse });
+      })
   }
 
   render() {
@@ -76,7 +73,7 @@ class SimpleAjaxRx extends Component {
         <form onSubmit={this.foo}>
           <MuiContainer comp={this.textField} />
         </form>
-
+        Text input: {this.state.value}
 
 
         {
