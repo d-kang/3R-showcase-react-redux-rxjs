@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.13.2017 01:01pm
+ * @Last modified time: 11.13.2017 01:08pm
  */
 
 import React from 'react';
@@ -30,6 +30,12 @@ export default class MyDrawer extends React.Component {
       <MuiThemeProvider>
         <div>
           <RaisedButton
+            style={
+              {
+                float: 'right',
+                marginTop: '25px',
+              }
+            }
             label="Toggle Drawer"
             onClick={this.handleToggle}
           />
