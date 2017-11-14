@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 01:02pm
+ * @Last modified time: 11.13.2017 05:04pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -25,7 +25,7 @@ const pingEpic = (action$) => {
 const beepEpic = (action$) => {
   return (
     action$.ofType(BEEP)
-      .delay(1000) // Asynchronously wait 1000ms then continue
+      .delay(3500) // Asynchronously wait 1000ms then continue
       .mapTo({ type: BOOP, foo: 'bar' })
   );
 };

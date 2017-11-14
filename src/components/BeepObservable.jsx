@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: BeepObservable.jsx
- * @Last modified time: 11.13.2017 04:57pm
+ * @Last modified time: 11.13.2017 05:03pm
  */
 
 import React from 'react';
@@ -10,15 +10,15 @@ import { Link } from 'react-router-dom';
 import LoadingIndicator from './ui/LoadingIndicator';
 const beep = () => ({ type: 'BEEP' });
 
+const ShouldLoad = ({isTrue}) => (
+  isTrue && <LoadingIndicator />
+)
 const BeepObservable = ({ isBeeping, beep, foo }) => (
   <div>
     <h1>is beeping: {isBeeping.toString()}</h1>
     <div>foo: {foo}</div>
     <button onClick={beep}>Start Beep</button>
-    {
-      isBeeping
-        && <LoadingIndicator />
-    }
+    <ShouldLoad isTrue={isBeeping} />
     <hr />
     <Link to='/'>Back</Link>
   </div>
