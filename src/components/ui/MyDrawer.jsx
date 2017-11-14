@@ -1,12 +1,12 @@
 /**
  * @Date:   11.12.17
  * @Filename: MyDrawer.jsx
- * @Last modified time: 11.13.2017 01:27pm
+ * @Last modified time: 11.13.2017 04:25pm
  */
 
 import React from 'react';
 import {
-  MuiThemeProvider,
+  MuiThemeProvider as MuiContainer,
   Drawer,
   AppBar,
   RaisedButton,
@@ -34,7 +34,7 @@ class MyDrawer extends React.Component {
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiContainer>
         <div>
           <RaisedButton
             style={this.styling.raised}
@@ -51,7 +51,7 @@ class MyDrawer extends React.Component {
             <Divider />
           </Drawer>
         </div>
-      </MuiThemeProvider>
+      </MuiContainer>
     );
   }
 }

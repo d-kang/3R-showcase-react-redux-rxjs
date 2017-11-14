@@ -1,63 +1,20 @@
 /**
  * @Date:   11.12.2017
  * @Filename: SimpleAjaxRx.jsx
- * @Last modified time: 11.13.2017 04:02pm
+ * @Last modified time: 11.13.2017 04:24pm
  */
 
 import React, { Component } from 'react';
 import Rx from 'rx-dom';
-import {
-  TextField,
-} from 'material-ui';
-import {
-  orange500,
-  blue500,
-} from 'material-ui/styles/colors';
-import MuiContainer from './ui/MuiContainer';
+
 import GithubList from './GithubList';
+import TextInput from './ui/TextInput';
 
 class SimpleAjaxRx extends Component {
   state = {
     githubResponse: [],
-    value: '',
   }
-
-  styling = {
-    errorStyle: {
-      color: orange500,
-    },
-    underlineStyle: {
-      borderColor: orange500,
-    },
-    floatingLabelStyle: {
-      color: orange500,
-    },
-    floatingLabelFocusStyle: {
-      color: blue500,
-    },
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      value: event.target.value,
-    });
-  };
-
-  textField = (
-    <TextField
-      // hintText=''
-      hintStyle={this.styling.errorStyle}
-      // value={this.state.value}
-      onChange={this.handleChange}
-      floatingLabelText='Github Username'
-      // multiLine={true}
-      rows={1}
-    />
-  )
-
-  foo = (e) => {
-    e.preventDefault();
-    const value = this.state.value
+  getGithubResponse = (value) => {
     Rx.DOM.ajax(`https://api.github.com/users/${value}`)
       .subscribe((xhr) => {
         console.log('xhr', xhr);
@@ -65,7 +22,7 @@ class SimpleAjaxRx extends Component {
         console.log('response', response);
         const githubResponse = [...this.state.githubResponse, response];
         this.setState({ githubResponse });
-      })
+      });
   }
 
   render() {
@@ -73,13 +30,11 @@ class SimpleAjaxRx extends Component {
       <div>
         <div>Hi Github!</div>
         <img src="https://developer.github.com/assets/images/electrocat.png" alt=""/>
-        <form onSubmit={this.foo}>
-          <MuiContainer
-            comp={this.textField}
-          />
-        </form>
-        Text input: {this.state.value}
 
+        <TextInput
+          getGithubResponse={this.getGithubResponse}
+        />
+        Text input: {this.state.value}
         <GithubList
           githubResponse={this.state.githubResponse}
         />
