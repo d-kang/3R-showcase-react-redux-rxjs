@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 04:15pm
  * @Filename: GithubTextInput.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 04:32pm
+ * @Last modified time: 11.13.2017 04:47pm
  */
 
 import React, { Component } from 'react';
@@ -20,7 +20,6 @@ class GithubTextInput extends Component {
   state = {
     value: '',
   }
-
 
   handleChange = (event) => {
     this.setState({
