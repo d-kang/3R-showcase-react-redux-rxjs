@@ -1,10 +1,11 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.13.2017 04:55pm
+ * @Last modified time: 11.13.2017 07:37pm
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Rx from 'rx-dom';
 import {
   CircularProgress,
@@ -15,10 +16,10 @@ import GithubTextInput from './ui/GithubTextInput';
 import LoadingIndicator from './ui/LoadingIndicator';
 
 class SimpleAjaxRx extends Component {
-  state = {
-    githubResponse: [],
-    isLoading: false,
-  }
+  // state = {
+  //   githubResponse: [],
+  //   isLoading: false,
+  // }
   getGithubResponse = (value) => {
     this.setState({ isLoading: true });
     Rx.DOM.ajax(`https://api.github.com/users/${value}`)
@@ -31,9 +32,15 @@ class SimpleAjaxRx extends Component {
           this.setState({ isLoading: false });
         });
       });
+    // import { ajax } from 'rxjs/observable/dom/ajax';
+    //
+    // console.log('ajax', ajax);
+    // ajax.getJSON(`https://api.github.com/users/d-kang`)
+    //   .subscribe(res => console.log('res', res));
   }
 
   render() {
+    console.log('this.props of <Github />', this.props);
     return (
       <div>
         <div>Hi Github!</div>
@@ -42,20 +49,20 @@ class SimpleAjaxRx extends Component {
           alt="Image of Octocat"
         />
         <GithubTextInput
-          getGithubResponse={this.getGithubResponse}
+          gitHubResponseAction={gitHubResponseAction}
         />
-        Text input: {this.state.value}
+        Text input: {this.props.value}
         <GithubList
-          githubResponse={this.state.githubResponse}
+          githubResponse={this.props.githubResponse}
         />
         {
-          this.state.isLoading
+          this.props.isLoading
             && <LoadingIndicator
-                 isLoading={this.state.isLoading}
+                 isLoading={this.props.isLoading}
                />
         }
         {
-          this.state.isLoading &&
+          this.props.isLoading &&
             <MuiContainer>
               <CircularProgress />
             </MuiContainer>
@@ -67,5 +74,19 @@ class SimpleAjaxRx extends Component {
 }
 
 
+const gitHubResponseAction = (value) => (
+  {
+    type: 'GITHUBFETCH',
+    isFetching: false,
+    value,
+    log: console.log('githubResponseAction Ran with value', value),
+  }
+);
 
-export default SimpleAjaxRx;
+
+const mapState = (state) => ({
+  logMapState: console.log('mapState <Github />', state),
+  githubResponse: state.githubReducer.githubResponse,
+});
+
+export default connect(mapState, { gitHubResponseAction })(SimpleAjaxRx);

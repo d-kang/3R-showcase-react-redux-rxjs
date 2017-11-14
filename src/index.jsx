@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017 01:47pm
  * @Filename: index.jsx
- * @Last modified time: 11.12.2017 02:48pm
+ * @Last modified time: 11.13.2017 07:47pm
  */
 
 import React from 'react';
@@ -20,9 +20,9 @@ import ConnectedApp from './components/App';
 import { ConnectedRouter } from 'connected-react-router';
 
 const rootElement = document.getElementById('root');
-
-
 export default history;
+
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -35,21 +35,21 @@ render(
 );
 
 
-if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const NextApp = require('./components/App').default;
-    render(
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Container>
-            <Router history={history}>
-              <Route exact path='/' component={NextApp} />
-              {/* <NextApp /> */}
-            </Router>
-          </Container>
-        </ConnectedRouter>
-      </Provider>,
-      rootElement,
-    );
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('./components/App', () => {
+//     const NextApp = require('./components/App').default;
+//     render(
+//       <Provider store={store}>
+//         <ConnectedRouter history={history}>
+//           <Container>
+//             <Router history={history}>
+//               <Route exact path='/' component={NextApp} />
+//               {/* <NextApp /> */}
+//             </Router>
+//           </Container>
+//         </ConnectedRouter>
+//       </Provider>,
+//       rootElement,
+//     );
+//   });
+// }

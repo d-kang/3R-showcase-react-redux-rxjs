@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 04:15pm
  * @Filename: GithubTextInput.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 04:47pm
+ * @Last modified time: 11.13.2017 06:23pm
  */
 
 import React, { Component } from 'react';
@@ -28,8 +28,10 @@ class GithubTextInput extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log('submit clicked');
     const value = this.state.value;
-    this.props.getGithubResponse(value);
+    console.log('value', value);
+    this.props.gitHubResponseAction('d-kang');
   }
 
   textField = (

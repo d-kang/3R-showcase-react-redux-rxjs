@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 01:02pm
+ * @Last modified time: 11.13.2017 07:48pm
  */
 
 import {
@@ -14,12 +14,24 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 
-import epicMiddleware, { PING, PONG, BEEP, BOOP } from './epics';
+import epicMiddleware, {
+  PING,
+  PONG,
+  BEEP,
+  BOOP,
+  GITHUBFETCH,
+  GITHUBRESPONSE,
+} from './epics';
 // import { switchMap } from 'rxjs/operator/switchMap';
 
 // import 'rxjs/add/operator/delay';
 // import 'rxjs/add/operator/mapTo';
 
+const githubState = {
+  isLoading: false,
+  value: '',
+  githubResponse: [],
+};
 const pingState = {
   isPinging: false,
 };
@@ -28,6 +40,27 @@ const beepState = {
   someArr: [1, 2, 3, 4, 5],
 };
 
+const githubReducer = (state = githubState, action) => {
+  console.log('githubReducer RAN >> action.type >>', action.type);
+  switch (action.type) {
+    case GITHUBFETCH:
+      return {
+        isLoading: true,
+        value: action.value,
+        isType: GITHUBFETCH,
+        log: console.log('GITHUBFETCH RAN in REDUCER'),
+      };
+    case GITHUBRESPONSE:
+      return {
+        isLoading: false,
+        value: action.value,
+        isType: GITHUBRESPONSE,
+        log: console.log('GITHUBRESPONSE RAN in REDUCER'),
+      };
+    default:
+      return state;
+  }
+};
 
 
 const pingReducer = (state = pingState, action) => {
@@ -43,13 +76,13 @@ const pingReducer = (state = pingState, action) => {
 
 
 const beepReducer = (state = beepState, action) => {
-  console.log('beepReducer action', action);
   switch (action.type) {
     case BEEP:
       return {
         isBeeping: true,
         someArr: [],
-        foo: 'foo',
+        foo: 'ooooo',
+        log: console.log('BEEP RAN in REDUCER'),
       };
     case BOOP:
       return {
@@ -62,7 +95,13 @@ const beepReducer = (state = beepState, action) => {
   }
 };
 
-const reducers = combineReducers({ pingReducer, beepReducer });
+const reducerObj = {
+  pingReducer,
+  beepReducer,
+  githubReducer,
+};
+
+const reducers = combineReducers(reducerObj);
 import { createBrowserHistory } from 'history';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 export const history = createBrowserHistory();

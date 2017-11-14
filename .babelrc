@@ -2,6 +2,7 @@
   "presets": [
     "react",
     "stage-2",
+    "react-hmre",
     ["env", {
       "targets": {
         "browsers": "last 2 versions"

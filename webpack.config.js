@@ -1,9 +1,8 @@
 /**
  * @Date:   11.12.2017 01:25pm
  * @Filename: webpack.config.js
- * @Last modified time: 11.12.2017 02:00pm
+ * @Last modified time: 11.14.2017 08:57am
  */
-
 const path = require('path');
 const webpack = require('webpack');
 const pathToBundle = path.resolve(__dirname, 'dist');
@@ -13,8 +12,9 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    'webpack/hot/only-dev-server',
-    'babel-polyfill',
+    // 'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
+    // 'babel-polyfill',
     './src/index.jsx',
   ],
   output: {
@@ -22,6 +22,7 @@ module.exports = {
     path: pathToBundle,
     publicPath: '',
   },
+  // devtool: 'source-map',
   devtool: 'eval-source-map',
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -49,6 +50,7 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
   ],
