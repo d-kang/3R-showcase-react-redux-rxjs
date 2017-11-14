@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: SimpleAjaxRx.jsx
- * @Last modified time: 11.13.2017 03:50pm
+ * @Last modified time: 11.13.2017 04:02pm
  */
 
 import React, { Component } from 'react';
@@ -9,9 +9,12 @@ import Rx from 'rx-dom';
 import {
   TextField,
 } from 'material-ui';
-
+import {
+  orange500,
+  blue500,
+} from 'material-ui/styles/colors';
 import MuiContainer from './ui/MuiContainer';
-import {orange500, blue500} from 'material-ui/styles/colors';
+import GithubList from './GithubList';
 
 class SimpleAjaxRx extends Component {
   state = {
@@ -71,23 +74,15 @@ class SimpleAjaxRx extends Component {
         <div>Hi Github!</div>
         <img src="https://developer.github.com/assets/images/electrocat.png" alt=""/>
         <form onSubmit={this.foo}>
-          <MuiContainer comp={this.textField} />
+          <MuiContainer
+            comp={this.textField}
+          />
         </form>
         Text input: {this.state.value}
 
-
-        {
-          this.state.githubResponse.map((user, i) => {
-            return (
-              <div key={i}>
-                <br />
-                {user.name} <br />
-                {user.login} <br />
-                {user.avatar_url} <br />
-              </div>
-            )
-          })
-        }
+        <GithubList
+          githubResponse={this.state.githubResponse}
+        />
       </div>
     );
   }
