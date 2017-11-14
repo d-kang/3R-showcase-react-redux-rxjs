@@ -1,14 +1,14 @@
 /**
  * @Date:   11.12.2017
- * @Filename: SimpleAjaxRx.jsx
- * @Last modified time: 11.13.2017 04:24pm
+ * @Filename: Github.jsx
+ * @Last modified time: 11.13.2017 04:32pm
  */
 
 import React, { Component } from 'react';
 import Rx from 'rx-dom';
 
 import GithubList from './GithubList';
-import TextInput from './ui/TextInput';
+import GithubTextInput from './ui/GithubTextInput';
 
 class SimpleAjaxRx extends Component {
   state = {
@@ -29,9 +29,11 @@ class SimpleAjaxRx extends Component {
     return (
       <div>
         <div>Hi Github!</div>
-        <img src="https://developer.github.com/assets/images/electrocat.png" alt=""/>
-
-        <TextInput
+        <img
+          src="https://developer.github.com/assets/images/electrocat.png"
+          alt="Image of Octocat"
+        />
+        <GithubTextInput
           getGithubResponse={this.getGithubResponse}
         />
         Text input: {this.state.value}
@@ -41,7 +43,6 @@ class SimpleAjaxRx extends Component {
       </div>
     );
   }
-
 }
 
 
