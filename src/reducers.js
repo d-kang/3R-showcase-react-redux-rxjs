@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 01:07pm
+ * @Last modified time: 11.15.2017 01:36pm
  */
 
 import { combineReducers } from 'redux';
@@ -34,7 +34,7 @@ const fetchUserReducer = (state = githubState, action) => {
     case FETCH_USER_FULFILLED:
       return {
         ...state,
-        fetchUserResponse: [...state.fetchUserResponse, action.payload],
+        fetchUserResponse: [action.payload, ...state.fetchUserResponse],
       };
     default:
       return state;
