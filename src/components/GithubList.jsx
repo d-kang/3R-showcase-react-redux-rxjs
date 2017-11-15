@@ -3,12 +3,11 @@
  * @Date:   11.13.2017 04:01pm
  * @Filename: GithubList.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 01:13pm
+ * @Last modified time: 11.15.2017 01:34pm
  */
 import React, { Component } from 'react';
 
 class GithubList extends Component {
-
   render() {
     const { fetchUserResponse } = this.props;
     return (
@@ -33,7 +32,8 @@ class GithubList extends Component {
       })
     );
   }
-
 }
+
+
 
 export default GithubList;
