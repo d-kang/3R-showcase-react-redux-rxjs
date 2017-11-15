@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.14.2017 08:52pm
+ * @Last modified time: 11.15.2017 01:06pm
  */
 
 import React, { Component } from 'react';
@@ -31,13 +31,13 @@ class SimpleAjaxRx extends Component {
   // }
 
   render() {
-    console.log('this.props of <Github />', this.props);
     const {
-      gitHubResponseAction,
+      fetchUserAction,
       value,
-      githubResponse,
+      fetchUserResponse,
       isLoading,
     } = this.props;
+    console.log('fetchUserResponse', fetchUserResponse);
     return (
       <div>
         <div>Hi Github!</div>
@@ -46,11 +46,11 @@ class SimpleAjaxRx extends Component {
           alt="Image of Octocat"
         />
         <GithubTextInput
-          gitHubResponseAction={gitHubResponseAction}
+          fetchUserAction={fetchUserAction}
         />
         Text input: {value}
         <GithubList
-          githubResponse={githubResponse}
+          fetchUserResponse={fetchUserResponse}
         />
         {
           isLoading
@@ -71,22 +71,19 @@ class SimpleAjaxRx extends Component {
 }
 
 
-const gitHubResponseAction = (value) => (
+const fetchUserAction = (value) => (
   {
     type: 'FETCH_USER',
     isFetching: false,
     value,
-    log: console.log('githubResponseAction Ran with value', value),
   }
 );
 
 
 const mapState = (state) => ({
-  logMapState: console.log('mapState <Github />', state),
-  githubResponse: state.fetchUserReducer.githubResponse,
+  fetchUserResponse: state.fetchUserReducer.fetchUserResponse,
   isLoading: state.fetchUserReducer.isLoading,
   value: state.fetchUserReducer.value,
-  payload: state.fetchUserReducer.payload,
 });
 
-export default connect(mapState, { gitHubResponseAction })(SimpleAjaxRx);
+export default connect(mapState, { fetchUserAction })(SimpleAjaxRx);

@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:
- * @Last modified time: 11.15.2017 08:22am
+ * @Last modified time: 11.15.2017 08:36am
  */
 
 import { createBrowserHistory } from 'history';
@@ -15,7 +15,7 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 import rootReducer from './reducers.js';
-
+import epicMiddleware from './epics'
 export const history = createBrowserHistory();
 
 const store = createStore(
@@ -26,11 +26,11 @@ const store = createStore(
   ),
 );
 
+console.log('module',module);
 if (module.hot) {
-  module.hot.accept('./', () => {
-    // const nextRootReducer = require('./reducers/index').default;
-    // store.replaceReducer(nextRootReducer);
-    store.replaceReducer(rootReducer);
+  module.hot.accept('./reducers', () => {
+    const nextRootReducer = require('./reducers').default;
+    store.replaceReducer(nextRootReducer);
   });
 }
 

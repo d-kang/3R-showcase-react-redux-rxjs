@@ -3,22 +3,31 @@
  * @Date:   11.13.2017 04:01pm
  * @Filename: GithubList.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 04:01pm
+ * @Last modified time: 11.15.2017 01:13pm
  */
 import React, { Component } from 'react';
 
 class GithubList extends Component {
 
   render() {
-    const { githubResponse } = this.props;
+    const { fetchUserResponse } = this.props;
     return (
-      githubResponse.map((user, i) => {
+      fetchUserResponse.map((user, i) => {
+        const {
+          avatar_url,
+          name,
+          email,
+          followers,
+          url,
+        } = user
         return (
           <div key={i}>
             <br />
-            {user.name} <br />
-            {user.login} <br />
-            {user.avatar_url} <br />
+            <img src={avatar_url} alt=""/> <br />
+            Name: {name} <br />
+            Email: {email} <br />
+            Followers: {followers} <br />
+            Url: <link rel={url} href=""/>{url}<br />
           </div>
         )
       })

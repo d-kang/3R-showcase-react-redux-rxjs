@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.14.2017 08:36pm
+ * @Last modified time: 11.15.2017 01:02pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -16,16 +16,27 @@ export const BOOP = 'BOOP';
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
 
-const fetchUser = (username) => ({ type: FETCH_USER, payload: username });
-const fetchUserFullfilled = (payload) => ({ type: FETCH_USER_FULFILLED, payload });
+const fetchUser = (username) => ({
+  type: FETCH_USER,
+  isLoading: true,
+  value: username,
+});
+const fetchUserFullfilled = (payload) => ({
+  logger: console.log('payload', payload),
+  type: FETCH_USER_FULFILLED,
+  payload,
+});
 
 
 const fetchUserEpic = (action$) => (
   action$.ofType(FETCH_USER)
-    .mergeMap((action) => (
-      ajax.getJSON(`https://api.github.com/users/${action.payload}`)
-        .map(fetchUserFullfilled)
-    ))
+    .mergeMap((action) => {
+      console.log('action', action);
+      return (
+        ajax.getJSON(`https://api.github.com/users/${action.value}`)
+          .map(fetchUserFullfilled)
+      )
+    })
 );
 
 
@@ -41,7 +52,7 @@ const beepEpic = (action$) => {
   return (
     action$.ofType(BEEP)
       .delay(3500) // Asynchronously wait 1000ms then continue
-      .mapTo({ type: BOOP, foo: 'bar', log: console.log('beepEpic Ran') })
+      .mapTo({ type: BOOP, foo: 'bars', log: console.log('beepEpic Ran') })
   );
 };
 

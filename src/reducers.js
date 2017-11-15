@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 08:23am
+ * @Last modified time: 11.15.2017 01:07pm
  */
 
 import { combineReducers } from 'redux';
@@ -25,16 +25,16 @@ const beepState = {
 const githubState = {
   isLoading: false,
   value: '',
-  githubResponse: [],
+  fetchUserResponse: [],
 };
 
 const fetchUserReducer = (state = githubState, action) => {
-  console.log('githubReducer RAN >> action.type >>', action.type, action);
+  console.log('fetchUserReducer RAN >> action.type >>', action.type, action);
   switch (action.type) {
     case FETCH_USER_FULFILLED:
       return {
         ...state,
-        githubResponse: [...state.githubResponse, action.payload],
+        fetchUserResponse: [...state.fetchUserResponse, action.payload],
       };
     default:
       return state;
@@ -45,7 +45,7 @@ const fetchUserReducer = (state = githubState, action) => {
 const pingReducer = (state = pingState, action) => {
   switch (action.type) {
     case PING:
-      return { isPinging: 'thruth' };
+      return { isPinging: true };
     case PONG:
       return { isPinging: false };
     default:
@@ -61,7 +61,6 @@ const beepReducer = (state = beepState, action) => {
         isBeeping: true,
         someArr: [],
         foo: 'ooooo',
-        log: console.log('BEEP RAN in REDUCER'),
       };
     case BOOP:
       return {
