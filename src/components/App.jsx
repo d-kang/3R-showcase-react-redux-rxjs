@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: App.jsx
- * @Last modified time: 11.13.2017 07:47pm
+ * @Last modified time: 11.14.2017 07:56pm
  */
 
 import React, { Component } from 'react';
@@ -12,7 +12,7 @@ import Main from './Main';
 // import BeepObservable from './BeepObservable';
 import MyDrawer from './ui/MyDrawer';
 
-export class App extends Component {
+class App extends Component {
   state = {
     hasError: false,
   }

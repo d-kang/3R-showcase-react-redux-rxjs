@@ -3,9 +3,11 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 07:48pm
+ * @Last modified time: 11.14.2017 08:52pm
  */
 
+import { createBrowserHistory } from 'history';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import {
   createStore,
   combineReducers,
@@ -19,19 +21,14 @@ import epicMiddleware, {
   PONG,
   BEEP,
   BOOP,
-  GITHUBFETCH,
-  GITHUBRESPONSE,
+  FETCH_USER_FULFILLED,
 } from './epics';
 // import { switchMap } from 'rxjs/operator/switchMap';
 
 // import 'rxjs/add/operator/delay';
 // import 'rxjs/add/operator/mapTo';
 
-const githubState = {
-  isLoading: false,
-  value: '',
-  githubResponse: [],
-};
+
 const pingState = {
   isPinging: false,
 };
@@ -40,22 +37,19 @@ const beepState = {
   someArr: [1, 2, 3, 4, 5],
 };
 
-const githubReducer = (state = githubState, action) => {
-  console.log('githubReducer RAN >> action.type >>', action.type);
+const githubState = {
+  isLoading: false,
+  value: '',
+  githubResponse: [],
+};
+
+const fetchUserReducer = (state = githubState, action) => {
+  console.log('githubReducer RAN >> action.type >>', action.type, action);
   switch (action.type) {
-    case GITHUBFETCH:
+    case FETCH_USER_FULFILLED:
       return {
-        isLoading: true,
-        value: action.value,
-        isType: GITHUBFETCH,
-        log: console.log('GITHUBFETCH RAN in REDUCER'),
-      };
-    case GITHUBRESPONSE:
-      return {
-        isLoading: false,
-        value: action.value,
-        isType: GITHUBRESPONSE,
-        log: console.log('GITHUBRESPONSE RAN in REDUCER'),
+        ...state,
+        githubResponse: [...state.githubResponse, action.payload],
       };
     default:
       return state;
@@ -98,19 +92,14 @@ const beepReducer = (state = beepState, action) => {
 const reducerObj = {
   pingReducer,
   beepReducer,
-  githubReducer,
+  fetchUserReducer,
 };
 
 const reducers = combineReducers(reducerObj);
-import { createBrowserHistory } from 'history';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 export const history = createBrowserHistory();
 
-const historyAndReducer = connectRouter(history)(reducers);
-
 export default createStore(
-  historyAndReducer,
-  // initialState,
+  connectRouter(history)(reducers),
   compose(
     applyMiddleware(logger, epicMiddleware, routerMiddleware(history)),
     window.devToolsExtension(),

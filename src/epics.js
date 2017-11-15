@@ -3,38 +3,30 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 07:48pm
+ * @Last modified time: 11.14.2017 08:36pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
-
+import { ajax } from 'rxjs/observable/dom/ajax';
 export const PING = 'PING';
 export const PONG = 'PONG';
 export const BEEP = 'BEEP';
 export const BOOP = 'BOOP';
-export const GITHUBFETCH = 'GITHUBFETCH';
-export const GITHUBRESPONSE = 'GITHUBRESPONSE';
 
-import { ajax } from 'rxjs/observable/dom/ajax';
+export const FETCH_USER = 'FETCH_USER';
+export const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
 
-console.log('ajax', ajax);
-ajax.getJSON(`https://api.github.com/users/d-kang`)
-  .subscribe(res => console.log('res', res));
+const fetchUser = (username) => ({ type: FETCH_USER, payload: username });
+const fetchUserFullfilled = (payload) => ({ type: FETCH_USER_FULFILLED, payload });
 
-const fetchUserFullfilled = value => ({ type: 'GITHUBRESPONSE', value});
 
-const githubEpic = (action$) => {
-  console.log('githubEpic Ran')
-  return (
-    action$.ofType(GITHUBFETCH)
-      .mergeMap(action => {
-        return (
-          ajax.getJSON(`https://api.github.com/users/${action.value}`)
-            .map(response => fetchUserFullfilled(response))
-        );
-      })
-  );
-};
+const fetchUserEpic = (action$) => (
+  action$.ofType(FETCH_USER)
+    .mergeMap((action) => (
+      ajax.getJSON(`https://api.github.com/users/${action.payload}`)
+        .map(fetchUserFullfilled)
+    ))
+);
 
 
 const pingEpic = (action$) => {
@@ -54,7 +46,7 @@ const beepEpic = (action$) => {
 };
 
 
-const rootEpic = combineEpics(pingEpic, beepEpic, githubEpic);
+const rootEpic = combineEpics(pingEpic, beepEpic, fetchUserEpic);
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 

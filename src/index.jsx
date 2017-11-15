@@ -1,13 +1,13 @@
 /**
  * @Date:   11.12.2017 01:47pm
  * @Filename: index.jsx
- * @Last modified time: 11.13.2017 07:47pm
+ * @Last modified time: 11.14.2017 08:18pm
  */
 
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { AppContainer as Container } from 'react-hot-loader';
+import { AppContainer } from 'react-hot-loader';
 import {
   Router,
   Route,
@@ -15,7 +15,8 @@ import {
 import 'rxjs';
 
 import store, { history } from './store';
-import ConnectedApp from './components/App';
+import App from './components/App';
+import Github from './components/Github';
 
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -26,9 +27,9 @@ export default history;
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Container>
-        <Route exact path='/' component={ConnectedApp} />
-      </Container>
+      {/* <AppContainer> */}
+        <Route exact path='/' component={Github} />
+      {/* </AppContainer> */}
     </ConnectedRouter>
   </Provider>,
   rootElement,

@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017 01:25pm
  * @Filename: webpack.config.js
- * @Last modified time: 11.14.2017 08:57am
+ * @Last modified time: 11.14.2017 08:13pm
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -11,16 +11,17 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: [
-    'react-hot-loader/patch',
-    // 'webpack/hot/only-dev-server',
-    'webpack-hot-middleware/client',
     // 'babel-polyfill',
+    // 'react-hot-loader/patch',
+    // 'webpack-dev-server/client?http://localhost:1500',
+    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     './src/index.jsx',
   ],
   output: {
     filename: 'bundle.js',
     path: pathToBundle,
-    publicPath: '',
+    publicPath: '/static/',
   },
   // devtool: 'source-map',
   devtool: 'eval-source-map',
