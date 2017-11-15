@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017 01:47pm
  * @Filename: index.jsx
- * @Last modified time: 11.14.2017 08:18pm
+ * @Last modified time: 11.14.2017 10:23pm
  */
 
 import React from 'react';
@@ -28,7 +28,7 @@ render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       {/* <AppContainer> */}
-        <Route exact path='/' component={Github} />
+        <Route exact path='/' component={App} />
       {/* </AppContainer> */}
     </ConnectedRouter>
   </Provider>,
@@ -36,21 +36,21 @@ render(
 );
 
 
-// if (module.hot) {
-//   module.hot.accept('./components/App', () => {
-//     const NextApp = require('./components/App').default;
-//     render(
-//       <Provider store={store}>
-//         <ConnectedRouter history={history}>
-//           <Container>
-//             <Router history={history}>
-//               <Route exact path='/' component={NextApp} />
-//               {/* <NextApp /> */}
-//             </Router>
-//           </Container>
-//         </ConnectedRouter>
-//       </Provider>,
-//       rootElement,
-//     );
-//   });
-// }
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    const NextApp = require('./components/App').default;
+    render(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Container>
+            <Router history={history}>
+              <Route exact path='/' component={NextApp} />
+              {/* <NextApp /> */}
+            </Router>
+          </Container>
+        </ConnectedRouter>
+      </Provider>,
+      rootElement,
+    );
+  });
+}

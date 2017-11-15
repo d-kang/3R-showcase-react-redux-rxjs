@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.14.2017 08:52pm
+ * @Last modified time: 11.14.2017 10:23pm
  */
 
 import { createBrowserHistory } from 'history';
@@ -60,7 +60,7 @@ const fetchUserReducer = (state = githubState, action) => {
 const pingReducer = (state = pingState, action) => {
   switch (action.type) {
     case PING:
-      return { isPinging: true };
+      return { isPinging: 'thruth' };
     case PONG:
       return { isPinging: false };
     default:
@@ -95,18 +95,32 @@ const reducerObj = {
   fetchUserReducer,
 };
 
-const reducers = combineReducers(reducerObj);
+const rootReducer = combineReducers(reducerObj);
 export const history = createBrowserHistory();
 
-export default createStore(
-  connectRouter(history)(reducers),
+const store = createStore(
+  connectRouter(history)(rootReducer),
   compose(
     applyMiddleware(logger, epicMiddleware, routerMiddleware(history)),
     window.devToolsExtension(),
   ),
 );
+
+console.log('store', store);
+if (module.hot) {
+  module.hot.accept('./', () => {
+    // const nextRootReducer = require('./reducers/index').default;
+    // store.replaceReducer(nextRootReducer);
+    store.replaceReducer(rootReducer);
+  });
+}
+
+
+export default store;
+
+
 // export default createStore(
-//   reducers,
+//   rootReducer,
 //   compose(
 //     applyMiddleware(logger, epicMiddleware),
 //     window.devToolsExtension(),
