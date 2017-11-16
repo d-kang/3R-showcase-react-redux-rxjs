@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.15.2017 08:41pm
+ * @Last modified time: 11.15.2017 09:08pm
  */
 
 import React, { Component } from 'react';
@@ -13,7 +13,7 @@ import {
 import GithubList from './GithubList';
 import GithubTextInput from './ui/GithubTextInput';
 import LoadingIndicator from './ui/LoadingIndicator';
-import { fetchUserAction } from '../actionTypes';
+import { fetchUserAction } from '../actions';
 
 const styling = {
   flexContainer: {

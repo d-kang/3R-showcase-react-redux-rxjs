@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 08:58pm
+ * @Last modified time: 11.15.2017 09:06pm
  */
 
 import { combineReducers } from 'redux';
@@ -12,7 +12,7 @@ import {
   BOOP,
   FETCH_USER,
   FETCH_USER_FULFILLED,
-} from './actionTypes';
+} from '../actions';
 
 const initialState = {
   ping: {

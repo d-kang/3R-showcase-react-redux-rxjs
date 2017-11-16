@@ -1,14 +1,14 @@
 /**
  * @Date:   11.12.17
  * @Filename: BeepObservable.jsx
- * @Last modified time: 11.15.2017 08:40pm
+ * @Last modified time: 11.15.2017 09:08pm
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoadingIndicator from './ui/LoadingIndicator';
-import { beep } from '../actionTypes';
+import { beep } from '../actions';
 
 
 const ShouldLoad = ({ isTrue }) => (
@@ -28,7 +28,6 @@ const BeepObservable = ({ isBeeping, beep, foo }) => (
 
 
 const mapState = (state) => ({
-  log: console.log('state', state),
   isBeeping: state.beepReducer.isBeeping,
   foo: state.beepReducer.foo,
 });

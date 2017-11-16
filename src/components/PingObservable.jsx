@@ -1,13 +1,13 @@
 /**
  * @Date:   11.12.17
  * @Filename: PingObservable.jsx
- * @Last modified time: 11.15.2017 08:23pm
+ * @Last modified time: 11.15.2017 09:08pm
  */
 
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ping } from '../actionTypes';
+import { ping } from '../actions';
 
 const PingObservable = ({ isPinging, ping }) => (
   <div>

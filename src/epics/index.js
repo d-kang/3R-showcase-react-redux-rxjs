@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 08:49pm
+ * @Last modified time: 11.15.2017 09:06pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -17,7 +17,7 @@ import {
   FETCH_USER,
   FETCH_USER_FULFILLED,
   fetchUserFullfilled,
-} from './actionTypes';
+} from '../actions';
 
 
 
