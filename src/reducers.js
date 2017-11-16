@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 08:47pm
+ * @Last modified time: 11.15.2017 08:54pm
  */
 
 import { combineReducers } from 'redux';
@@ -10,6 +10,7 @@ import {
   PONG,
   BEEP,
   BOOP,
+  FETCH_USER,
   FETCH_USER_FULFILLED,
 } from './actionTypes';
 
@@ -31,10 +32,16 @@ const githubState = {
 const fetchUserReducer = (state = githubState, action) => {
   console.log('fetchUserReducer RAN >> action.type >>', action.type, action);
   switch (action.type) {
+    case FETCH_USER:
+      return {
+        ...state,
+        isLoading: true,
+      };
     case FETCH_USER_FULFILLED:
       return {
         ...state,
         fetchUserResponse: [action.payload, ...state.fetchUserResponse],
+        isLoading: false,
       };
     default:
       return state;

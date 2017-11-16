@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 08:47pm
+ * @Last modified time: 11.15.2017 08:49pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -16,18 +16,10 @@ import {
   BOOP,
   FETCH_USER,
   FETCH_USER_FULFILLED,
+  fetchUserFullfilled,
 } from './actionTypes';
 
-// const fetchUser = (username) => ({
-//   type: FETCH_USER,
-//   isLoading: true,
-//   value: username,
-// });
-const fetchUserFullfilled = (payload) => ({
-  logger: console.log('payload', payload),
-  type: FETCH_USER_FULFILLED,
-  payload,
-});
+
 
 
 const fetchUserEpic = (action$) => (
