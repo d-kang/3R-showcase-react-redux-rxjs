@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 01:36pm
+ * @Last modified time: 11.15.2017 08:01pm
  */
 
 import { combineReducers } from 'redux';
