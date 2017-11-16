@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 09:07pm
+ * @Last modified time: 11.15.2017 10:06pm
  */
 
 import { createBrowserHistory } from 'history';
@@ -27,13 +27,24 @@ const store = createStore(
 );
 
 console.log('module', module);
+console.log('store', store);
+
+// if (module.hot.active) {
+//   console.log('module.hot is true')
+//   module.hot.accept('../reducers/', (...rest) => {
+//     console.log('rest', rest);
+//     console.log('hiiiiiiiiiiiii')
+//     const nextRootReducer = require('../reducers/index').default;
+//     store.replaceReducer(nextRootReducer);
+//   });
+// }
+
+
 if (module.hot) {
-  module.hot.accept('../reducers', () => {
-    const nextRootReducer = require('../reducers').default;
-    store.replaceReducer(nextRootReducer);
+  module.hot.accept('../reducers', (...args) => {
+    store.replaceReducer(require('../reducers/index').default)
   });
 }
-
 
 export default store;
 
