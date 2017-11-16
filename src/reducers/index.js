@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.16.2017 02:02pm
+ * @Last modified time: 11.16.2017 02:40pm
  */
 
 import { combineReducers } from 'redux';
@@ -32,11 +32,12 @@ const initialState = {
   githubRepos: {
     isLoading: false,
     value: '',
-    fetchUserResponse: [],
+    fetchRepoResponse: [],
   },
 };
 
 const fetchUserReducer = (state = initialState.githubUser, action) => {
+  console.log('fetchUserReducer action', action);
   switch (action.type) {
     case FETCH_USER:
       return {
@@ -54,6 +55,7 @@ const fetchUserReducer = (state = initialState.githubUser, action) => {
   }
 };
 const fetchRepoReducer = (state = initialState.githubRepos, action) => {
+  console.log('fetchRepoReducer action', action);
   switch (action.type) {
     case FETCH_REPO:
       return {
@@ -63,7 +65,7 @@ const fetchRepoReducer = (state = initialState.githubRepos, action) => {
     case FETCH_REPO_FULFILLED:
       return {
         ...state,
-        fetchUserResponse: [action.payload, ...state.fetchRepoResponse],
+        fetchRepoResponse: [action.payload, ...state.fetchRepoResponse],
         isLoading: false,
       };
     default:

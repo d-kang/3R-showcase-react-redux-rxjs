@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:22pm
  * @Filename: MyList.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.13.2017 02:01pm
+ * @Last modified time: 11.16.2017 02:04pm
  */
 
 import React, { Component } from 'react';
@@ -26,6 +26,10 @@ class MyList extends Component {
     {
       route: '/github',
       primaryText: 'GithubUser',
+    },
+    {
+      route: '/repos',
+      primaryText: 'GithubRepos',
     },
   ]
 

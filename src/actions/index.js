@@ -3,7 +3,7 @@
  * @Date:   11.15.2017 08:19pm
  * @Filename: actionTypes.js
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 02:01pm
+ * @Last modified time: 11.16.2017 02:11pm
  */
 
 export const PING = 'PING';
@@ -21,15 +21,15 @@ export const beep = () => ({ type: BEEP });
 
 export const fetchUserAction = (value) => ({
   type: FETCH_USER,
-  isFetching: false,
+  isLoading: true,
   value,
 });
 
-// const fetchUser = (username) => ({
-//   type: FETCH_USER,
-//   isLoading: true,
-//   value: username,
-// });
+export const fetchRepoAction = (value) => ({
+  type: FETCH_REPO,
+  isLoading: true,
+  value,
+});
 
 export const fetchUserFullfilled = (payload) => ({
   logger: console.log('logger payload fetchUserFullfilled', payload),

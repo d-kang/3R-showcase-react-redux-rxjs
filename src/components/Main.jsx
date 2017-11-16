@@ -1,7 +1,7 @@
 /**
  * @Date:   11.11.2017
  * @Filename: Main.jsx
- * @Last modified time: 11.15.2017 09:08pm
+ * @Last modified time: 11.16.2017 02:13pm
  */
 
 import React from 'react';
@@ -14,6 +14,7 @@ import App from './App';
 import PingObservable from './PingObservable';
 import BeepObservable from './BeepObservable';
 import Github from './Github';
+import GithubRepos from './GithubRepos';
 import MyDrawer from './ui/MyDrawer';
 
 const Main = () => (
@@ -25,6 +26,7 @@ const Main = () => (
       <Route exact path="/pinging" component={PingObservable} />
       <Route exact path="/beeping" component={BeepObservable} />
       <Route exact path="/github" component={Github} />
+      <Route exact path="/repos" component={GithubRepos} />
     </Switch>
   </div>
 );
