@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.16.2017 02:21pm
+ * @Last modified time: 11.16.2017 02:56pm
  */
 
 import React, { Component } from 'react';
@@ -45,11 +45,14 @@ class GithubRepos extends Component {
       isLoading,
       value
     } = this.props;
+    const mapped = fetchRepoResponse.map((a, i, arr) => JSON.stringify(arr[i]))
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input type="text"/>
           <button>Click</button>
+          {mapped.join('\n')}
         </form>
       </div>
     );
