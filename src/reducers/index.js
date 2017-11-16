@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 09:06pm
+ * @Last modified time: 11.16.2017 01:56pm
  */
 
 import { combineReducers } from 'redux';
@@ -22,14 +22,19 @@ const initialState = {
     isBeeping: false,
     someArr: [1, 2, 3, 4, 5],
   },
-  github: {
+  githubUser: {
+    isLoading: false,
+    value: '',
+    fetchUserResponse: [],
+  },
+  githubRepos: {
     isLoading: false,
     value: '',
     fetchUserResponse: [],
   },
 };
 
-const fetchUserReducer = (state = initialState.github, action) => {
+const fetchUserReducer = (state = initialState.githubUser, action) => {
   switch (action.type) {
     case FETCH_USER:
       return {
@@ -40,6 +45,23 @@ const fetchUserReducer = (state = initialState.github, action) => {
       return {
         ...state,
         fetchUserResponse: [action.payload, ...state.fetchUserResponse],
+        isLoading: false,
+      };
+    default:
+      return state;
+  }
+};
+const fetchRepoReducer = (state = initialState.githubRepos, action) => {
+  switch (action.type) {
+    case FETCH_REPO:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_REPO_FULFILLED:
+      return {
+        ...state,
+        fetchUserResponse: [action.payload, ...state.fetchRepoResponse],
         isLoading: false,
       };
     default:
@@ -83,6 +105,7 @@ const reducerObj = {
   pingReducer,
   beepReducer,
   fetchUserReducer,
+  fetchRepoReducer,
 };
 
 const rootReducer = combineReducers(reducerObj);
