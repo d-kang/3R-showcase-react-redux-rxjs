@@ -1,57 +1,36 @@
 /**
- * @Author: wiz
- * @Date:   11.13.2017 07:23pm
+ * @Date:   11.15.2017 05:36pm
  * @Filename: index.js
- * @Last modified by:   wiz
- * @Last modified time: 11.14.2017 08:53am
+ * @Last modified time: 11.15.2017 05:37pm
  */
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const webpack = require('webpack');
-const config = require('../webpack.config.js');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
+import express from 'express';
+import webpack from 'webpack';
+import path from 'path';
+import config from '../webpack.config.dev';
+import open from 'open';
 
+/* eslint-disable no-console */
 
+const port = 3000;
 const app = express();
-
-const port = process.env.PORT || 3500;
-
-
 const compiler = webpack(config);
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
 }));
-app.use(webpackHotMiddleware(compiler));
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(require('webpack-hot-middleware')(compiler));
 
-
-app.use(express.static(path.resolve(__dirname, '../dist')));
-
-
-const pathToFile = path.resolve(__dirname, '../dist', 'index.html')
-console.log('pathToFile', pathToFile);
-
-const joined = path.join(process.env.PWD, 'dist', 'index.html')
-console.log('joined', joined);
-
-
-app.get('/*', (req, res) => {
-  console.log('req.method', req.method);
-  console.log('req.url', req.url);
-
-  res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
+app.get('*', function(req, res) {
+  res.sendFile(path.join( __dirname, '../dist/index.html'));
 });
 
-
-
-
-app.listen(port, () => {
-  console.log(`http://localhost:${port}`);
+app.listen(port, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    open(`http://localhost:${port}`);
+  }
 });
