@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.16.2017 01:56pm
+ * @Last modified time: 11.16.2017 02:02pm
  */
 
 import { combineReducers } from 'redux';
@@ -12,6 +12,8 @@ import {
   BOOP,
   FETCH_USER,
   FETCH_USER_FULFILLED,
+  FETCH_REPO,
+  FETCH_REPO_FULFILLED,
 } from '../actions';
 
 const initialState = {
