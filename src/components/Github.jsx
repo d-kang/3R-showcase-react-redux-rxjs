@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.15.2017 01:35pm
+ * @Last modified time: 11.15.2017 08:24pm
  */
 
 import React, { Component } from 'react';
@@ -14,7 +14,7 @@ import {
 import GithubList from './GithubList';
 import GithubTextInput from './ui/GithubTextInput';
 import LoadingIndicator from './ui/LoadingIndicator';
-
+import { fetchUserAction } from '../actionTypes';
 
 const styling = {
   flexContainer: {
@@ -80,15 +80,6 @@ class SimpleAjaxRx extends Component {
     );
   }
 }
-
-
-const fetchUserAction = (value) => (
-  {
-    type: 'FETCH_USER',
-    isFetching: false,
-    value,
-  }
-);
 
 
 const mapState = (state) => ({
