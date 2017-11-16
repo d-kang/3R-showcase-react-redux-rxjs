@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 05:36pm
  * @Filename: index.js
- * @Last modified time: 11.15.2017 05:37pm
+ * @Last modified time: 11.15.2017 06:07pm
  */
 
 import express from 'express';
@@ -10,7 +10,6 @@ import path from 'path';
 import config from '../webpack.config.dev';
 import open from 'open';
 
-/* eslint-disable no-console */
 
 const port = 3000;
 const app = express();
@@ -23,8 +22,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.get('*', function(req, res) {
-  res.sendFile(path.join( __dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.listen(port, function(err) {

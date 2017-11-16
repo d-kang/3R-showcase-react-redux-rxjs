@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.15.2017 01:35pm
+ * @Last modified time: 11.15.2017 06:08pm
  */
 
 import React, { Component } from 'react';
@@ -48,7 +48,7 @@ class SimpleAjaxRx extends Component {
     console.log('fetchUserResponse', fetchUserResponse);
     return (
       <div>
-        <div>Hi Github!</div>
+        <div>Hi Github!!</div>
         <img
           src="https://developer.github.com/assets/images/electrocat.png"
           alt="Image of Octocat"
