@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 10:01pm
+ * @Last modified time: 11.16.2017 01:58pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -17,6 +17,9 @@ import {
   FETCH_USER,
   FETCH_USER_FULFILLED,
   fetchUserFullfilled,
+  FETCH_REPO,
+  FETCH_REPO_FULFILLED,
+  fetchRepoFullfilled
 } from '../actions';
 
 
@@ -26,7 +29,18 @@ const fetchUserEpic = (action$) => (
       return (
         ajax.getJSON(`https://api.github.com/users/${action.value}`)
           .map(fetchUserFullfilled)
-      )
+      );
+    })
+);
+
+
+const fetchRepoEpic = (action$) => (
+  action$.ofType(FETCH_REPO)
+    .mergeMap((action) => {
+      return (
+        ajax.getJSON(`https://api.github.com/users/${action.value}/repos`)
+          .map(fetchUserFullfilled)
+      );
     })
 );
 
