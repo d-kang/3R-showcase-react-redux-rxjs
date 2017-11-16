@@ -3,18 +3,20 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 01:02pm
+ * @Last modified time: 11.15.2017 08:20pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
-export const PING = 'PING';
-export const PONG = 'PONG';
-export const BEEP = 'BEEP';
-export const BOOP = 'BOOP';
 
-export const FETCH_USER = 'FETCH_USER';
-export const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
+import {
+  PING,
+  PONG,
+  BEEP,
+  BOOP,
+  FETCH_USER,
+  FETCH_USER_FULFILLED,
+} from './epics';
 
 const fetchUser = (username) => ({
   type: FETCH_USER,
