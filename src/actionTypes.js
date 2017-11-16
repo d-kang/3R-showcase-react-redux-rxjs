@@ -3,7 +3,7 @@
  * @Date:   11.15.2017 08:19pm
  * @Filename: actionTypes.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 08:26pm
+ * @Last modified time: 11.15.2017 08:43pm
  */
 
 export const PING = 'PING';
@@ -17,10 +17,8 @@ export const ping = () => ({ type: PING });
 
 export const beep = () => ({ type: BEEP });
 
-export const fetchUserAction = (value) => (
-  {
-    type: FETCH_USER,
-    isFetching: false,
-    value,
-  }
-);
+export const fetchUserAction = (value) => ({
+  type: FETCH_USER,
+  isFetching: false,
+  value,
+});

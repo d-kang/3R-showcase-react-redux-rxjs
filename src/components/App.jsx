@@ -1,16 +1,12 @@
 /**
  * @Date:   11.12.17
  * @Filename: App.jsx
- * @Last modified time: 11.15.2017 07:59pm
+ * @Last modified time: 11.15.2017 08:39pm
  */
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Main from './Main';
-// import PingObservable from './PingObservable';
-// import BeepObservable from './BeepObservable';
-import MyDrawer from './ui/MyDrawer';
 
 class App extends Component {
   state = {

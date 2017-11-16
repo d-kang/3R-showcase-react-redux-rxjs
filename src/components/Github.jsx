@@ -1,12 +1,11 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.15.2017 08:26pm
+ * @Last modified time: 11.15.2017 08:41pm
  */
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Rx from 'rx-dom';
 import {
   CircularProgress,
   MuiThemeProvider as MuiContainer,
@@ -45,7 +44,6 @@ class SimpleAjaxRx extends Component {
       fetchUserResponse,
       isLoading,
     } = this.props;
-    console.log('fetchUserResponse', fetchUserResponse);
     return (
       <div>
         <div>Hi Github!</div>
@@ -63,17 +61,11 @@ class SimpleAjaxRx extends Component {
           />
         </div>
 
-        {
-          isLoading
-            && <LoadingIndicator
-                 isLoading={isLoading}
-               />
-        }
-        {
-          isLoading &&
-            <MuiContainer>
-              <CircularProgress />
-            </MuiContainer>
+        { isLoading && <LoadingIndicator isLoading={isLoading} /> }
+        { isLoading &&
+          <MuiContainer>
+            <CircularProgress />
+          </MuiContainer>
         }
 
       </div>

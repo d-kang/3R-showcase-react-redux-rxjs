@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 08:01pm
+ * @Last modified time: 11.15.2017 08:47pm
  */
 
 import { combineReducers } from 'redux';
@@ -11,7 +11,7 @@ import {
   BEEP,
   BOOP,
   FETCH_USER_FULFILLED,
-} from './epics';
+} from './actionTypes';
 
 
 const pingState = {

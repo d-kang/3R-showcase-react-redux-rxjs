@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: BeepObservable.jsx
- * @Last modified time: 11.15.2017 08:22pm
+ * @Last modified time: 11.15.2017 08:40pm
  */
 
 import React from 'react';
@@ -11,9 +11,10 @@ import LoadingIndicator from './ui/LoadingIndicator';
 import { beep } from '../actionTypes';
 
 
-const ShouldLoad = ({isTrue}) => (
+const ShouldLoad = ({ isTrue }) => (
   isTrue && <LoadingIndicator />
-)
+);
+
 const BeepObservable = ({ isBeeping, beep, foo }) => (
   <div>
     <h1>is beeping: {isBeeping.toString()}</h1>
@@ -24,8 +25,6 @@ const BeepObservable = ({ isBeeping, beep, foo }) => (
     <Link to='/'>Back</Link>
   </div>
 );
-
-
 
 
 const mapState = (state) => ({
