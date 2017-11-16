@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.15.2017 08:54pm
+ * @Last modified time: 11.15.2017 08:58pm
  */
 
 import { combineReducers } from 'redux';
@@ -14,23 +14,22 @@ import {
   FETCH_USER_FULFILLED,
 } from './actionTypes';
 
-
-const pingState = {
-  isPinging: false,
+const initialState = {
+  ping: {
+    isPinging: false,
+  },
+  beep: {
+    isBeeping: false,
+    someArr: [1, 2, 3, 4, 5],
+  },
+  github: {
+    isLoading: false,
+    value: '',
+    fetchUserResponse: [],
+  },
 };
-const beepState = {
-  isBeeping: false,
-  someArr: [1, 2, 3, 4, 5],
-};
 
-const githubState = {
-  isLoading: false,
-  value: '',
-  fetchUserResponse: [],
-};
-
-const fetchUserReducer = (state = githubState, action) => {
-  console.log('fetchUserReducer RAN >> action.type >>', action.type, action);
+const fetchUserReducer = (state = initialState.github, action) => {
   switch (action.type) {
     case FETCH_USER:
       return {
@@ -49,7 +48,7 @@ const fetchUserReducer = (state = githubState, action) => {
 };
 
 
-const pingReducer = (state = pingState, action) => {
+const pingReducer = (state = initialState.ping, action) => {
   switch (action.type) {
     case PING:
       return { isPinging: true };
@@ -61,7 +60,7 @@ const pingReducer = (state = pingState, action) => {
 };
 
 
-const beepReducer = (state = beepState, action) => {
+const beepReducer = (state = initialState.beep, action) => {
   switch (action.type) {
     case BEEP:
       return {
