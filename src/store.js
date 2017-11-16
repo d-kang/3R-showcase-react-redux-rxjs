@@ -2,8 +2,8 @@
  * @Author: wiz
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
- * @Last modified by:
- * @Last modified time: 11.15.2017 08:36am
+ * @Last modified by:   wiz
+ * @Last modified time: 11.15.2017 06:10pm
  */
 
 import { createBrowserHistory } from 'history';
