@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017 01:47pm
  * @Filename: index.jsx
- * @Last modified time: 11.15.2017 06:53pm
+ * @Last modified time: 11.15.2017 07:41pm
  */
 
 import React from 'react';
@@ -11,11 +11,12 @@ import {
   BrowserRouter,
   Router,
   Route,
+  Switch,
 } from 'react-router-dom';
 import 'rxjs';
 
 import store, { history } from './store';
-import App from './components/App';
+import Main from './components/Main';
 import Github from './components/Github';
 
 import { ConnectedRouter } from 'connected-react-router';
@@ -27,7 +28,7 @@ export default history;
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path='/' component={App} />
+      <Main />
     </BrowserRouter>
   </Provider>,
   rootElement,

@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.17
  * @Filename: App.jsx
- * @Last modified time: 11.15.2017 01:28pm
+ * @Last modified time: 11.15.2017 07:45pm
  */
 
 import React, { Component } from 'react';
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div>
         <Link to='/'>Home</Link>
-        <Main />
+        <div>Landing Page!</div>
       </div>
     );
   }
