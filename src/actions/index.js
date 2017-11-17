@@ -3,7 +3,7 @@
  * @Date:   11.15.2017 08:19pm
  * @Filename: actionTypes.js
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 02:11pm
+ * @Last modified time: 11.16.2017 05:24pm
  */
 
 export const PING = 'PING';
@@ -14,6 +14,11 @@ export const FETCH_USER = 'FETCH_USER';
 export const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
 export const FETCH_REPO = 'FETCH_REPO';
 export const FETCH_REPO_FULFILLED = 'FETCH_REPO_FULFILLED';
+export const FETCH_USER_CANCELLED = 'FETCH_USER_CANCELLED';
+
+export const fetchUserCancelled = () => ({
+  type: FETCH_USER_CANCELLED,
+});
 
 export const ping = () => ({ type: PING });
 

@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.15.2017 09:08pm
+ * @Last modified time: 11.16.2017 05:24pm
  */
 
 import React, { Component } from 'react';
@@ -13,7 +13,8 @@ import {
 import GithubList from './GithubList';
 import GithubTextInput from './ui/GithubTextInput';
 import LoadingIndicator from './ui/LoadingIndicator';
-import { fetchUserAction } from '../actions';
+import { fetchUserAction, fetchUserCancelled } from '../actions';
+console.log('fetchUserCancelled1', fetchUserCancelled);
 
 const styling = {
   flexContainer: {
@@ -43,7 +44,10 @@ class SimpleAjaxRx extends Component {
       value,
       fetchUserResponse,
       isLoading,
+      fetchUserCancelled,
     } = this.props;
+    console.log('fetchUserAction', fetchUserAction);
+    console.log('fetchUserCancelled2', fetchUserCancelled);
     return (
       <div>
         <div>Hi Github!</div>
@@ -54,20 +58,21 @@ class SimpleAjaxRx extends Component {
         <GithubTextInput
           fetchUserAction={fetchUserAction}
         />
+        <button onClick={fetchUserCancelled}>Cancel</button>
         Text input: {value}
+        { isLoading &&
+            <div>
+              <LoadingIndicator isLoading={isLoading} />
+              {/* <MuiContainer>
+                <CircularProgress />
+              </MuiContainer> */}
+            </div>
+        }
         <div style={styling.flexContainer}>
           <GithubList
             fetchUserResponse={fetchUserResponse}
           />
         </div>
-
-        { isLoading && <LoadingIndicator isLoading={isLoading} /> }
-        { isLoading &&
-          <MuiContainer>
-            <CircularProgress />
-          </MuiContainer>
-        }
-
       </div>
     );
   }
@@ -80,4 +85,4 @@ const mapState = (state) => ({
   value: state.fetchUserReducer.value,
 });
 
-export default connect(mapState, { fetchUserAction })(SimpleAjaxRx);
+export default connect(mapState, { fetchUserAction, fetchUserCancelled })(SimpleAjaxRx);

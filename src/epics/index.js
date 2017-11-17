@@ -3,11 +3,12 @@
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 03:55pm
+ * @Last modified time: 11.16.2017 05:22pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
+import { Observable } from 'rxjs';
 
 import {
   PING,
@@ -20,17 +21,22 @@ import {
   FETCH_REPO,
   // FETCH_REPO_FULFILLED,
   fetchRepoFullfilled,
+  FETCH_USER_CANCELLED,
 } from '../actions';
 
 
 const fetchUserEpic = (action$) => (
   action$.ofType(FETCH_USER)
     .map(({ value }) => value)
-    .debounceTime(4000)
+    // .debounceTime(4000)
     .mergeMap((value) => (
-      ajax.getJSON(`https://api.github.com/users/${value}`)
+      Observable.timer(2000)
+        .mergeMap(() => (
+          ajax.getJSON(`https://api.github.com/users/${value}`)
+            .map(fetchUserFullfilled)
+        ))
+        .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
     ))
-    .map(fetchUserFullfilled)
 );
 
 
