@@ -6,7 +6,7 @@
   "scripts": {
     "webpack:dev": "webpack-dev-server",
     "webpack:wed": "webpack -wd",
-    "babel:node": "babel-node",
+    "babel:node": "nodemon --exec babel-node -- server",
     "node:dev": "nodemon --exec npm run babel:node -- server",
     "prod": "webpack -p",
     "test": "jest",
