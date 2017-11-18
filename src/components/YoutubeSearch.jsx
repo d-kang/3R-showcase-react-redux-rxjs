@@ -1,19 +1,18 @@
 /**
  * @Date:   11.18.2017 10:02am
  * @Filename: YoutubeSearch.jsx
- * @Last modified time: 11.18.2017 10:25am
+ * @Last modified time: 11.18.2017 10:57am
  */
-
 import React, { Component } from 'react';
 
 class YoutubeSearch extends Component {
-
-
   handleSubmit = (e) => {
     e.preventDefault();
     fetch('http://localhost:3500/api/youtube')
+      .then((res) => res.json())
+      .then((res) => console.log('res', res))
+      .catch((err) => console.log('err>>>', err));
   }
-
   render() {
     return (
       <div>
@@ -24,7 +23,6 @@ class YoutubeSearch extends Component {
           <input type="text"/>
           <button>Search Youtube</button>
         </form>
-
       </div>
     );
   }
