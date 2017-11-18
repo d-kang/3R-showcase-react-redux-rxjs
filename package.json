@@ -6,7 +6,8 @@
   "scripts": {
     "webpack:dev": "webpack-dev-server",
     "webpack:wed": "webpack -wd",
-    "server": "nodemon server/index.js",
+    "babel:node": "babel-node",
+    "node:dev": "nodemon --exec npm run babel:node -- server",
     "prod": "webpack -p",
     "test": "jest",
     "test:watch": "npm test -- --watch"
@@ -14,6 +15,7 @@
   "author": "David Kang",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^7.1.2",

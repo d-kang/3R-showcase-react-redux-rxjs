@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 07:23pm
  * @Filename: index.js
  * @Last modified by:   wiz
- * @Last modified time: 11.14.2017 08:53am
+ * @Last modified time: 11.18.2017 09:50am
  */
 
 const express = require('express');
@@ -14,7 +14,7 @@ const config = require('../webpack.config.js');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 
-
+console.log('hello');
 const app = express();
 
 const port = process.env.PORT || 3500;

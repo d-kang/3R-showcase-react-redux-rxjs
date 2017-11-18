@@ -1,7 +1,7 @@
 /**
  * @Date:   11.11.2017
  * @Filename: Main.jsx
- * @Last modified time: 11.16.2017 02:13pm
+ * @Last modified time: 11.18.2017 10:04am
  */
 
 import React from 'react';
@@ -16,6 +16,7 @@ import BeepObservable from './BeepObservable';
 import Github from './Github';
 import GithubRepos from './GithubRepos';
 import MyDrawer from './ui/MyDrawer';
+import YoutubeSearch from './YoutubeSearch';
 
 const Main = () => (
   <div>
@@ -27,6 +28,7 @@ const Main = () => (
       <Route exact path="/beeping" component={BeepObservable} />
       <Route exact path="/github" component={Github} />
       <Route exact path="/repos" component={GithubRepos} />
+      <Route exact path="/youtube" component={YoutubeSearch} />
     </Switch>
   </div>
 );

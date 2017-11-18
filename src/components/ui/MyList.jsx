@@ -3,7 +3,7 @@
  * @Date:   11.13.2017 01:22pm
  * @Filename: MyList.jsx
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 02:04pm
+ * @Last modified time: 11.18.2017 10:03am
  */
 
 import React, { Component } from 'react';
@@ -17,19 +17,23 @@ class MyList extends Component {
   listItems = [
     {
       route: '/pinging',
-      primaryText: 'PingPong',
+      primaryText: 'Ping Pong',
     },
     {
       route: '/beeping',
-      primaryText: 'BeepBoop',
+      primaryText: 'Beep Boop',
     },
     {
       route: '/github',
-      primaryText: 'GithubUser',
+      primaryText: 'Github User',
     },
     {
       route: '/repos',
-      primaryText: 'GithubRepos',
+      primaryText: 'Github Repos',
+    },
+    {
+      route: '/youtube',
+      primaryText: 'Youtube Search',
     },
   ]
 
