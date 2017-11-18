@@ -1,7 +1,7 @@
 /**
  * @Date:   11.13.2017 07:23pm
  * @Filename: index.js
- * @Last modified time: 11.18.2017 10:36am
+ * @Last modified time: 11.18.2017 10:49am
  */
 
 import express from 'express';
@@ -17,7 +17,7 @@ const app = express();
 const port = process.env.PORT || 3500;
 const youTube = new YouTube();
 
-youTube.setKey(YOUTUBE_API_KEY)
+youTube.setKey(YOUTUBE_API_KEY);
 
 app.use(cors());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
@@ -26,9 +26,15 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.get('/api/youtube', (req, res) => {
-  fetch('')
-  res.send('hi');
-})
+  youTube.search('something something', 2, (err, result) => {
+    if (err) {
+      console.error('err>>>', err);
+    } else {
+      console.log(JSON.stringify(result, null, 2));
+      res.send(result);
+    }
+  });
+});
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
