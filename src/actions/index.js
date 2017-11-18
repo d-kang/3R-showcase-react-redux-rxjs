@@ -3,7 +3,7 @@
  * @Date:   11.15.2017 08:19pm
  * @Filename: actionTypes.js
  * @Last modified by:   wiz
- * @Last modified time: 11.16.2017 05:24pm
+ * @Last modified time: 11.18.2017 10:10am
  */
 
 export const PING = 'PING';
@@ -37,14 +37,14 @@ export const fetchRepoAction = (value) => ({
 });
 
 export const fetchUserFullfilled = (payload) => ({
-  logger: console.log('logger payload fetchUserFullfilled', payload),
+  // logger: console.log('logger payload fetchUserFullfilled', payload),
   type: FETCH_USER_FULFILLED,
   payload,
 });
 
 
 export const fetchRepoFullfilled = (payload) => ({
-  logger: console.log('logger payload fetchRepoFullfilled', payload),
+  // logger: console.log('logger payload fetchRepoFullfilled', payload),
   type: FETCH_REPO_FULFILLED,
   payload,
 });

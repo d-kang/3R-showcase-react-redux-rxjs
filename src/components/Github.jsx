@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017
  * @Filename: Github.jsx
- * @Last modified time: 11.16.2017 05:24pm
+ * @Last modified time: 11.18.2017 10:09am
  */
 
 import React, { Component } from 'react';
@@ -14,7 +14,6 @@ import GithubList from './GithubList';
 import GithubTextInput from './ui/GithubTextInput';
 import LoadingIndicator from './ui/LoadingIndicator';
 import { fetchUserAction, fetchUserCancelled } from '../actions';
-console.log('fetchUserCancelled1', fetchUserCancelled);
 
 const styling = {
   flexContainer: {
@@ -46,8 +45,6 @@ class SimpleAjaxRx extends Component {
       isLoading,
       fetchUserCancelled,
     } = this.props;
-    console.log('fetchUserAction', fetchUserAction);
-    console.log('fetchUserCancelled2', fetchUserCancelled);
     return (
       <div>
         <div>Hi Github!</div>

@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:17am
  * @Filename: reducers.js
- * @Last modified time: 11.16.2017 05:26pm
+ * @Last modified time: 11.18.2017 10:09am
  */
 
 import { combineReducers } from 'redux';
@@ -38,7 +38,6 @@ const initialState = {
 };
 
 const fetchUserReducer = (state = initialState.githubUser, action) => {
-  console.log('fetchUserReducer action', action);
   switch (action.type) {
     case FETCH_USER:
       return {
@@ -61,7 +60,6 @@ const fetchUserReducer = (state = initialState.githubUser, action) => {
   }
 };
 const fetchRepoReducer = (state = initialState.githubRepos, action) => {
-  console.log('fetchRepoReducer action', action);
   switch (action.type) {
     case FETCH_REPO:
       return {

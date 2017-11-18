@@ -3,7 +3,7 @@
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
  * @Last modified by:   wiz
- * @Last modified time: 11.15.2017 10:06pm
+ * @Last modified time: 11.18.2017 10:10am
  */
 
 import { createBrowserHistory } from 'history';
@@ -26,8 +26,6 @@ const store = createStore(
   ),
 );
 
-console.log('module', module);
-console.log('store', store);
 
 // if (module.hot.active) {
 //   console.log('module.hot is true')
