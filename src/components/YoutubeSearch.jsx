@@ -25,7 +25,7 @@ class YoutubeSearch extends Component {
     this.myInit.body = JSON.stringify({ payload });
     fetch('http://localhost:3500/api/youtube', this.myInit)
       .then(res => res.json())
-      .then(res => console.log('res>>>', res))
+      .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
       .catch(err => console.log('err>>>', err));
   }
   handleInput = (e) => {
@@ -44,6 +44,7 @@ class YoutubeSearch extends Component {
           />
           <button>Search Youtube</button>
         </form>
+        <iframe width="420" height="345" src="http://www.youtube.com/embed/AQBh9soLSkI?autoplay=1" frameborder="0" allowfullscreen></iframe>
       </div>
     );
   }

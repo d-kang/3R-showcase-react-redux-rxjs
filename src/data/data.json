@@ -1,0 +1,78 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "ld9biNPKjAjgjV7EZ4EKeEGrhao/pLPUq8pvQsu40IBkzRsizqKxZ2E",
+  "nextPageToken": "CAIQAA",
+  "regionCode": "US",
+  "pageInfo": {
+    "totalResults": 1000000,
+    "resultsPerPage": 2
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ld9biNPKjAjgjV7EZ4EKeEGrhao/cQcWyA3ZtzMxISquwIpGbyAn-io",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "SAvXjWgKSQ8"
+      },
+      "snippet": {
+        "publishedAt": "2017-11-18T16:34:37.000Z",
+        "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
+        "title": "lofi hip hop radio - beats to relax/study to",
+        "description": "Thank you for listening, I hope you will have a good time here :) ▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭ ▸Update: -Day mode will be available soon ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/default_live.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/mqdefault_live.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/hqdefault_live.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "ChilledCow",
+        "liveBroadcastContent": "live"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ld9biNPKjAjgjV7EZ4EKeEGrhao/PRJz_rHP0hruXMwkOTL4_-LgCQ0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "AQBh9soLSkI"
+      },
+      "snippet": {
+        "publishedAt": "2017-09-26T06:33:07.000Z",
+        "channelId": "UCOxqgCwgOqC2lMqC5PYz_Dg",
+        "title": "Lofi Hip Hop Radio 24/7 🎧 Chill Gaming / Study Beats",
+        "description": "Welcome to our lofi hip-hop livestream, full of mellow melodic beats perfect for studying, work, relaxing, smoking or focusing. Enjoy your stay. :) Listen on ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/AQBh9soLSkI/default_live.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/AQBh9soLSkI/mqdefault_live.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/AQBh9soLSkI/hqdefault_live.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Chillhop Music",
+        "liveBroadcastContent": "live"
+      }
+    }
+  ]
+}
