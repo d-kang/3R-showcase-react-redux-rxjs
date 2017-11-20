@@ -1,7 +1,7 @@
 /**
  * @Date:   11.13.2017 07:23pm
  * @Filename: index.js
- * @Last modified time: 11.18.2017 11:45am
+ * @Last modified time: 11.18.2017 11:49am
  */
 
 import express from 'express';
@@ -12,7 +12,6 @@ import morgan from 'morgan';
 // import fetch from 'node-fetch';
 import YouTube from 'youtube-node';
 import { YOUTUBE_API_KEY } from './config/youtube-api';
-
 const app = express();
 const port = process.env.PORT || 3500;
 const youTube = new YouTube();
@@ -26,15 +25,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.post('/api/youtube', (req, res) => {
-  console.log('req.body', req.body);
-  console.log('req.payload', req.payload);
-  console.log('req.data', req.data);
-  console.log('req.method', req.method);
-  youTube.search('something something', 2, (err, result) => {
+  const { payload } = req.body;
+  youTube.search(payload, 2, (err, result) => {
     if (err) {
       console.error('err>>>', err);
+      res.send(err);
     } else {
-      // console.log(JSON.stringify(result, null, 2));
       res.send(result);
     }
   });
