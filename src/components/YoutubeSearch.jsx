@@ -9,6 +9,7 @@ class YoutubeSearch extends Component {
   state = {
     payload: '',
     response: youTubeSampleData,
+    currentVideo: 'AQBh9soLSkI',
   }
 
   headers = {
@@ -46,14 +47,18 @@ class YoutubeSearch extends Component {
           />
           <button>Search Youtube</button>
         </form>
-        <iframe width="420" height="345" src="http://www.youtube.com/embed/AQBh9soLSkI?autoplay=1" frameBorder="0" allowFullScreen></iframe>
+        <iframe width="420" height="345" src={`http://www.youtube.com/embed/${this.state.currentVideo}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
 
         <div>
           {
-            this.state.response.items.map(({snippet}, index) => {
+            this.state.response.items.map(({id, snippet}, index) => {
               return (
                 <div>
-                  <img src={snippet.thumbnails.medium.url} alt=""/>
+                  <img onClick={() => {
+                    this.setState({ currentVideo: id.videoId })
+                    this.log(e, id);
+                  }} src={snippet.thumbnails.medium.url} alt="" />
+
                 </div>
               )
             })
