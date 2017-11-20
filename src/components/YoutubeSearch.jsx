@@ -3,8 +3,22 @@
  * @Filename: YoutubeSearch.jsx
  * @Last modified time: 11.18.2017 11:48am
  */
+
 import React, { Component } from 'react';
 import youTubeSampleData from '../data/data.json';
+
+const styles = {
+  flexContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    flexFlow: 'row wrap',
+    alignContent: 'flex-end',
+  },
+};
+
 class YoutubeSearch extends Component {
   state = {
     payload: '',
@@ -49,7 +63,7 @@ class YoutubeSearch extends Component {
         </form>
         <iframe width="420" height="345" src={`http://www.youtube.com/embed/${this.state.currentVideo}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
 
-        <div>
+        <div style={styles.flexContainer}>
           {
             this.state.response.items.map(({id, snippet}, index) => {
               return (
@@ -58,7 +72,7 @@ class YoutubeSearch extends Component {
                     this.setState({ currentVideo: id.videoId })
                     this.log(e, id);
                   }} src={snippet.thumbnails.medium.url} alt="" />
-
+                  <div>{snippet.title}</div>
                 </div>
               )
             })
