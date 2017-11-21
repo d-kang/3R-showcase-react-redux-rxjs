@@ -26,7 +26,7 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.post('/api/youtube', (req, res) => {
   const { payload } = req.body;
-  youTube.search(payload, 2, (err, result) => {
+  youTube.search(payload, 15, (err, result) => {
     if (err) {
       console.error('err>>>', err);
       res.send(err);

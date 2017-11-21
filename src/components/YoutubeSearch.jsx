@@ -41,6 +41,10 @@ class YoutubeSearch extends Component {
     this.myInit.body = JSON.stringify({ payload });
     fetch('http://localhost:3500/api/youtube', this.myInit)
       .then(res => res.json())
+      .then((response) => {
+        this.setState({ response });
+        return response;
+      })
       .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
       .catch(err => console.log('err>>>', err));
   }
@@ -49,7 +53,6 @@ class YoutubeSearch extends Component {
     this.setState({ payload });
   }
   render() {
-    console.log('response', this.state.response);
     return (
       <div>
         <form
