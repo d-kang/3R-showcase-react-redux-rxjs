@@ -13,4 +13,4 @@ export default ({ response, setCurrentVideo }) => (
       <div>{snippet.title}</div>
     </div>
   ))
-)
+);

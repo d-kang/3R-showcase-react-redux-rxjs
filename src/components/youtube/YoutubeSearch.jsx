@@ -26,42 +26,25 @@ const styles = {
 
 class YoutubeSearch extends Component {
   state = {
-    payload: '',
     currentVideo: 'AQBh9soLSkI',
   }
-  // searchYoutube = (val) => {
-  //   const { payload } = this.state;
-  //   this.props.fetchYoutube(val);
-  // }
-  // handleInput = (e) => {
-  //   const payload = e.target.value;
-  //   this.setState({ payload });
-  // }
-  // setCurrentVideo = (currentVideo) => {
-  //   this.setState({ currentVideo })
-  // }
-
+  setCurrentVideo = (id) => {
+    const { currentVideo } = this.state;
+    this.setState({ currentVideo: id });
+  }
   render() {
-    const { fetchYoutubeResponse, isLoading, fetchYoutube } = this.props;
-    console.log('isLoading', isLoading);
+    const {
+      fetchYoutubeResponse,
+      isLoading,
+      fetchYoutube
+    } = this.props;
     return (
       <div>
         <TextInput
           fetchUserAction={fetchYoutube}
           label="Search Youtube"
         />
-
-        {/* <form
-          onSubmit={this.handleSubmit}
-        >
-          <input
-            type="text"
-            onChange={this.handleInput}
-          />
-          <button>Search Youtube</button>
-        </form> */}
         <VideoPlayer currentVideo={this.state.currentVideo} />
-
         <div style={styles.flexContainer}>
           { isLoading
               ? <Loader />

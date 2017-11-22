@@ -8,4 +8,4 @@ export default ({ currentVideo }) => (
     frameBorder="0"
     allowFullScreen
   ></iframe>
-)
+);
