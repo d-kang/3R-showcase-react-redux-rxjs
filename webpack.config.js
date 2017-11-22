@@ -12,7 +12,7 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 module.exports = {
   devtool: 'cheap-eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    // 'webpack-hot-middleware/client',
     './src/index.jsx',
   ],
   output: {
