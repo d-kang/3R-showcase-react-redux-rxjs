@@ -23,17 +23,56 @@ import {
   fetchRepoFullfilled,
   FETCH_USER_CANCELLED,
   FETCH_YOUTUBE,
+  fetchYoutubeFullfilled,
 } from '../actions';
 
+const headers = {
+  Accept: 'application/json, text/plain, */*',
+  'Content-Type': 'application/json',
+}
+// myInit = {
+//   method: 'POST',
+//   headers: headers,
+//   body: value,
+// }
+//
+// handleSubmit = (e) => {
+//   e.preventDefault();
+//   const { payload } = this.state;
+//   this.props.fetchYoutube(payload);
+//   // const { payload } = this.state;
+//   // this.myInit.body = JSON.stringify({ payload });
+//   // fetch('http://localhost:3500/api/youtube', this.myInit)
+//   //   .then(res => res.json())
+//   //   .then((response) => {
+//   //     this.setState({ response });
+//   //     return response;
+//   //   })
+//   //   .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
+//   //   .catch(err => console.log('err>>>', err));
+// }
 
 const fetchYoutubeEpic = (action$) => (
   action$.ofType(FETCH_YOUTUBE)
-    .map(({ value }) => value)
-    .mergeMap(value => (
-      ajax.getJSON(`https://api.github.com/users/${value}`)
-        .map(fetchUserFullfilled)
+    .do(items => console.log('do log items FIRST', items))
+    .map(({ payload }) => payload)
+    .do(items => console.log('do log items SECOND', items))
+    .mergeMap(payload => (
+      ajax({
+        url: 'http://localhost:3500/api/youtube',
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ payload }),
+      })
+        .do(items => console.log('do log items THIRD', items))
+        .map(({ response }) => response)
+        .map(({ items }) => items)
+        .do(items => console.log('do log items FOURTH', typeof items))
+        .do(items => console.log('do log items FOURTH', Array.isArray(items)))
+        .do(items => console.log('do log items FOURTH', JSON.stringify(items, null, 2)))
+        .map(fetchYoutubeFullfilled)
     ))
-    .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
+    // .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
 );
 
 
