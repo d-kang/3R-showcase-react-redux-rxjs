@@ -11,8 +11,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import App from './App';
-import PingObservable from './PingObservable';
-import BeepObservable from './BeepObservable';
+import PingObservable from './ping/PingObservable';
+import BeepObservable from './ping/BeepObservable';
 import Github from './github/Github';
 import GithubRepos from './github/GithubRepos';
 import MyDrawer from './ui/MyDrawer';

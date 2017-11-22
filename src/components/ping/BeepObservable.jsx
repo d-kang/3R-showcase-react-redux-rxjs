@@ -7,8 +7,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import LoadingIndicator from './ui/LoadingIndicator';
-import { beep } from '../actions';
+import LoadingIndicator from '../ui/LoadingIndicator';
+import { beep } from '../../actions';
 
 
 const ShouldLoad = ({ isTrue }) => (

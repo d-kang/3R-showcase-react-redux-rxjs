@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ping } from '../actions';
+import { ping } from '../../actions';
 
 const PingObservable = ({ isPinging, ping }) => (
   <div>
