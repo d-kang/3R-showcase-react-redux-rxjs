@@ -22,7 +22,19 @@ import {
   // FETCH_REPO_FULFILLED,
   fetchRepoFullfilled,
   FETCH_USER_CANCELLED,
+  FETCH_YOUTUBE,
 } from '../actions';
+
+
+const fetchYoutubeEpic = (action$) => (
+  action$.ofType(FETCH_YOUTUBE)
+    .map(({ value }) => value)
+    .mergeMap(value => (
+      ajax.getJSON(`https://api.github.com/users/${value}`)
+        .map(fetchUserFullfilled)
+    ))
+    .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
+);
 
 
 const fetchUserEpic = (action$) => (
@@ -71,7 +83,13 @@ const beepEpic = (action$) => {
 };
 
 
-const rootEpic = combineEpics(pingEpic, beepEpic, fetchUserEpic, fetchRepoEpic);
+const rootEpic = combineEpics(
+  pingEpic,
+  beepEpic,
+  fetchUserEpic,
+  fetchRepoEpic,
+  fetchYoutubeEpic,
+);
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
