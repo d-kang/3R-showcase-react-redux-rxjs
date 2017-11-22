@@ -65,15 +65,19 @@ const fetchRepoEpic = action$ => (
 
 const pingEpic = action$ => (
   action$.ofType(types.PING)
-    .delay(1000) // Asynchronously wait 1000ms then continue
-    .mapTo({ type: types.PONG })
+    .mergeMap(() => (
+      ajax.getJSON('http://localhost:3500/api/ping')
+        .mapTo({ type: types.PONG })
+    ))
 );
 
 
 const beepEpic = action$ => (
   action$.ofType(types.BEEP)
-    .delay(3500) // Asynchronously wait 1000ms then continue
-    .mapTo({ type: types.BOOP })
+    .mergeMap(() => (
+      ajax.getJSON('http://localhost:3500/api/ping')
+        .mapTo({ type: types.BOOP })
+    ))
 );
 
 

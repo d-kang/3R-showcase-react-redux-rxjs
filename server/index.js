@@ -36,6 +36,10 @@ app.post('/api/youtube', (req, res) => {
   });
 });
 
+app.get('/api/ping', (req, res) => {
+  setTimeout(() => res.send('hi'), 3500);
+});
+
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
 });
