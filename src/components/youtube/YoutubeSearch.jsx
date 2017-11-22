@@ -5,12 +5,12 @@
  */
 
 import React, { Component } from 'react';
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
 import { connect } from 'react-redux';
 import { fetchYoutube } from '../../actions';
+import VideoPlayer from './VideoPlayer';
+import Loader from '../ui/Loader';
+import VideoList from './VideoList';
+import TextInput from '../ui/TextInput';
 
 const styles = {
   flexContainer: {
@@ -29,21 +29,29 @@ class YoutubeSearch extends Component {
     payload: '',
     currentVideo: 'AQBh9soLSkI',
   }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { payload } = this.state;
-    this.props.fetchYoutube(payload);
-  }
-  handleInput = (e) => {
-    const payload = e.target.value;
-    this.setState({ payload });
-  }
+  // searchYoutube = (val) => {
+  //   const { payload } = this.state;
+  //   this.props.fetchYoutube(val);
+  // }
+  // handleInput = (e) => {
+  //   const payload = e.target.value;
+  //   this.setState({ payload });
+  // }
+  // setCurrentVideo = (currentVideo) => {
+  //   this.setState({ currentVideo })
+  // }
+
   render() {
-    const { fetchYoutubeResponse, isLoading } = this.props;
+    const { fetchYoutubeResponse, isLoading, fetchYoutube } = this.props;
     console.log('isLoading', isLoading);
     return (
       <div>
-        <form
+        <TextInput
+          fetchUserAction={fetchYoutube}
+          label="Search Youtube"
+        />
+
+        {/* <form
           onSubmit={this.handleSubmit}
         >
           <input
@@ -51,29 +59,18 @@ class YoutubeSearch extends Component {
             onChange={this.handleInput}
           />
           <button>Search Youtube</button>
-        </form>
-        <iframe width="420" height="345" src={`http://www.youtube.com/embed/${this.state.currentVideo}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
+        </form> */}
+        <VideoPlayer currentVideo={this.state.currentVideo} />
 
         <div style={styles.flexContainer}>
           { isLoading
-              ? <MuiContainer>
-                  <CircularProgress />
-                </MuiContainer>
-              : fetchYoutubeResponse.map(({id, snippet}, i) => {
-                  return (
-                    <div key={i}>
-                      <img onClick={() => {
-                        this.setState({ currentVideo: id.videoId })
-
-                      }} src={snippet.thumbnails.medium.url} alt="" />
-                      <div>{snippet.title}</div>
-                    </div>
-                  )
-                })
-
+              ? <Loader />
+              : <VideoList
+                response={fetchYoutubeResponse}
+                setCurrentVideo={this.setCurrentVideo}
+              />
           }
         </div>
-
       </div>
     );
   }
