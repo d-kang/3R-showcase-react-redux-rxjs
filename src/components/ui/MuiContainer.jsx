@@ -17,7 +17,7 @@ class MuiContainer extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        {this.props.comp}
+        {this.props.component}
       </MuiThemeProvider>
     )
   }

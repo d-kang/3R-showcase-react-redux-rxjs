@@ -11,7 +11,7 @@ import {
   MuiThemeProvider as MuiContainer,
 } from 'material-ui';
 import GithubList from './GithubList';
-import GithubTextInput from '../ui/GithubTextInput';
+import TextInput from '../ui/TextInput';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
@@ -52,8 +52,9 @@ class SimpleAjaxRx extends Component {
           src="https://developer.github.com/assets/images/electrocat.png"
           alt="Image of Octocat"
         />
-        <GithubTextInput
+        <TextInput
           fetchUserAction={fetchUserAction}
+          label="Github Usernames"
         />
         <button onClick={fetchUserCancelled}>Cancel</button>
         Text input: {value}
