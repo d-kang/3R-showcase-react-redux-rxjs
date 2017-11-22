@@ -87,38 +87,5 @@ class YoutubeSearch extends Component {
   }
 }
 
-// {
-//   "kind": "youtube#searchResult",
-//   "etag": "ld9biNPKjAjgjV7EZ4EKeEGrhao/cQcWyA3ZtzMxISquwIpGbyAn-io",
-//   "id": {
-//     "kind": "youtube#video",
-//     "videoId": "SAvXjWgKSQ8"
-//   },
-//   "snippet": {
-//     "publishedAt": "2017-11-18T16:34:37.000Z",
-//     "channelId": "UCSJ4gkVC6NrvII8umztf0Ow",
-//     "title": "lofi hip hop radio - beats to relax/study to",
-//     "description": "Thank you for listening, I hope you will have a good time here :) ▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭ ▸Update: -Day mode will be available soon ...",
-//     "thumbnails": {
-//       "default": {
-//         "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/default_live.jpg",
-//         "width": 120,
-//         "height": 90
-//       },
-//       "medium": {
-//         "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/mqdefault_live.jpg",
-//         "width": 320,
-//         "height": 180
-//       },
-//       "high": {
-//         "url": "https://i.ytimg.com/vi/SAvXjWgKSQ8/hqdefault_live.jpg",
-//         "width": 480,
-//         "height": 360
-//       }
-//     },
-//     "channelTitle": "ChilledCow",
-//     "liveBroadcastContent": "live"
-//   }
-// }
 
 export default YoutubeSearch;
