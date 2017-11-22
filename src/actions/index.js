@@ -18,13 +18,16 @@ export const FETCH_USER_CANCELLED = 'FETCH_USER_CANCELLED';
 export const FETCH_YOUTUBE = 'FETCH_YOUTUBE';
 export const FETCH_YOUTUBE_FULFILLED = 'FETCH_YOUTUBE_FULFILLED';
 
-export const fetchYoutube = value => ({
+export const fetchYoutube = payload => ({
   type: FETCH_YOUTUBE,
   isLoading: true,
-  value,
+  payload,
 });
-
-
+export const fetchYoutubeFullfilled = payload => ({
+  // logger: console.log('logger payload fetchUserFullfilled', payload),
+  type: FETCH_YOUTUBE_FULFILLED,
+  payload,
+});
 export const fetchUserCancelled = () => ({
   type: FETCH_USER_CANCELLED,
 });
