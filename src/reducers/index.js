@@ -5,56 +5,18 @@
  */
 
 import { combineReducers } from 'redux';
-import {
-  PING,
-  PONG,
-  BEEP,
-  BOOP,
-  FETCH_USER,
-  FETCH_USER_FULFILLED,
-  FETCH_REPO,
-  FETCH_REPO_FULFILLED,
-  FETCH_USER_CANCELLED,
-  FETCH_YOUTUBE,
-  FETCH_YOUTUBE_FULFILLED,
-} from '../actions';
-import youTubeSampleData from '../data/data.json';
-
-const initialState = {
-  ping: {
-    isPinging: false,
-  },
-  beep: {
-    isBeeping: false,
-    someArr: [1, 2, 3, 4, 5],
-  },
-  githubUser: {
-    isLoading: false,
-    value: '',
-    fetchUserResponse: [],
-  },
-  githubRepos: {
-    isLoading: false,
-    value: '',
-    fetchRepoResponse: [],
-  },
-  youtube: {
-    isLoading: false,
-    value: '',
-    fetchYoutubeResponse: [...youTubeSampleData.items],
-  },
-};
+import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
 
 const fetchYoutubeReducer = (state = initialState.youtube, action) => {
-  console.log('yt action>>>', action);
   switch (action.type) {
-    case FETCH_YOUTUBE:
+    case types.FETCH_YOUTUBE:
       return {
         ...state,
         isLoading: true,
       };
-    case FETCH_YOUTUBE_FULFILLED:
+    case types.FETCH_YOUTUBE_FULFILLED:
       return {
         ...state,
         fetchYoutubeResponse: [...action.payload],
@@ -68,17 +30,17 @@ const fetchYoutubeReducer = (state = initialState.youtube, action) => {
 
 const fetchUserReducer = (state = initialState.githubUser, action) => {
   switch (action.type) {
-    case FETCH_USER:
+    case types.FETCH_USER:
       return {
         ...state,
         isLoading: true,
       };
-    case FETCH_USER_CANCELLED:
+    case types.FETCH_USER_CANCELLED:
       return {
         ...state,
         isLoading: false,
       };
-    case FETCH_USER_FULFILLED:
+    case types.FETCH_USER_FULFILLED:
       return {
         ...state,
         fetchUserResponse: [action.payload, ...state.fetchUserResponse],
@@ -90,12 +52,12 @@ const fetchUserReducer = (state = initialState.githubUser, action) => {
 };
 const fetchRepoReducer = (state = initialState.githubRepos, action) => {
   switch (action.type) {
-    case FETCH_REPO:
+    case types.FETCH_REPO:
       return {
         ...state,
         isLoading: true,
       };
-    case FETCH_REPO_FULFILLED:
+    case types.FETCH_REPO_FULFILLED:
       return {
         ...state,
         fetchRepoResponse: [action.payload, ...state.fetchRepoResponse],
@@ -109,9 +71,9 @@ const fetchRepoReducer = (state = initialState.githubRepos, action) => {
 
 const pingReducer = (state = initialState.ping, action) => {
   switch (action.type) {
-    case PING:
+    case types.PING:
       return { isPinging: true };
-    case PONG:
+    case types.PONG:
       return { isPinging: false };
     default:
       return state;
@@ -121,13 +83,13 @@ const pingReducer = (state = initialState.ping, action) => {
 
 const beepReducer = (state = initialState.beep, action) => {
   switch (action.type) {
-    case BEEP:
+    case types.BEEP:
       return {
         isBeeping: true,
         someArr: [],
         foo: 'ooooo',
       };
-    case BOOP:
+    case types.BOOP:
       return {
         isBeeping: false,
         someArr: action.foo,
