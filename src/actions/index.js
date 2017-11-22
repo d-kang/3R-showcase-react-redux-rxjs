@@ -15,6 +15,15 @@ export const FETCH_USER_FULFILLED = 'FETCH_USER_FULFILLED';
 export const FETCH_REPO = 'FETCH_REPO';
 export const FETCH_REPO_FULFILLED = 'FETCH_REPO_FULFILLED';
 export const FETCH_USER_CANCELLED = 'FETCH_USER_CANCELLED';
+export const FETCH_YOUTUBE = 'FETCH_YOUTUBE';
+export const FETCH_YOUTUBE_FULFILLED = 'FETCH_YOUTUBE_FULFILLED';
+
+export const fetchYoutube = value => ({
+  type: FETCH_YOUTUBE,
+  isLoading: true,
+  value,
+});
+
 
 export const fetchUserCancelled = () => ({
   type: FETCH_USER_CANCELLED,
@@ -24,26 +33,26 @@ export const ping = () => ({ type: PING });
 
 export const beep = () => ({ type: BEEP });
 
-export const fetchUserAction = (value) => ({
+export const fetchUserAction = value => ({
   type: FETCH_USER,
   isLoading: true,
   value,
 });
 
-export const fetchRepoAction = (value) => ({
+export const fetchRepoAction = value => ({
   type: FETCH_REPO,
   isLoading: true,
   value,
 });
 
-export const fetchUserFullfilled = (payload) => ({
+export const fetchUserFullfilled = payload => ({
   // logger: console.log('logger payload fetchUserFullfilled', payload),
   type: FETCH_USER_FULFILLED,
   payload,
 });
 
 
-export const fetchRepoFullfilled = (payload) => ({
+export const fetchRepoFullfilled = payload => ({
   // logger: console.log('logger payload fetchRepoFullfilled', payload),
   type: FETCH_REPO_FULFILLED,
   payload,
