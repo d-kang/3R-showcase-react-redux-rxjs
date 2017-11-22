@@ -30,27 +30,6 @@ const headers = {
   Accept: 'application/json, text/plain, */*',
   'Content-Type': 'application/json',
 }
-// myInit = {
-//   method: 'POST',
-//   headers: headers,
-//   body: value,
-// }
-//
-// handleSubmit = (e) => {
-//   e.preventDefault();
-//   const { payload } = this.state;
-//   this.props.fetchYoutube(payload);
-//   // const { payload } = this.state;
-//   // this.myInit.body = JSON.stringify({ payload });
-//   // fetch('http://localhost:3500/api/youtube', this.myInit)
-//   //   .then(res => res.json())
-//   //   .then((response) => {
-//   //     this.setState({ response });
-//   //     return response;
-//   //   })
-//   //   .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
-//   //   .catch(err => console.log('err>>>', err));
-// }
 
 const fetchYoutubeEpic = (action$) => (
   action$.ofType(FETCH_YOUTUBE)

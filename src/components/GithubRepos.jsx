@@ -60,7 +60,7 @@ class GithubRepos extends Component {
 }
 
 
-const mapState = (state) => ({
+const mapState = state => ({
   fetchRepoResponse: state.fetchRepoReducer.fetchRepoResponse,
   isLoading: state.fetchRepoReducer.isLoading,
   value: state.fetchRepoReducer.value,

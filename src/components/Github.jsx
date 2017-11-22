@@ -76,7 +76,7 @@ class SimpleAjaxRx extends Component {
 }
 
 
-const mapState = (state) => ({
+const mapState = state => ({
   fetchUserResponse: state.fetchUserReducer.fetchUserResponse,
   isLoading: state.fetchUserReducer.isLoading,
   value: state.fetchUserReducer.value,

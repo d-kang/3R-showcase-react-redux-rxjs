@@ -27,7 +27,7 @@ const BeepObservable = ({ isBeeping, beep, foo }) => (
 );
 
 
-const mapState = (state) => ({
+const mapState = state => ({
   isBeeping: state.beepReducer.isBeeping,
   foo: state.beepReducer.foo,
 });

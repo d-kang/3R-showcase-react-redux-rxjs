@@ -19,7 +19,7 @@ const PingObservable = ({ isPinging, ping }) => (
 );
 
 
-const mapState = (state) => ({
+const mapState = state => ({
   isPinging: state.pingReducer.isPinging,
 });
 

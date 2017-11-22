@@ -25,33 +25,12 @@ const styles = {
 class YoutubeSearch extends Component {
   state = {
     payload: '',
-    response: youTubeSampleData,
     currentVideo: 'AQBh9soLSkI',
-  }
-
-  headers = {
-    Accept: 'application/json, text/plain, */*',
-    'Content-Type': 'application/json',
-  }
-  myInit = {
-    method: 'POST',
-    headers: this.headers,
-    body: '',
   }
   handleSubmit = (e) => {
     e.preventDefault();
     const { payload } = this.state;
     this.props.fetchYoutube(payload);
-    // const { payload } = this.state;
-    // this.myInit.body = JSON.stringify({ payload });
-    // fetch('http://localhost:3500/api/youtube', this.myInit)
-    //   .then(res => res.json())
-    //   .then((response) => {
-    //     this.setState({ response });
-    //     return response;
-    //   })
-    //   .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
-    //   .catch(err => console.log('err>>>', err));
   }
   handleInput = (e) => {
     const payload = e.target.value;
@@ -59,7 +38,6 @@ class YoutubeSearch extends Component {
   }
   render() {
     const { fetchYoutubeResponse } = this.props;
-    console.log('fetchYoutubeResponse', fetchYoutubeResponse);
     return (
       <div>
         <form

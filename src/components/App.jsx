@@ -29,6 +29,6 @@ class App extends Component {
   }
 }
 
-const mapState = (state) => ({ state });
+const mapState = state => ({ state });
 
 export default connect(mapState)(App);
