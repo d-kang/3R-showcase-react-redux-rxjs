@@ -1,8 +1,6 @@
 /**
- * @Author: wiz
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
- * @Last modified by:   wiz
  * @Last modified time: 11.18.2017 10:09am
  */
 
@@ -11,21 +9,6 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs';
 import * as types from '../actions/actionTypes';
 import * as creators from '../actions';
-// import {
-//   PING,
-//   PONG,
-//   BEEP,
-//   BOOP,
-//   FETCH_USER,
-//   // FETCH_USER_FULFILLED,
-//   fetchUserFullfilled,
-//   FETCH_REPO,
-//   // FETCH_REPO_FULFILLED,
-//   fetchRepoFullfilled,
-//   FETCH_USER_CANCELLED,
-//   FETCH_YOUTUBE,
-//   fetchYoutubeFullfilled,
-// } from '../actions';
 
 const headers = {
   Accept: 'application/json, text/plain, */*',
