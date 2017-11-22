@@ -58,6 +58,8 @@ class YoutubeSearch extends Component {
     this.setState({ payload });
   }
   render() {
+    const { fetchYoutubeResponse } = this.props;
+    console.log('fetchYoutubeResponse', fetchYoutubeResponse);
     return (
       <div>
         <form
@@ -73,12 +75,12 @@ class YoutubeSearch extends Component {
 
         <div style={styles.flexContainer}>
           {
-            this.state.response.items.map(({id, snippet}, index) => {
+            fetchYoutubeResponse.map(({id, snippet}, i) => {
               return (
-                <div>
+                <div key={i}>
                   <img onClick={() => {
                     this.setState({ currentVideo: id.videoId })
-                    this.log(e, id);
+
                   }} src={snippet.thumbnails.medium.url} alt="" />
                   <div>{snippet.title}</div>
                 </div>
@@ -94,7 +96,7 @@ class YoutubeSearch extends Component {
 
 
 const mapState = ({ fetchYoutubeReducer: reducer }) => ({
-  ytResponse: reducer.fetchYoutubeResponse,
+  fetchYoutubeResponse: reducer.fetchYoutubeResponse,
 });
 
 
