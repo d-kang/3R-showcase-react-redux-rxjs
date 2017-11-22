@@ -9,30 +9,31 @@
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs';
-
-import {
-  PING,
-  PONG,
-  BEEP,
-  BOOP,
-  FETCH_USER,
-  // FETCH_USER_FULFILLED,
-  fetchUserFullfilled,
-  FETCH_REPO,
-  // FETCH_REPO_FULFILLED,
-  fetchRepoFullfilled,
-  FETCH_USER_CANCELLED,
-  FETCH_YOUTUBE,
-  fetchYoutubeFullfilled,
-} from '../actions';
+import * as types from '../actions/actionTypes';
+import * as creators from '../actions';
+// import {
+//   PING,
+//   PONG,
+//   BEEP,
+//   BOOP,
+//   FETCH_USER,
+//   // FETCH_USER_FULFILLED,
+//   fetchUserFullfilled,
+//   FETCH_REPO,
+//   // FETCH_REPO_FULFILLED,
+//   fetchRepoFullfilled,
+//   FETCH_USER_CANCELLED,
+//   FETCH_YOUTUBE,
+//   fetchYoutubeFullfilled,
+// } from '../actions';
 
 const headers = {
   Accept: 'application/json, text/plain, */*',
   'Content-Type': 'application/json',
-}
+};
 
-const fetchYoutubeEpic = (action$) => (
-  action$.ofType(FETCH_YOUTUBE)
+const fetchYoutubeEpic = action$ => (
+  action$.ofType(types.FETCH_YOUTUBE)
     .do(items => console.log('do log items FIRST', items))
     .map(({ payload }) => payload)
     .do(items => console.log('do log items SECOND', items))
@@ -46,59 +47,51 @@ const fetchYoutubeEpic = (action$) => (
         .do(items => console.log('do log items THIRD', items))
         .map(({ response }) => response)
         .map(({ items }) => items)
-        .do(items => console.log('do log items FOURTH', typeof items))
-        .do(items => console.log('do log items FOURTH', Array.isArray(items)))
-        .do(items => console.log('do log items FOURTH', JSON.stringify(items, null, 2)))
-        .map(fetchYoutubeFullfilled)
+        .map(creators.fetchYoutubeFullfilled)
     ))
     // .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
 );
 
 
-const fetchUserEpic = (action$) => (
-  action$.ofType(FETCH_USER)
+const fetchUserEpic = action$ => (
+  action$.ofType(types.FETCH_USER)
     .map(({ value }) => value)
     // .debounceTime(4000)
-    .mergeMap((value) => (
+    .mergeMap(value => (
       Observable.timer(2000)
         .mergeMap(() => (
           ajax.getJSON(`https://api.github.com/users/${value}`)
-            .map(fetchUserFullfilled)
+            .map(creators.fetchUserFullfilled)
         ))
-        .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
+        .takeUntil(action$.ofType(types.FETCH_USER_CANCELLED))
     ))
 );
 
 
-const fetchRepoEpic = (action$) => (
-  action$.ofType(FETCH_REPO)
-    // .do((items) => console.log('do log items', items))
+const fetchRepoEpic = action$ => (
+  action$.ofType(types.FETCH_REPO)
     .map(({ value }) => value)
-    .mergeMap((value) => (
+    .mergeMap(value => (
       ajax.getJSON(`https://api.github.com/users/${value}/repos`)
     ))
-    .mergeMap((val) => val)
-    // .do((items) => console.log('do log items', items))
+    .mergeMap(val => val)
     .map(({ id }) => id)
-    .map(fetchRepoFullfilled)
+    .map(creators.fetchRepoFullfilled)
 );
 
 
-const pingEpic = (action$) => {
-  return (
-    action$.ofType(PING)
-      .delay(1000) // Asynchronously wait 1000ms then continue
-      .mapTo({ type: PONG })
-  );
-};
+const pingEpic = action$ => (
+  action$.ofType(types.PING)
+    .delay(1000) // Asynchronously wait 1000ms then continue
+    .mapTo({ type: types.PONG })
+);
 
-const beepEpic = (action$) => {
-  return (
-    action$.ofType(BEEP)
-      .delay(3500) // Asynchronously wait 1000ms then continue
-      .mapTo({ type: BOOP, foo: 'bars' })
-  );
-};
+
+const beepEpic = action$ => (
+  action$.ofType(types.BEEP)
+    .delay(3500) // Asynchronously wait 1000ms then continue
+    .mapTo({ type: types.BOOP })
+);
 
 
 const rootEpic = combineEpics(
