@@ -16,7 +16,7 @@ import {
 } from 'material-ui/styles/colors';
 import MuiContainer from './MuiContainer';
 
-class GithubTextInput extends Component {
+class TextInput extends Component {
   state = {
     value: '',
   }
@@ -36,7 +36,7 @@ class GithubTextInput extends Component {
     <TextField
       hintStyle={styling.errorStyle}
       onChange={this.handleChange}
-      floatingLabelText='Github Username'
+      floatingLabelText={this.props.label}
       rows={1}
     />
   )
@@ -45,7 +45,7 @@ class GithubTextInput extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <MuiContainer
-          comp={this.textField}
+          component={this.textField}
         />
       </form>
     );
@@ -68,4 +68,4 @@ const styling = {
   },
 };
 
-export default GithubTextInput;
+export default TextInput;
