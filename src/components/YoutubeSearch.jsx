@@ -5,7 +5,10 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import youTubeSampleData from '../data/data.json';
+import { fetchYoutube } from '../actions';
+
 
 const styles = {
   flexContainer: {
@@ -38,15 +41,17 @@ class YoutubeSearch extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { payload } = this.state;
-    this.myInit.body = JSON.stringify({ payload });
-    fetch('http://localhost:3500/api/youtube', this.myInit)
-      .then(res => res.json())
-      .then((response) => {
-        this.setState({ response });
-        return response;
-      })
-      .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
-      .catch(err => console.log('err>>>', err));
+    this.props.fetchYoutube(payload);
+    // const { payload } = this.state;
+    // this.myInit.body = JSON.stringify({ payload });
+    // fetch('http://localhost:3500/api/youtube', this.myInit)
+    //   .then(res => res.json())
+    //   .then((response) => {
+    //     this.setState({ response });
+    //     return response;
+    //   })
+    //   .then(res => console.log('res>>>', JSON.stringify(res, null, 2)))
+    //   .catch(err => console.log('err>>>', err));
   }
   handleInput = (e) => {
     const payload = e.target.value;
@@ -88,4 +93,9 @@ class YoutubeSearch extends Component {
 }
 
 
-export default YoutubeSearch;
+const mapState = ({ fetchYoutubeReducer: reducer }) => ({
+  ytResponse: reducer.fetchYoutubeResponse,
+});
+
+
+export default connect(mapState, { fetchYoutube })(YoutubeSearch);
