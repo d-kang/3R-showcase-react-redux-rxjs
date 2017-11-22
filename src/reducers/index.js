@@ -18,6 +18,7 @@ import {
   FETCH_YOUTUBE,
   FETCH_YOUTUBE_FULFILLED,
 } from '../actions';
+import youTubeSampleData from '../data/data.json';
 
 const initialState = {
   ping: {
@@ -40,12 +41,13 @@ const initialState = {
   youtube: {
     isLoading: false,
     value: '',
-    fetchYoutubeResponse: [],
+    fetchYoutubeResponse: [...youTubeSampleData.items],
   },
 };
 
 
 const fetchYoutubeReducer = (state = initialState.youtube, action) => {
+  console.log('yt action>>>', action);
   switch (action.type) {
     case FETCH_YOUTUBE:
       return {
@@ -55,14 +57,13 @@ const fetchYoutubeReducer = (state = initialState.youtube, action) => {
     case FETCH_YOUTUBE_FULFILLED:
       return {
         ...state,
-        fetchYoutubeResponse: [action.payload, ...state.fetchYoutubeResponse],
+        fetchYoutubeResponse: [...action.payload],
         isLoading: false,
-      }
+      };
     default:
       return state;
   }
-}
-
+};
 
 
 const fetchUserReducer = (state = initialState.githubUser, action) => {
