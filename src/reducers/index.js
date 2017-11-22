@@ -15,6 +15,8 @@ import {
   FETCH_REPO,
   FETCH_REPO_FULFILLED,
   FETCH_USER_CANCELLED,
+  FETCH_YOUTUBE,
+  FETCH_YOUTUBE_FULFILLED,
 } from '../actions';
 
 const initialState = {
@@ -35,7 +37,33 @@ const initialState = {
     value: '',
     fetchRepoResponse: [],
   },
+  youtube: {
+    isLoading: false,
+    value: '',
+    fetchYoutubeResponse: [],
+  },
 };
+
+
+const fetchYoutubeReducer = (state = initialState.youtube, action) => {
+  switch (action.type) {
+    case FETCH_YOUTUBE:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case FETCH_YOUTUBE_FULFILLED:
+      return {
+        ...state,
+        fetchYoutubeResponse: [action.payload, ...state.fetchYoutubeResponse],
+        isLoading: false,
+      }
+    default:
+      return state;
+  }
+}
+
+
 
 const fetchUserReducer = (state = initialState.githubUser, action) => {
   switch (action.type) {
@@ -114,6 +142,7 @@ const reducerObj = {
   beepReducer,
   fetchUserReducer,
   fetchRepoReducer,
+  fetchYoutubeReducer,
 };
 
 const rootReducer = combineReducers(reducerObj);
