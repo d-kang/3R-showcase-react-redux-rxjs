@@ -11,9 +11,9 @@ import {
   MuiThemeProvider as MuiContainer,
 } from 'material-ui';
 import GithubList from './GithubList';
-import GithubTextInput from './ui/GithubTextInput';
-import LoadingIndicator from './ui/LoadingIndicator';
-import { fetchUserAction, fetchUserCancelled } from '../actions';
+import GithubTextInput from '../ui/GithubTextInput';
+import LoadingIndicator from '../ui/LoadingIndicator';
+import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
 const styling = {
   flexContainer: {
@@ -60,9 +60,9 @@ class SimpleAjaxRx extends Component {
         { isLoading &&
             <div>
               <LoadingIndicator isLoading={isLoading} />
-              {/* <MuiContainer>
+              <MuiContainer>
                 <CircularProgress />
-              </MuiContainer> */}
+              </MuiContainer>
             </div>
         }
         <div style={styling.flexContainer}>

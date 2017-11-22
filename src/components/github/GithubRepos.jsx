@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchRepoAction } from '../actions';
+import { fetchRepoAction } from '../../actions';
 
 import {
   CircularProgress,
