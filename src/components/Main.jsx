@@ -13,10 +13,10 @@ import {
 import App from './App';
 import PingObservable from './PingObservable';
 import BeepObservable from './BeepObservable';
-import Github from './Github';
-import GithubRepos from './GithubRepos';
+import Github from './github/Github';
+import GithubRepos from './github/GithubRepos';
 import MyDrawer from './ui/MyDrawer';
-import YoutubeSearch from './YoutubeSearch';
+import YoutubeSearch from './youtube/YoutubeSearch';
 
 const Main = () => (
   <div>

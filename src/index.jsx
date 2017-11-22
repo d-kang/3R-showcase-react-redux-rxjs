@@ -16,7 +16,6 @@ import 'rxjs';
 
 import store, { history } from './store';
 import Main from './components/Main';
-import Github from './components/Github';
 
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -36,21 +35,21 @@ render(
 );
 
 
-// if (module.hot) {
-//   module.hot.accept('./components/App', () => {
-//     const NextApp = require('./components/App').default;
-//     render(
-//       <Provider store={store}>
-//         <ConnectedRouter history={history}>
-//           {/* <AppContainer> */}
-//             <Router history={history}>
-//               <Route exact path='/' component={NextApp} />
-//               {/* <NextApp /> */}
-//             </Router>
-//           {/* </AppContainer> */}
-//         </ConnectedRouter>
-//       </Provider>,
-//       rootElement,
-//     );
-//   });
-// }
+if (module.hot) {
+  module.hot.accept('./components/App', () => {
+    const NextApp = require('./components/App').default;
+    render(
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          {/* <AppContainer> */}
+            <Router history={history}>
+              <Route exact path='/' component={NextApp} />
+              {/* <NextApp /> */}
+            </Router>
+          {/* </AppContainer> */}
+        </ConnectedRouter>
+      </Provider>,
+      rootElement,
+    );
+  });
+}

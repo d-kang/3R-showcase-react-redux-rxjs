@@ -5,10 +5,12 @@
  */
 
 import React, { Component } from 'react';
+import {
+  CircularProgress,
+  MuiThemeProvider as MuiContainer,
+} from 'material-ui';
 import { connect } from 'react-redux';
-import youTubeSampleData from '../data/data.json';
-import { fetchYoutube } from '../actions';
-
+import { fetchYoutube } from '../../actions';
 
 const styles = {
   flexContainer: {
@@ -37,7 +39,8 @@ class YoutubeSearch extends Component {
     this.setState({ payload });
   }
   render() {
-    const { fetchYoutubeResponse } = this.props;
+    const { fetchYoutubeResponse, isLoading } = this.props;
+    console.log('isLoading', isLoading);
     return (
       <div>
         <form
@@ -52,18 +55,22 @@ class YoutubeSearch extends Component {
         <iframe width="420" height="345" src={`http://www.youtube.com/embed/${this.state.currentVideo}?autoplay=1`} frameBorder="0" allowFullScreen></iframe>
 
         <div style={styles.flexContainer}>
-          {
-            fetchYoutubeResponse.map(({id, snippet}, i) => {
-              return (
-                <div key={i}>
-                  <img onClick={() => {
-                    this.setState({ currentVideo: id.videoId })
+          { isLoading
+              ? <MuiContainer>
+                  <CircularProgress />
+                </MuiContainer>
+              : fetchYoutubeResponse.map(({id, snippet}, i) => {
+                  return (
+                    <div key={i}>
+                      <img onClick={() => {
+                        this.setState({ currentVideo: id.videoId })
 
-                  }} src={snippet.thumbnails.medium.url} alt="" />
-                  <div>{snippet.title}</div>
-                </div>
-              )
-            })
+                      }} src={snippet.thumbnails.medium.url} alt="" />
+                      <div>{snippet.title}</div>
+                    </div>
+                  )
+                })
+
           }
         </div>
 
@@ -75,6 +82,7 @@ class YoutubeSearch extends Component {
 
 const mapState = ({ fetchYoutubeReducer: reducer }) => ({
   fetchYoutubeResponse: reducer.fetchYoutubeResponse,
+  isLoading: reducer.isLoading,
 });
 
 
