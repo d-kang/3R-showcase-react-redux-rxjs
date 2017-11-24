@@ -45,7 +45,6 @@ class TextInput extends Component {
       </form>
     );
   }
-
 }
 
 const styling = {

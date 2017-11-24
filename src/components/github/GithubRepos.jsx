@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import Loader from '../ui/Loader';
 
@@ -31,9 +31,8 @@ const styling = {
 };
 
 class GithubRepos extends Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.fetchRepoAction('octocat');
+  fetchAction = (val) => {
+    this.props.fetchRepoAction(val);
   }
   render() {
     const {
@@ -45,11 +44,8 @@ class GithubRepos extends Component {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text"/>
-          <button>Click</button>
-          {isLoading ? <Loader isLoading={isLoading} /> : mapped.join('\n')}
-        </form>
+        <TextInput fetchUserAction={this.fetchAction} />
+        {isLoading ? <Loader isLoading={isLoading} /> : mapped.join('\n')}
       </div>
     );
   }
