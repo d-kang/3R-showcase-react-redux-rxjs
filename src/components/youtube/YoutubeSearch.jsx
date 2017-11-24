@@ -27,10 +27,14 @@ const styles = {
 class YoutubeSearch extends Component {
   state = {
     currentVideo: 'AQBh9soLSkI',
+    currentKey: null,
   }
   setCurrentVideo = (id) => {
     const { currentVideo } = this.state;
     this.setState({ currentVideo: id });
+  }
+  setCurrentKey = (key) => {
+    this.setState({ currentKey: key });
   }
   render() {
     const {
@@ -49,8 +53,11 @@ class YoutubeSearch extends Component {
           { isLoading
               ? <Loader />
               : <VideoList
+                currentVideoId={this.state.currentVideo}
                 response={fetchYoutubeResponse}
                 setCurrentVideo={this.setCurrentVideo}
+                setCurrentKey={this.setCurrentKey}
+                currentKey={this.state.currentKey}
               />
           }
         </div>
