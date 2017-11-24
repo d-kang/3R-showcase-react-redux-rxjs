@@ -7,20 +7,10 @@ class VideoItem extends Component {
   componentDidMount() {
     this.setState({ nowPlaying: (this.props.currentVideoId === this.props.id.videoId) })
   }
-  // isPlaying = (this.props.currentVideoId === this.props.id.videoId)
   setToPlay = () => {
-    // const nowPlaying = (this.props.currentVideoId === this.props.id.videoId)
-    this.props.setCurrentVideo(this.props.id.videoId)
-
-    // this.setState({ nowPlaying: !this.state.nowPlaying }, () => {
-    //   this.setState({ ...this.state });
-    // });
-
+    this.props.setCurrentVideo(this.props.id.videoId);
     this.props.setCurrentKey(this.props.myKey);
   }
-
-
-
 
   render() {
     const { snippet, id, setCurrentVideo, myKey, currentKey } = this.props;
