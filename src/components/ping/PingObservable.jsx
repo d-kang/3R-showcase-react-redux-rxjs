@@ -5,23 +5,16 @@
  */
 
 import React from 'react';
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ping } from '../../actions';
-
+import Loader from '../ui/Loader';
 
 const PingObservable = ({ isPinging, ping, isLoading }) => (
   <div>
     <h1>is pinging: {isPinging.toString()}</h1>
     <button onClick={ping}>Start PING</button>
-    {isPinging && <MuiContainer>
-                    <CircularProgress />
-                  </MuiContainer>
-    }
+    <Loader isLoading={isPinging} />
     <hr />
 
     <Link to='/'>Back</Link>

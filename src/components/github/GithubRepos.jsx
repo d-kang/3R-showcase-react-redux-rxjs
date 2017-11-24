@@ -8,11 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetchRepoAction } from '../../actions';
-
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
+import Loader from '../ui/Loader';
 
 const styling = {
   flexContainer: {
@@ -52,7 +48,7 @@ class GithubRepos extends Component {
         <form onSubmit={this.handleSubmit}>
           <input type="text"/>
           <button>Click</button>
-          {mapped.join('\n')}
+          {isLoading ? <Loader isLoading={isLoading} /> : mapped.join('\n')}
         </form>
       </div>
     );

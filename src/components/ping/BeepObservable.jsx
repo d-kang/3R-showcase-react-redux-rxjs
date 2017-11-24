@@ -15,7 +15,7 @@ const BeepObservable = ({ isBeeping, beep, foo }) => (
     <h1>is beeping: {isBeeping.toString()}</h1>
     <div>foo: {foo}</div>
     <button onClick={beep}>Start Beep</button>
-    {isBeeping  && <Loader />}
+    <Loader isLoading={isBeeping} />
     <hr />
     <Link to='/'>Back</Link>
   </div>

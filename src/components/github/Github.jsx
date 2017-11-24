@@ -6,10 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
+import Loader from '../ui/Loader';
 import GithubList from './GithubList';
 import TextInput from '../ui/TextInput';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
@@ -57,13 +54,7 @@ class SimpleAjaxRx extends Component {
         />
         <button onClick={fetchUserCancelled}>Cancel</button>
         Text input: {value}
-        { isLoading &&
-            <div>
-              <MuiContainer>
-                <CircularProgress />
-              </MuiContainer>
-            </div>
-        }
+        <Loader isLoading={isLoading} />
         <div style={styling.flexContainer}>
           <GithubList
             fetchUserResponse={fetchUserResponse}
