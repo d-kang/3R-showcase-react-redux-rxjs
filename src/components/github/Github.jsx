@@ -12,7 +12,6 @@ import {
 } from 'material-ui';
 import GithubList from './GithubList';
 import TextInput from '../ui/TextInput';
-import LoadingIndicator from '../ui/LoadingIndicator';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
 const styling = {
@@ -60,7 +59,6 @@ class SimpleAjaxRx extends Component {
         Text input: {value}
         { isLoading &&
             <div>
-              <LoadingIndicator isLoading={isLoading} />
               <MuiContainer>
                 <CircularProgress />
               </MuiContainer>

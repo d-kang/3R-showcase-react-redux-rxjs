@@ -8,13 +8,13 @@
 
 import React, { Component } from 'react';
 import {
+  MuiThemeProvider,
   TextField,
 } from 'material-ui';
 import {
   orange500,
   blue500,
 } from 'material-ui/styles/colors';
-import MuiContainer from './MuiContainer';
 
 class TextInput extends Component {
   state = {
@@ -31,22 +31,17 @@ class TextInput extends Component {
     const { value } = this.state;
     this.props.fetchUserAction(value);
   }
-
-  textField = (
-    <TextField
-      hintStyle={styling.errorStyle}
-      onChange={this.handleChange}
-      floatingLabelText={this.props.label}
-      rows={1}
-    />
-  )
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <MuiContainer
-          component={this.textField}
-        />
+        <MuiThemeProvider>
+          <TextField
+            hintStyle={styling.errorStyle}
+            onChange={this.handleChange}
+            floatingLabelText={this.props.label}
+            rows={1}
+          />
+        </MuiThemeProvider>
       </form>
     );
   }
