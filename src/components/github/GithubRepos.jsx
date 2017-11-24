@@ -44,7 +44,10 @@ class GithubRepos extends Component {
 
     return (
       <div>
-        <TextInput fetchUserAction={this.fetchAction} />
+        <TextInput
+          fetchUserAction={this.fetchAction}
+          label="Github Repos"
+        />
         {isLoading ? <Loader isLoading={isLoading} /> : mapped.join('\n')}
       </div>
     );
