@@ -1,16 +1,15 @@
 import React from 'react';
-
-export default ({ response, setCurrentVideo }) => (
-  response.map(({ id, snippet }, i) => (
-    <div
+import VideoItem from './VideoItem';
+export default ({ response, setCurrentVideo, currentVideoId, setCurrentKey, currentKey }) => (
+  response.map((props, i) => (
+    <VideoItem
       key={i}
-    >
-      <img
-        alt={snippet.description}
-        onClick={() => setCurrentVideo(id.videoId)}
-        src={snippet.thumbnails.medium.url}
-      />
-      <div>{snippet.title}</div>
-    </div>
+      currentVideoId={currentVideoId}
+      setCurrentVideo={setCurrentVideo}
+      setCurrentKey={setCurrentKey}
+      currentKey={currentKey}
+      myKey={i}
+      {...props}
+    />
   ))
 );
