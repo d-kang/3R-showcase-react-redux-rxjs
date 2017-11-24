@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 
 class VideoItem extends Component {
-  state = {
-    nowPlaying: false,
-  }
-  componentDidMount() {
-    this.setState({ nowPlaying: (this.props.currentVideoId === this.props.id.videoId) })
-  }
   setToPlay = () => {
     this.props.setCurrentVideo(this.props.id.videoId);
     this.props.setCurrentKey(this.props.myKey);
@@ -21,7 +15,7 @@ class VideoItem extends Component {
           onClick={this.setToPlay}
           src={snippet.thumbnails.medium.url}
         />
-        {myKey === currentKey && <div>Now Playing</div>}
+        { myKey === currentKey && <div>Now Playing</div>}
         <div>{snippet.title}</div>
       </div>
     )
