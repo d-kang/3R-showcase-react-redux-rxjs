@@ -32,9 +32,6 @@ class YoutubeSearch extends Component {
   setCurrentVideo = (currentVideo, currentKey) => {
     this.setState({ currentVideo, currentKey });
   }
-  // setCurrentKey = (currentKey) => {
-  //   this.setState({ currentKey });
-  // }
   render() {
     const {
       fetchYoutubeResponse,
@@ -69,6 +66,8 @@ class YoutubeSearch extends Component {
 const mapState = ({ fetchYoutubeReducer: reducer }) => ({
   fetchYoutubeResponse: reducer.fetchYoutubeResponse,
   isLoading: reducer.isLoading,
+  currentVideo: reducer.currentVideo,
+  currentKey: reducer.currentKey,
 });
 
 
