@@ -29,12 +29,12 @@ class YoutubeSearch extends Component {
     currentVideo: 'AQBh9soLSkI',
     currentKey: null,
   }
-  setCurrentVideo = (currentVideo) => {
-    this.setState({ currentVideo });
+  setCurrentVideo = (currentVideo, currentKey) => {
+    this.setState({ currentVideo, currentKey });
   }
-  setCurrentKey = (currentKey) => {
-    this.setState({ currentKey });
-  }
+  // setCurrentKey = (currentKey) => {
+  //   this.setState({ currentKey });
+  // }
   render() {
     const {
       fetchYoutubeResponse,
