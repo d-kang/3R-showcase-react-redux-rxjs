@@ -15,6 +15,12 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+
+// .do(items => console.log('do log items 1', items))
+// api v3 with using search api and updated
+// `https://api.github.com/search/repositories?q=user:${value}+sort:updated`
+// `https://api.github.com/users/${value}/repos?per_page=100`
+
 const fetchYoutubeEpic = action$ => (
   action$.ofType(types.FETCH_YOUTUBE)
     .map(({ payload }) => payload)
@@ -42,9 +48,7 @@ const fetchUserEpic = action$ => (
     ))
 );
 
-// api v3 with using search api and updated
-// `https://api.github.com/search/repositories?q=user:${value}+sort:updated`
-// `https://api.github.com/users/${value}/repos?per_page=100`
+
 const fetchRepoEpic = action$ => (
   action$.ofType(types.FETCH_REPO)
     .map(({ value }) => value)
@@ -64,10 +68,8 @@ const fetchRepoEpic = action$ => (
 
 const listCommitsEpic = action$ => (
   action$.ofType(types.LIST_COMMITS)
-    .do(items => console.log('do log items 1', items))
     .mergeMap(({ apiUrl }) => (
       ajax.getJSON(`${apiUrl}?per_page=200`)
-        .do(items => console.log('do log items 2', items))
         .map(response => response.map(({ commit, comments_url }) => ({
           message: commit.message,
           timeStamp: new Date(commit.author.date).toLocaleDateString(),

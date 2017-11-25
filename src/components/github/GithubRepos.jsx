@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import Loader from '../ui/Loader';
-import ListCommits from './ListCommits';
+import CommitsContainer from './CommitsContainer';
 
 const styling = {
   flexContainer: {
@@ -65,7 +65,7 @@ class GithubRepos extends Component {
                         repo.description
                           && <div>Repo Description: {repo.description}</div>
                       }
-                      <ListCommits
+                      <CommitsContainer
                         apiUrl={repo.commits.slice(0, -6)}
                         username={repo.username}
                         reponame={repo.repo_name}

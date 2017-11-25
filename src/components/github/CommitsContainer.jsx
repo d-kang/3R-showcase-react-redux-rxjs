@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from '../ui/Loader';
 import { listCommits } from '../../actions';
-import Commits from './Commits';
+import CommitList from './CommitList';
 
 const styling = {
   flexContainer: {
@@ -30,7 +30,7 @@ const styling = {
   },
 };
 
-class ListCommits extends Component {
+class CommitsContainer extends Component {
   foo = () => {
     this.props.listCommits(this.props.apiUrl);
   }
@@ -45,7 +45,7 @@ class ListCommits extends Component {
 
     return (
       <div>
-        <Commits
+        <CommitList
           apiUrl={apiUrl}
           response={response}
           username={username}
@@ -61,7 +61,6 @@ class ListCommits extends Component {
 const mapState = ({ listCommitsReducer: reducer }) => ({
   isLoading: reducer.isLoading,
   response: reducer.response,
-  logger: console.log('reducer', reducer),
 });
 
-export default connect(mapState, { listCommits })(ListCommits);
+export default connect(mapState, { listCommits })(CommitsContainer);
