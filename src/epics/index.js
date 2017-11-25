@@ -38,17 +38,30 @@ const fetchYoutubeEpic = action$ => (
 
 const fetchUserEpic = action$ => (
   action$.ofType(types.FETCH_USER)
-    .map(({ value }) => value)
-    // .debounceTime(4000)
-    .mergeMap(value => (
-      Observable.timer(2000)
-        .mergeMap(() => (
-          ajax.getJSON(`https://api.github.com/users/${value}`)
-            .map(creators.fetchUserFullfilled)
-        ))
+    .mergeMap(({ value }) => (
+      ajax.getJSON(`https://api.github.com/users/${value}`)
+        .map(creators.fetchUserFullfilled)
         .takeUntil(action$.ofType(types.FETCH_USER_CANCELLED))
+        .catch(error => Observable.of({
+          type: 'FETCH_USER_REJECTED',
+          payload: error,
+          error: true,
+        }))
     ))
 );
+
+// export const fetchUserRejected = payload => ({
+//   type: types.FETCH_USER_REJECTED,
+//   payload,
+//   error: true,
+// });
+//
+//
+// {
+//   type: 'FETCH_USER_REJECTED',
+//   payload,
+//   error: true,
+// }
 
 
 const fetchRepoEpic = action$ => (

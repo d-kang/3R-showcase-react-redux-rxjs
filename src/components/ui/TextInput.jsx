@@ -57,7 +57,7 @@ class TextInput extends Component {
             <RaisedButton
               icon={<ActionAndroid />}
               style={style}
-              // onClick={this.handleSubmit}
+              onClick={this.handleSubmit}
             />
 
 

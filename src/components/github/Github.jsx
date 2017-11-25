@@ -35,6 +35,7 @@ class SimpleAjaxRx extends Component {
 
   render() {
     const {
+      error,
       fetchUserAction,
       value,
       fetchUserResponse,
@@ -53,13 +54,16 @@ class SimpleAjaxRx extends Component {
           label="Github Usernames"
         />
         <button onClick={fetchUserCancelled}>Cancel</button>
-        Text input: {value}
         <Loader isLoading={isLoading} />
-        <div style={styling.flexContainer}>
-          <GithubList
-            fetchUserResponse={fetchUserResponse}
-          />
-        </div>
+        {
+          error ? <div>{error[0].response.message} </div>
+            : <div style={styling.flexContainer}>
+                <GithubList
+                  fetchUserResponse={fetchUserResponse}
+                />
+              </div>
+        }
+
       </div>
     );
   }
@@ -70,6 +74,8 @@ const mapState = state => ({
   fetchUserResponse: state.fetchUserReducer.fetchUserResponse,
   isLoading: state.fetchUserReducer.isLoading,
   value: state.fetchUserReducer.value,
+  error: state.fetchUserReducer.error,
+  logger: console.log('state', state),
 });
 
 export default connect(mapState, { fetchUserAction, fetchUserCancelled })(SimpleAjaxRx);

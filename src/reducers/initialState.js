@@ -12,6 +12,7 @@ const initialState = {
     isLoading: false,
     value: '',
     fetchUserResponse: [],
+    error: false,
   },
   githubRepos: {
     isLoading: false,
