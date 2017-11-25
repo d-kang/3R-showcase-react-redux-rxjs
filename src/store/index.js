@@ -15,7 +15,8 @@ import {
 } from 'redux';
 import logger from 'redux-logger';
 import rootReducer from '../reducers';
-import epicMiddleware from '../epics'
+import epicMiddleware from '../epics';
+
 export const history = createBrowserHistory();
 
 const store = createStore(

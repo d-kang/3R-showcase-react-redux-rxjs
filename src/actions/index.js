@@ -57,8 +57,8 @@ export const setCurrentVideo = foo => ({
 });
 
 
-// export const fetchUserRejected = payload => ({
-//   type: types.FETCH_USER_REJECTED,
-//   payload,
-//   error: true,
-// });
+export const fetchRejected = payload => ({
+  type: types.FETCH_REJECTED,
+  payload,
+  error: true,
+});

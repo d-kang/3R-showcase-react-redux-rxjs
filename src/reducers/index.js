@@ -9,7 +9,6 @@ import { pingReducer, beepReducer } from './pingReducers';
 import { fetchUserReducer, fetchRepoReducer } from './githubReducers';
 import { fetchYoutubeReducer } from './youtubeReducers';
 
-
 const reducerObj = {
   pingReducer,
   beepReducer,

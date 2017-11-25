@@ -42,26 +42,9 @@ const fetchUserEpic = action$ => (
       ajax.getJSON(`https://api.github.com/users/${value}`)
         .map(creators.fetchUserFullfilled)
         .takeUntil(action$.ofType(types.FETCH_USER_CANCELLED))
-        .catch(error => Observable.of({
-          type: 'FETCH_USER_REJECTED',
-          payload: error,
-          error: true,
-        }))
+        .catch(err => Observable.of(creators.fetchRejected(err)))
     ))
 );
-
-// export const fetchUserRejected = payload => ({
-//   type: types.FETCH_USER_REJECTED,
-//   payload,
-//   error: true,
-// });
-//
-//
-// {
-//   type: 'FETCH_USER_REJECTED',
-//   payload,
-//   error: true,
-// }
 
 
 const fetchRepoEpic = action$ => (
