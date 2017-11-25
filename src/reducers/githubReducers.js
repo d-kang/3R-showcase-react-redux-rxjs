@@ -52,16 +52,3 @@ export const fetchRepoReducer = (state = initialState.githubRepos, action) => {
       return state;
   }
 };
-
-// export const fetchRejectedReducer = (state = initialState.githubUser, action) => {
-//   switch (action.type) {
-//     case types.FETCH_REJECTED:
-//       return {
-//         ...state,
-//         isLoading: false,
-//         error: [action.payload],
-//       };
-//     default:
-//       return state;
-//   }
-// };
