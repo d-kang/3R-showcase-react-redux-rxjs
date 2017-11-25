@@ -3,7 +3,6 @@ import initialState from './initialState';
 
 
 export const fetchUserReducer = (state = initialState.githubUser, action) => {
-  console.log('action', action)
   switch (action.type) {
     case types.FETCH_USER:
       return {
@@ -45,7 +44,7 @@ export const fetchRepoReducer = (state = initialState.githubRepos, action) => {
     case types.FETCH_REPO_FULFILLED:
       return {
         ...state,
-        fetchRepoResponse: [action.payload, ...state.fetchRepoResponse],
+        fetchRepoResponse: action.payload,
         isLoading: false,
       };
     default:

@@ -41,23 +41,15 @@ class GithubRepos extends Component {
       value
     } = this.props;
     const mapped = fetchRepoResponse.map((repo, i) => (
-      <div>
+      <div key={i}>
+        {console.log('repo', typeof repo)}
         <hr/>
-        {console.log('repo', repo)}
         <div>Repo Name: {repo.repo_name}</div>
         <div>Repo URL: {repo.repo_url}</div>
         <div>Repo Description{repo.description}</div>
         <div>Repo Commits {repo.commits}</div>
       </div>
     ))
-    // .map(repo => ({
-    //   repo_name: repo.name,
-    //   username: repo.owner.login,
-    //   avatar: repo.owner.avatar,
-    //   repo_url: repo.html_url,
-    //   description: repo.description,
-    //   commits: repo.commits_url,
-    // }))
     return (
       <div>
         <TextInput
