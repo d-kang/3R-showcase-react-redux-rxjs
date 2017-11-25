@@ -17,7 +17,6 @@ const headers = {
 
 const fetchYoutubeEpic = action$ => (
   action$.ofType(types.FETCH_YOUTUBE)
-    .do(items => console.log('do log items 1', items))
     .map(({ payload }) => payload)
     .mergeMap(payload => (
       ajax({
@@ -47,7 +46,7 @@ const fetchRepoEpic = action$ => (
   action$.ofType(types.FETCH_REPO)
     .map(({ value }) => value)
     .mergeMap(value => (
-      ajax.getJSON(`https://api.github.com/users/${value}/repos`)
+      ajax.getJSON(`https://api.github.com/users/${value}/repos?per_page=100?sort=updated`)
         .map(response => response.map(repo => ({
           repo_name: repo.name,
           username: repo.owner.login,
@@ -64,7 +63,7 @@ const listCommitsEpic = action$ => (
   action$.ofType(types.LIST_COMMITS)
     .do(items => console.log('do log items 1', items))
     .mergeMap(({ apiUrl }) => (
-      ajax.getJSON(apiUrl)
+      ajax.getJSON(`${apiUrl}?per_page=200`)
         .do(items => console.log('do log items 2', items))
         .map(response => response.map(({ commit, comments_url }) => ({
           message: commit.message,
