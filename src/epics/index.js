@@ -53,8 +53,15 @@ const fetchRepoEpic = action$ => (
     .mergeMap(value => (
       ajax.getJSON(`https://api.github.com/users/${value}/repos`)
     ))
-    .mergeMap(val => val)
-    .map(({ id }) => id)
+    .mergeMap(repo => repo)
+    .map(repo => ({
+      repo_name: repo.name,
+      username: repo.owner.login,
+      avatar: repo.owner.avatar_url,
+      repo_url: repo.html_url,
+      description: repo.description,
+      commits: repo.commits_url,
+    }))
     .map(creators.fetchRepoFullfilled)
 );
 

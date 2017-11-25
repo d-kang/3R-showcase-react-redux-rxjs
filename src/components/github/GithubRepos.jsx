@@ -40,15 +40,41 @@ class GithubRepos extends Component {
       isLoading,
       value
     } = this.props;
-    const mapped = fetchRepoResponse.map((a, i, arr) => JSON.stringify(arr[i]))
-
+    const mapped = fetchRepoResponse.map((repo, i) => (
+      <div>
+        <hr/>
+        {console.log('repo', repo)}
+        <div>Repo Name: {repo.repo_name}</div>
+        <div>Repo URL: {repo.repo_url}</div>
+        <div>Repo Description{repo.description}</div>
+        <div>Repo Commits {repo.commits}</div>
+      </div>
+    ))
+    // .map(repo => ({
+    //   repo_name: repo.name,
+    //   username: repo.owner.login,
+    //   avatar: repo.owner.avatar,
+    //   repo_url: repo.html_url,
+    //   description: repo.description,
+    //   commits: repo.commits_url,
+    // }))
     return (
       <div>
         <TextInput
           fetchUserAction={this.fetchAction}
           label="Github Repos"
         />
-        {isLoading ? <Loader isLoading={isLoading} /> : mapped.join('\n')}
+        {
+          isLoading
+            ? <Loader isLoading={isLoading} />
+            : fetchRepoResponse.length > 0
+            && <div>
+                <div><img src={fetchRepoResponse[0].avatar + '&s=88'} alt=""/></div>
+                <div>Username: {fetchRepoResponse[0].username}</div>
+                { mapped }
+              </div>
+
+        }
       </div>
     );
   }
