@@ -37,9 +37,8 @@ class TextInput extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hiiiii')
-    const { value } = this.state;
-    this.props.fetchUserAction(value);
+    this.props.fetchUserAction(this.state.value);
+    this.setState({ value: '' });
   }
   render() {
     return (
@@ -52,6 +51,7 @@ class TextInput extends Component {
               onChange={this.handleChange}
               floatingLabelText={this.props.label}
               rows={1}
+              value={this.state.value}
             />
 
             <RaisedButton
