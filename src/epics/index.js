@@ -17,9 +17,8 @@ const headers = {
 
 const fetchYoutubeEpic = action$ => (
   action$.ofType(types.FETCH_YOUTUBE)
-    .do(items => console.log('do log items FIRST', items))
+    .do(items => console.log('do log items 1', items))
     .map(({ payload }) => payload)
-    .do(items => console.log('do log items SECOND', items))
     .mergeMap(payload => (
       ajax({
         url: 'http://localhost:3500/api/youtube',
@@ -27,14 +26,12 @@ const fetchYoutubeEpic = action$ => (
         headers,
         body: JSON.stringify({ payload }),
       })
-        .do(items => console.log('do log items THIRD', items))
         .map(({ response }) => response)
         .map(({ items }) => items)
         .map(creators.fetchYoutubeFullfilled)
     ))
     // .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
 );
-
 
 const fetchUserEpic = action$ => (
   action$.ofType(types.FETCH_USER)
@@ -63,6 +60,20 @@ const fetchRepoEpic = action$ => (
     ))
 );
 
+const listCommitsEpic = action$ => (
+  action$.ofType(types.LIST_COMMITS)
+    .do(items => console.log('do log items 1', items))
+    .mergeMap(({ apiUrl }) => (
+      ajax.getJSON(apiUrl)
+        .map(response => response.map(({ commit }) => ({
+          message: commit.message,
+          timeStamp: new Date(commit.author.date).toLocaleDateString(),
+          dateStamp: new Date(commit.author.date).toLocaleTimeString(),
+        })))
+        .do(items => console.log('do log items 2', items))
+        .map(creators.listCommitsFullfilled)
+    ))
+);
 
 const pingEpic = action$ => (
   action$.ofType(types.PING)
@@ -72,7 +83,6 @@ const pingEpic = action$ => (
     ))
 );
 
-
 const beepEpic = action$ => (
   action$.ofType(types.BEEP)
     .mergeMap(() => (
@@ -81,13 +91,13 @@ const beepEpic = action$ => (
     ))
 );
 
-
 const rootEpic = combineEpics(
   pingEpic,
   beepEpic,
   fetchUserEpic,
   fetchRepoEpic,
   fetchYoutubeEpic,
+  listCommitsEpic,
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

@@ -62,3 +62,15 @@ export const fetchRejected = payload => ({
   payload,
   error: true,
 });
+
+
+export const listCommits = apiUrl => ({
+  type: types.LIST_COMMITS,
+  isLoading: true,
+  apiUrl,
+});
+
+export const listCommitsFullfilled = payload => ({
+  type: types.LIST_COMMITS_FULLFILLED,
+  payload,
+});

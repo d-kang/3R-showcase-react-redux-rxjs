@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import Loader from '../ui/Loader';
-import ListRepos from './ListRepos';
+import ListCommits from './ListCommits';
 
 const styling = {
   flexContainer: {
@@ -41,19 +41,6 @@ class GithubRepos extends Component {
       isLoading,
       value
     } = this.props;
-    const mapped = fetchRepoResponse.map((repo, i) => (
-      <div key={i}>
-        {console.log('repo', typeof repo)}
-        <hr/>
-        <div>Repo Name: {repo.repo_name}</div>
-        <div>Repo URL: {repo.repo_url}</div>
-        {
-          repo.description
-            && <div>Repo Description: {repo.description}</div>
-        }
-        <ListRepos api_url={repo.commits} />
-      </div>
-    ))
     return (
       <div>
         <TextInput
@@ -67,7 +54,23 @@ class GithubRepos extends Component {
             && <div>
                 <div><img src={fetchRepoResponse[0].avatar + '&s=88'} alt=""/></div>
                 <div>Username: {fetchRepoResponse[0].username}</div>
-                { mapped }
+                {
+                  fetchRepoResponse.map((repo, i) => (
+                    <div key={i}>
+                      <hr/>
+                      <div>Repo Name: {repo.repo_name}</div>
+                      <div>Repo URL: {repo.repo_url}</div>
+                      {
+                        repo.description
+                          && <div>Repo Description: {repo.description}</div>
+                      }
+                      <ListCommits
+                        apiUrl={repo.commits.slice(0, -6)}
+                        currentKey={i}
+                      />
+                    </div>
+                  ))
+                }
               </div>
 
         }

@@ -6,7 +6,7 @@
 
 import { combineReducers } from 'redux';
 import { pingReducer, beepReducer } from './pingReducers';
-import { fetchUserReducer, fetchRepoReducer } from './githubReducers';
+import { fetchUserReducer, fetchRepoReducer, listCommitsReducer } from './githubReducers';
 import { fetchYoutubeReducer } from './youtubeReducers';
 
 const reducerObj = {
@@ -15,6 +15,7 @@ const reducerObj = {
   fetchUserReducer,
   fetchRepoReducer,
   fetchYoutubeReducer,
+  listCommitsReducer,
 };
 
 const rootReducer = combineReducers(reducerObj);

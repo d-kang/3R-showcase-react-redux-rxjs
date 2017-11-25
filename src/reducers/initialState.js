@@ -19,6 +19,11 @@ const initialState = {
     value: '',
     fetchRepoResponse: [],
   },
+  listCommits: {
+    isLoading: false,
+    value: '',
+    response: [],
+  },
   youtube: {
     isLoading: false,
     value: '',
