@@ -46,8 +46,11 @@ class GithubRepos extends Component {
         <hr/>
         <div>Repo Name: {repo.repo_name}</div>
         <div>Repo URL: {repo.repo_url}</div>
-        <div>Repo Description{repo.description}</div>
-        <div>Repo Commits {repo.commits}</div>
+        {
+          repo.description
+            && <div>Repo Description: {repo.description}</div>
+        }
+        <div>Repo Commits: {repo.commits.slice(0, -6)}</div>
       </div>
     ))
     return (
