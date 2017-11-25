@@ -30,6 +30,7 @@ class YoutubeSearch extends Component {
     currentKey: null,
   }
   setCurrentVideo = (currentVideo, currentKey) => {
+    // setTimeout(() =>   this.setState({ currentVideo, currentKey }), 10000)
     this.setState({ currentVideo, currentKey });
   }
   render() {
@@ -40,22 +41,20 @@ class YoutubeSearch extends Component {
     } = this.props;
     return (
       <div>
+        <Loader isLoading={isLoading} />
         <TextInput
           fetchUserAction={fetchYoutube}
           label="Search Youtube"
         />
         <VideoPlayer currentVideo={this.state.currentVideo} />
         <div style={styles.flexContainer}>
-          { isLoading
-              ? <Loader />
-              : <VideoList
-                currentVideoId={this.state.currentVideo}
-                response={fetchYoutubeResponse}
-                setCurrentVideo={this.setCurrentVideo}
-                setCurrentKey={this.setCurrentKey}
-                currentKey={this.state.currentKey}
-              />
-          }
+          <VideoList
+            currentVideoId={this.state.currentVideo}
+            response={fetchYoutubeResponse}
+            setCurrentVideo={this.setCurrentVideo}
+            setCurrentKey={this.setCurrentKey}
+            currentKey={this.state.currentKey}
+          />
         </div>
       </div>
     );

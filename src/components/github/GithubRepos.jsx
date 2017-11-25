@@ -6,13 +6,10 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
-
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
+import Loader from '../ui/Loader';
+import ListCommits from './ListCommits';
 
 const styling = {
   flexContainer: {
@@ -23,6 +20,7 @@ const styling = {
     flexWrap: 'wrap',
     flexFlow: 'row wrap',
     alignContent: 'flex-end',
+    fontFamily: 'Roboto',
   },
   sample: {
     display: 'flex; display: -webkit-box',
@@ -35,9 +33,8 @@ const styling = {
 };
 
 class GithubRepos extends Component {
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.fetchRepoAction('octocat');
+  fetchAction = (val) => {
+    this.props.fetchRepoAction(val);
   }
   render() {
     const {
@@ -45,15 +42,40 @@ class GithubRepos extends Component {
       isLoading,
       value
     } = this.props;
-    const mapped = fetchRepoResponse.map((a, i, arr) => JSON.stringify(arr[i]))
-
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text"/>
-          <button>Click</button>
-          {mapped.join('\n')}
-        </form>
+        <TextInput
+          fetchUserAction={this.fetchAction}
+          label="Github Repos"
+        />
+        {
+          isLoading
+            ? <Loader isLoading={isLoading} />
+            : fetchRepoResponse.length > 0
+            && <div>
+                <div><img src={fetchRepoResponse[0].avatar + '&s=88'} alt=""/></div>
+                <div>Username: {fetchRepoResponse[0].username}</div>
+                {
+                  fetchRepoResponse.map((repo, i) => (
+                    <div key={i}>
+                      <hr/>
+                      <div>Repo Name: {repo.repo_name}</div>
+                      <div>Repo URL: {repo.repo_url}</div>
+                      {
+                        repo.description
+                          && <div>Repo Description: {repo.description}</div>
+                      }
+                      <ListCommits
+                        apiUrl={repo.commits.slice(0, -6)}
+                        username={repo.username}
+                        reponame={repo.repo_name}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+
+        }
       </div>
     );
   }

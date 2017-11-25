@@ -7,20 +7,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import LoadingIndicator from '../ui/LoadingIndicator';
 import { beep } from '../../actions';
-
-
-const ShouldLoad = ({ isTrue }) => (
-  isTrue && <LoadingIndicator />
-);
+import Loader from '../ui/Loader';
 
 const BeepObservable = ({ isBeeping, beep, foo }) => (
   <div>
     <h1>is beeping: {isBeeping.toString()}</h1>
     <div>foo: {foo}</div>
     <button onClick={beep}>Start Beep</button>
-    <ShouldLoad isTrue={isBeeping} />
+    <Loader isLoading={isBeeping} />
     <hr />
     <Link to='/'>Back</Link>
   </div>

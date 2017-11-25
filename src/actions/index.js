@@ -55,3 +55,22 @@ export const setCurrentVideo = foo => ({
   type: types.SET_CURRENT_VIDEO,
   foo,
 });
+
+
+export const fetchRejected = payload => ({
+  type: types.FETCH_REJECTED,
+  payload,
+  error: true,
+});
+
+
+export const listCommits = apiUrl => ({
+  type: types.LIST_COMMITS,
+  isLoading: true,
+  apiUrl,
+});
+
+export const listCommitsFullfilled = payload => ({
+  type: types.LIST_COMMITS_FULLFILLED,
+  payload,
+});

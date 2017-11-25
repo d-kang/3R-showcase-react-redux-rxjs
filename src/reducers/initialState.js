@@ -12,11 +12,17 @@ const initialState = {
     isLoading: false,
     value: '',
     fetchUserResponse: [],
+    error: false,
   },
   githubRepos: {
     isLoading: false,
     value: '',
     fetchRepoResponse: [],
+  },
+  listCommits: {
+    isLoading: false,
+    value: '',
+    response: [],
   },
   youtube: {
     isLoading: false,

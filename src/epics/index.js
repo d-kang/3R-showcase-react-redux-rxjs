@@ -17,9 +17,7 @@ const headers = {
 
 const fetchYoutubeEpic = action$ => (
   action$.ofType(types.FETCH_YOUTUBE)
-    .do(items => console.log('do log items FIRST', items))
     .map(({ payload }) => payload)
-    .do(items => console.log('do log items SECOND', items))
     .mergeMap(payload => (
       ajax({
         url: 'http://localhost:3500/api/youtube',
@@ -27,7 +25,6 @@ const fetchYoutubeEpic = action$ => (
         headers,
         body: JSON.stringify({ payload }),
       })
-        .do(items => console.log('do log items THIRD', items))
         .map(({ response }) => response)
         .map(({ items }) => items)
         .map(creators.fetchYoutubeFullfilled)
@@ -35,33 +32,51 @@ const fetchYoutubeEpic = action$ => (
     // .takeUntil(action$.ofType(FETCH_USER_CANCELLED))
 );
 
-
 const fetchUserEpic = action$ => (
   action$.ofType(types.FETCH_USER)
-    .map(({ value }) => value)
-    // .debounceTime(4000)
-    .mergeMap(value => (
-      Observable.timer(2000)
-        .mergeMap(() => (
-          ajax.getJSON(`https://api.github.com/users/${value}`)
-            .map(creators.fetchUserFullfilled)
-        ))
+    .mergeMap(({ value }) => (
+      ajax.getJSON(`https://api.github.com/users/${value}`)
+        .map(creators.fetchUserFullfilled)
         .takeUntil(action$.ofType(types.FETCH_USER_CANCELLED))
+        .catch(err => Observable.of(creators.fetchRejected(err)))
     ))
 );
 
-
+// api v3 with using search api and updated
+// `https://api.github.com/search/repositories?q=user:${value}+sort:updated`
+// `https://api.github.com/users/${value}/repos?per_page=100`
 const fetchRepoEpic = action$ => (
   action$.ofType(types.FETCH_REPO)
     .map(({ value }) => value)
     .mergeMap(value => (
-      ajax.getJSON(`https://api.github.com/users/${value}/repos`)
+      ajax.getJSON(`https://api.github.com/search/repositories?q=user:${value}+sort:updated`)
+        .map(response => response.items.map(repo => ({
+          repo_name: repo.name,
+          username: repo.owner.login,
+          avatar: repo.owner.avatar_url,
+          repo_url: repo.html_url,
+          description: repo.description,
+          commits: repo.commits_url,
+        })))
+        .map(creators.fetchRepoFullfilled)
     ))
-    .mergeMap(val => val)
-    .map(({ id }) => id)
-    .map(creators.fetchRepoFullfilled)
 );
 
+const listCommitsEpic = action$ => (
+  action$.ofType(types.LIST_COMMITS)
+    .do(items => console.log('do log items 1', items))
+    .mergeMap(({ apiUrl }) => (
+      ajax.getJSON(`${apiUrl}?per_page=200`)
+        .do(items => console.log('do log items 2', items))
+        .map(response => response.map(({ commit, comments_url }) => ({
+          message: commit.message,
+          timeStamp: new Date(commit.author.date).toLocaleDateString(),
+          dateStamp: new Date(commit.author.date).toLocaleTimeString(),
+          url: comments_url,
+        })))
+        .map(creators.listCommitsFullfilled)
+    ))
+);
 
 const pingEpic = action$ => (
   action$.ofType(types.PING)
@@ -71,7 +86,6 @@ const pingEpic = action$ => (
     ))
 );
 
-
 const beepEpic = action$ => (
   action$.ofType(types.BEEP)
     .mergeMap(() => (
@@ -80,13 +94,13 @@ const beepEpic = action$ => (
     ))
 );
 
-
 const rootEpic = combineEpics(
   pingEpic,
   beepEpic,
   fetchUserEpic,
   fetchRepoEpic,
   fetchYoutubeEpic,
+  listCommitsEpic,
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

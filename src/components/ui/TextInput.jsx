@@ -8,13 +8,22 @@
 
 import React, { Component } from 'react';
 import {
+  MuiThemeProvider,
   TextField,
 } from 'material-ui';
 import {
   orange500,
   blue500,
 } from 'material-ui/styles/colors';
-import MuiContainer from './MuiContainer';
+
+import RaisedButton from 'material-ui/RaisedButton';
+import {fullWhite} from 'material-ui/styles/colors';
+import ActionAndroid from 'material-ui/svg-icons/action/search';
+
+const style = {
+  margin: 12,
+};
+
 
 class TextInput extends Component {
   state = {
@@ -28,29 +37,36 @@ class TextInput extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    const { value } = this.state;
-    this.props.fetchUserAction(value);
+    this.props.fetchUserAction(this.state.value);
+    this.setState({ value: '' });
   }
-
-  textField = (
-    <TextField
-      hintStyle={styling.errorStyle}
-      onChange={this.handleChange}
-      floatingLabelText={this.props.label}
-      rows={1}
-    />
-  )
-
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <MuiContainer
-          component={this.textField}
-        />
+        <MuiThemeProvider>
+          <div>
+            <TextField
+              border='10px'
+              hintStyle={styling.errorStyle}
+              onChange={this.handleChange}
+              floatingLabelText={this.props.label}
+              rows={1}
+              value={this.state.value}
+            />
+
+            <RaisedButton
+              icon={<ActionAndroid />}
+              style={style}
+              onClick={this.handleSubmit}
+            />
+
+
+          </div>
+
+        </MuiThemeProvider>
       </form>
     );
   }
-
 }
 
 const styling = {

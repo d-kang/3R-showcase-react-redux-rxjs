@@ -6,13 +6,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  CircularProgress,
-  MuiThemeProvider as MuiContainer,
-} from 'material-ui';
+import Loader from '../ui/Loader';
 import GithubList from './GithubList';
 import TextInput from '../ui/TextInput';
-import LoadingIndicator from '../ui/LoadingIndicator';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
 const styling = {
@@ -39,6 +35,7 @@ class SimpleAjaxRx extends Component {
 
   render() {
     const {
+      error,
       fetchUserAction,
       value,
       fetchUserResponse,
@@ -57,20 +54,16 @@ class SimpleAjaxRx extends Component {
           label="Github Usernames"
         />
         <button onClick={fetchUserCancelled}>Cancel</button>
-        Text input: {value}
-        { isLoading &&
-            <div>
-              <LoadingIndicator isLoading={isLoading} />
-              <MuiContainer>
-                <CircularProgress />
-              </MuiContainer>
-            </div>
+        <Loader isLoading={isLoading} />
+        {
+          error ? <div>{error[0].response.message} </div>
+            : <div style={styling.flexContainer}>
+                <GithubList
+                  fetchUserResponse={fetchUserResponse}
+                />
+              </div>
         }
-        <div style={styling.flexContainer}>
-          <GithubList
-            fetchUserResponse={fetchUserResponse}
-          />
-        </div>
+
       </div>
     );
   }
@@ -81,6 +74,8 @@ const mapState = state => ({
   fetchUserResponse: state.fetchUserReducer.fetchUserResponse,
   isLoading: state.fetchUserReducer.isLoading,
   value: state.fetchUserReducer.value,
+  error: state.fetchUserReducer.error,
+  logger: console.log('state', state),
 });
 
 export default connect(mapState, { fetchUserAction, fetchUserCancelled })(SimpleAjaxRx);
