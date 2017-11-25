@@ -6,7 +6,6 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Loader from '../ui/Loader';
 import { listCommits } from '../../actions';
 import CommitList from './CommitList';
 
@@ -41,6 +40,7 @@ class CommitsContainer extends Component {
       listCommits,
       username,
       reponame,
+      isLoading,
     } = this.props;
 
     return (
@@ -50,6 +50,7 @@ class CommitsContainer extends Component {
           response={response}
           username={username}
           reponame={reponame}
+          isLoading={isLoading}
         />
         <button onClick={this.foo}> show commits </button>
       </div>

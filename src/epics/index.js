@@ -69,7 +69,7 @@ const fetchRepoEpic = action$ => (
 const listCommitsEpic = action$ => (
   action$.ofType(types.LIST_COMMITS)
     .mergeMap(({ apiUrl }) => (
-      ajax.getJSON(`${apiUrl}?per_page=200`)
+      ajax.getJSON(`${apiUrl}`)
         .map(response => response.map(({ commit, comments_url }) => ({
           message: commit.message,
           timeStamp: new Date(commit.author.date).toLocaleDateString(),
