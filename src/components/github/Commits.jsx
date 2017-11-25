@@ -6,9 +6,8 @@ class Commit extends Component {
     return (
       url.startsWith(`https://api.github.com/repos/${username}/${reponame}`)
       &&  <div>
-            Repo Commits: {apiUrl}
-            time: {`${dateStamp} ${timeStamp}`}
-            message: {message}
+            <div>{message}</div>
+            <div>{`${dateStamp} ${timeStamp}`}</div>
           </div>
     )
   }
@@ -17,15 +16,48 @@ class Commit extends Component {
 
 const Commits = ({ response, apiUrl, username, reponame }) => (
   response.map((commit, i) => (
-    <Commit
-      key={i}
-      {...commit}
-      apiUrl={apiUrl}
-      username={username}
-      reponame={reponame}
+    <PaperExampleRounded
+      children={
+        <Commit
+          key={i}
+          {...commit}
+          apiUrl={apiUrl}
+          username={username}
+          reponame={reponame}
+        />
+      }
     />
+
 
   ))
 );
 
 export default Commits;
+
+
+
+import { MuiThemeProvider, Paper } from 'material-ui';
+
+const style = {
+  height: 'inherit',
+  width: 'inherit',
+  margin: 20,
+  fontFamily: 'Roboto',
+  // textAlign: 'center',
+  // display: 'inline-block',
+};
+
+const PaperExampleRounded = ({ children }) => (
+  <MuiThemeProvider>
+    <Paper style={style} zDepth={1} rounded={false}
+      children={children}
+    />
+
+    {/* <Paper style={style} zDepth={2} rounded={false} />
+    <Paper style={style} zDepth={3} rounded={false} />
+    <Paper style={style} zDepth={4} rounded={false} />
+    <Paper style={style} zDepth={5} rounded={false} /> */}
+  </MuiThemeProvider>
+);
+
+// export default PaperExampleRounded;

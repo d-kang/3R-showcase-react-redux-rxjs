@@ -20,6 +20,7 @@ const styling = {
     flexWrap: 'wrap',
     flexFlow: 'row wrap',
     alignContent: 'flex-end',
+    fontFamily: 'Roboto',
   },
   sample: {
     display: 'flex; display: -webkit-box',
