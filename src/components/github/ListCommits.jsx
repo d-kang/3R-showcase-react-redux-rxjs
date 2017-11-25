@@ -38,14 +38,18 @@ class ListCommits extends Component {
     const {
       apiUrl,
       response,
-      listCommits
+      listCommits,
+      username,
+      reponame,
     } = this.props;
+
     return (
       <div>
         <Commits
           apiUrl={apiUrl}
           response={response}
-          listCommits={listCommits}
+          username={username}
+          reponame={reponame}
         />
         <button onClick={this.foo}> show commits </button>
       </div>
@@ -56,8 +60,8 @@ class ListCommits extends Component {
 
 const mapState = ({ listCommitsReducer: reducer }) => ({
   isLoading: reducer.isLoading,
-  value: reducer.value,
   response: reducer.response,
+  logger: console.log('reducer', reducer),
 });
 
 export default connect(mapState, { listCommits })(ListCommits);

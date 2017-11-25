@@ -2,23 +2,27 @@ import React, { Component } from 'react';
 
 class Commit extends Component {
   render() {
-    const { dateStamp, timeStamp, message, apiUrl } = this.props;
+    const { dateStamp, timeStamp, message, apiUrl, url, username, reponame } = this.props;
     return (
-      <div>
-        Repo Commits: {apiUrl}
-        time: {`${dateStamp} ${timeStamp}`}
-        message: {message}
-      </div>
+      url.startsWith(`https://api.github.com/repos/${username}/${reponame}`)
+      &&  <div>
+            Repo Commits: {apiUrl}
+            time: {`${dateStamp} ${timeStamp}`}
+            message: {message}
+          </div>
     )
   }
 }
 
 
-const Commits = ({ response }) => (
+const Commits = ({ response, apiUrl, username, reponame }) => (
   response.map((commit, i) => (
     <Commit
       key={i}
       {...commit}
+      apiUrl={apiUrl}
+      username={username}
+      reponame={reponame}
     />
 
   ))

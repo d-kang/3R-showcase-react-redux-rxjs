@@ -65,12 +65,13 @@ const listCommitsEpic = action$ => (
     .do(items => console.log('do log items 1', items))
     .mergeMap(({ apiUrl }) => (
       ajax.getJSON(apiUrl)
-        .map(response => response.map(({ commit }) => ({
+        .do(items => console.log('do log items 2', items))
+        .map(response => response.map(({ commit, comments_url }) => ({
           message: commit.message,
           timeStamp: new Date(commit.author.date).toLocaleDateString(),
           dateStamp: new Date(commit.author.date).toLocaleTimeString(),
+          url: comments_url,
         })))
-        .do(items => console.log('do log items 2', items))
         .map(creators.listCommitsFullfilled)
     ))
 );

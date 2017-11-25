@@ -66,7 +66,8 @@ class GithubRepos extends Component {
                       }
                       <ListCommits
                         apiUrl={repo.commits.slice(0, -6)}
-                        currentKey={i}
+                        username={repo.username}
+                        reponame={repo.repo_name}
                       />
                     </div>
                   ))
