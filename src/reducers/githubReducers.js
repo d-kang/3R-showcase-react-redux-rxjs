@@ -24,12 +24,12 @@ export const fetchUserReducer = (state = initialState.githubUser, action) => {
         isLoading: false,
         error: false,
       };
-    // case types.FETCH_REJECTED:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     error: [action.payload],
-    //   };
+    case types.FETCH_REJECTED:
+      return {
+        ...state,
+        isLoading: false,
+        error: [action.payload],
+      };
     default:
       return state;
   }
