@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import Loader from '../ui/Loader';
+import ListRepos from './ListRepos';
 
 const styling = {
   flexContainer: {
@@ -50,7 +51,7 @@ class GithubRepos extends Component {
           repo.description
             && <div>Repo Description: {repo.description}</div>
         }
-        <div>Repo Commits: {repo.commits.slice(0, -6)}</div>
+        <ListRepos api_url={repo.commits} />
       </div>
     ))
     return (
