@@ -7,7 +7,7 @@
  */
 import React, { Component } from 'react';
 
-class GithubList extends Component {
+class GithubUserList extends Component {
   render() {
     const { fetchUserResponse } = this.props;
     return (
@@ -36,4 +36,4 @@ class GithubList extends Component {
 
 
 
-export default GithubList;
+export default GithubUserList;

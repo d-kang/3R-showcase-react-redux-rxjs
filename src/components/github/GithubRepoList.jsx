@@ -32,7 +32,7 @@ const styling = {
   },
 };
 
-class GithubRepos extends Component {
+class GithubRepoList extends Component {
   fetchAction = (val) => {
     this.props.fetchRepoAction(val);
   }
@@ -88,4 +88,4 @@ const mapState = state => ({
   value: state.fetchRepoReducer.value,
 });
 
-export default connect(mapState, { fetchRepoAction })(GithubRepos);
+export default connect(mapState, { fetchRepoAction })(GithubRepoList);

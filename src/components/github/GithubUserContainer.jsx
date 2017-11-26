@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from '../ui/Loader';
-import GithubList from './GithubList';
+import GithubUserList from './GithubUserList';
 import TextInput from '../ui/TextInput';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
@@ -31,7 +31,7 @@ const styling = {
   },
 };
 
-class SimpleAjaxRx extends Component {
+class GithubUserContainer extends Component {
 
   render() {
     const {
@@ -58,7 +58,7 @@ class SimpleAjaxRx extends Component {
         {
           error ? <div>{error[0].response.message} </div>
             : <div style={styling.flexContainer}>
-                <GithubList
+                <GithubUserList
                   fetchUserResponse={fetchUserResponse}
                 />
               </div>
@@ -78,4 +78,4 @@ const mapState = state => ({
   logger: console.log('state', state),
 });
 
-export default connect(mapState, { fetchUserAction, fetchUserCancelled })(SimpleAjaxRx);
+export default connect(mapState, { fetchUserAction, fetchUserCancelled })(GithubUserContainer);

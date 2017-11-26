@@ -9,6 +9,7 @@ const CommitList = ({ response, apiUrl, username, reponame, isLoading }) => (
       apiUrl={apiUrl}
       username={username}
       reponame={reponame}
+      isLoading={isLoading}
     />
   ))
 );

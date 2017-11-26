@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PaperUi from '../ui/Paper';
-
+import Loader from '../ui/Loader';
 class CommitItem extends Component {
   render() {
     const {
@@ -11,6 +11,7 @@ class CommitItem extends Component {
       url,
       username,
       reponame,
+      isLoading,
     } = this.props;
     return (
       url.startsWith(`https://api.github.com/repos/${username}/${reponame}`)

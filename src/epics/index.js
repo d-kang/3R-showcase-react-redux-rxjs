@@ -53,7 +53,7 @@ const fetchRepoEpic = action$ => (
   action$.ofType(types.FETCH_REPO)
     .map(({ value }) => value)
     .mergeMap(value => (
-      ajax.getJSON(`https://api.github.com/search/repositories?q=user:${value}+sort:updated?per_page=100`)
+      ajax.getJSON(`https://api.github.com/search/repositories?q=user:${value}+sort:updated`)
         .map(response => response.items.map(repo => ({
           repo_name: repo.name,
           username: repo.owner.login,

@@ -12,8 +12,8 @@ import {
 import App from './App';
 import PingObservable from './ping/PingObservable';
 import BeepObservable from './ping/BeepObservable';
-import Github from './github/Github';
-import GithubRepos from './github/GithubRepos';
+import GithubUserContainer from './github/GithubUserContainer';
+import GithubRepoList from './github/GithubRepoList';
 import MyDrawer from './ui/MyDrawer';
 import YoutubeSearch from './youtube/YoutubeSearch';
 
@@ -25,8 +25,8 @@ const Main = () => (
       <Route exact path='/' component={App} />
       <Route exact path="/pinging" component={PingObservable} />
       <Route exact path="/beeping" component={BeepObservable} />
-      <Route exact path="/github" component={Github} />
-      <Route exact path="/repos" component={GithubRepos} />
+      <Route exact path="/github" component={GithubUserContainer} />
+      <Route exact path="/repos" component={GithubRepoList} />
       <Route exact path="/youtube" component={YoutubeSearch} />
     </Switch>
   </div>
