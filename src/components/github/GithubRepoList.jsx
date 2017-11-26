@@ -6,7 +6,7 @@
 
 import React from 'react';
 import Loader from '../ui/Loader';
-import CommitsContainer from './CommitsContainer';
+import GithubRepo from './GithubRepo';
 
 const GithubRepoList = ({ isLoading, fetchRepoResponse }) => (
   isLoading
@@ -17,22 +17,13 @@ const GithubRepoList = ({ isLoading, fetchRepoResponse }) => (
           <div>Username: {fetchRepoResponse[0].username}</div>
           {
             fetchRepoResponse.map((repo, i) => (
-              <div key={i}>
-                <hr/>
-                <div>Repo Name: {repo.repo_name}</div>
-                <div>Repo URL: {repo.repo_url}</div>
-                {
-                  repo.description
-                    && <div>Repo Description: {repo.description}</div>
-                }
-                <CommitsContainer
-                  apiUrl={repo.commits.slice(0, -6)}
-                  username={repo.username}
-                  reponame={repo.repo_name}
-                />
-              </div>
+              <GithubRepo
+                key={i}
+                repo={repo}
+              />
             ))
           }
+
       </div>
 );
 
