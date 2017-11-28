@@ -63,6 +63,7 @@ const fetchRepoEpic = action$ => (
           commits: repo.commits_url,
         })))
         .map(creators.fetchRepoFullfilled)
+        .catch(err => Observable.of(creators.fetchRejected(err)))
     ))
 );
 
