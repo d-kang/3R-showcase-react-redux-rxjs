@@ -31,7 +31,16 @@ const styling = {
   },
 };
 
-class GithubUserContainer extends React.Component {
+interface PropTypes {
+  error: boolean,
+  fetchUserAction: any,
+  value: string,
+  fetchUserResponse: object[],
+  isLoading: boolean,
+  fetchUserCancelled: any,
+}
+
+class GithubUserContainer extends React.Component<PropTypes> {
 
   render() {
     const {
