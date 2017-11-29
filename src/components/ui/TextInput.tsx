@@ -1,8 +1,6 @@
 /**
- * @Author: wiz
  * @Date:   11.13.2017 04:15pm
  * @Filename: GithubTextInput.jsx
- * @Last modified by:   wiz
  * @Last modified time: 11.15.2017 01:05pm
  */
 

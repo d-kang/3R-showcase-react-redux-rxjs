@@ -1,8 +1,6 @@
 /**
- * @Author: wiz
  * @Date:   11.13.2017 01:22pm
  * @Filename: MyList.jsx
- * @Last modified by:   wiz
  * @Last modified time: 11.18.2017 10:03am
  */
 
