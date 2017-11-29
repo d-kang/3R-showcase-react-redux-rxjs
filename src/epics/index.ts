@@ -9,6 +9,7 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs';
 import * as types from '../actions/actionTypes';
 import * as creators from '../actions';
+import 'rxjs/add/operator/map';
 
 const headers = {
   Accept: 'application/json, text/plain, */*',

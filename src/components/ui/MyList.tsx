@@ -11,7 +11,12 @@ import {
 import Folder from 'material-ui/svg-icons/file/folder';
 import MyListItem from './MyListItem';
 
-class MyList extends React.Component {
+
+interface PropTypes {
+  clicked: any,
+}
+
+class MyList extends React.Component<PropTypes> {
   listItems = [
     {
       route: '/pinging',

@@ -22,8 +22,12 @@ const style = {
   margin: 12,
 };
 
+interface PropTypes {
+  fetchUserAction: any,
+  label: string,
+}
 
-class TextInput extends React.Component {
+class TextInput extends React.Component<PropTypes> {
   state = {
     value: '',
   }
@@ -35,7 +39,8 @@ class TextInput extends React.Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.fetchUserAction(this.state.value);
+    const { fetchUserAction  } = this.props;
+    fetchUserAction(this.state.value);
     this.setState({ value: '' });
   }
   render() {

@@ -18,10 +18,21 @@ import {
 import Folder from 'material-ui/svg-icons/file/folder';
 import { Link } from 'react-router-dom';
 
+interface PropTypes {
+  route: any, 
+  clicked: any, 
+  primaryText: any, 
+  leftIcon: any,
+}
 
-class MyListItem extends React.Component {
+class MyListItem extends React.Component<PropTypes> {
   render() {
-    const {route, clicked, primaryText, leftIcon} = this.props
+    const {
+      route, 
+      clicked, 
+      primaryText, 
+      leftIcon,
+    } = this.props
     return (
       <Link to={route}>
         <ListItem

@@ -1,6 +1,15 @@
 import * as React from "react";
 
-class VideoItem extends React.Component {
+interface PropTypes {
+  snippet: Object, 
+  id: string, 
+  setCurrentVideo: void, 
+  myKey: number, 
+  currentKey: number,
+
+}
+
+class VideoItem extends React.Component<PropTypes> {
   setToPlay = () => {
     this.props.setCurrentVideo(this.props.id.videoId, this.props.myKey);
   }

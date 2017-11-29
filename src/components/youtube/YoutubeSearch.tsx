@@ -12,6 +12,12 @@ import Loader from '../ui/Loader';
 import VideoList from './VideoList';
 import TextInput from '../ui/TextInput';
 
+interface PropTypes {
+  fetchYoutubeResponse: object[],
+  isLoading: boolean,
+  fetchYoutube: void,
+}
+
 const styles = {
   flexContainer: {
     display: 'flex',
@@ -24,28 +30,21 @@ const styles = {
   },
 };
 
-class YoutubeSearch extends React.Component {
+class YoutubeSearch extends React.Component<PropTypes> {
   state = {
-    currentVideo: 'AQBh9soLSkI',
-    currentKey: null,
-  }
+    currentVideo: "AQBh9soLSkI",
+    currentKey: null
+  };
   setCurrentVideo = (currentVideo, currentKey) => {
     // setTimeout(() =>   this.setState({ currentVideo, currentKey }), 10000)
     this.setState({ currentVideo, currentKey });
-  }
+  };
   render() {
-    const {
-      fetchYoutubeResponse,
-      isLoading,
-      fetchYoutube
-    } = this.props;
+    const { fetchYoutubeResponse, isLoading, fetchYoutube } = this.props;
     return (
       <div>
         <Loader isLoading={isLoading} />
-        <TextInput
-          fetchUserAction={fetchYoutube}
-          label="Search Youtube"
-        />
+        <TextInput fetchUserAction={fetchYoutube} label="Search Youtube" />
         <VideoPlayer currentVideo={this.state.currentVideo} />
         <div style={styles.flexContainer}>
           <VideoList
