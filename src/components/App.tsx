@@ -4,11 +4,11 @@
  * @Last modified time: 11.15.2017 08:39pm
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class App extends Component {
+class App extends React.Component {
   state = {
     hasError: false,
   }

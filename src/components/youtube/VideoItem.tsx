@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import * as React from "react";
 
-class VideoItem extends Component {
+class VideoItem extends React.Component {
   setToPlay = () => {
     this.props.setCurrentVideo(this.props.id.videoId, this.props.myKey);
   }

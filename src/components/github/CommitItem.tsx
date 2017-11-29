@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from "react";
 import PaperUi from '../ui/Paper';
 import Loader from '../ui/Loader';
-class CommitItem extends Component {
+class CommitItem extends React.Component {
   render() {
     const {
       dateStamp,

@@ -4,7 +4,7 @@
  * @Last modified time: 11.15.2017 01:05pm
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import {
   MuiThemeProvider,
   TextField,
@@ -23,7 +23,7 @@ const style = {
 };
 
 
-class TextInput extends Component {
+class TextInput extends React.Component {
   state = {
     value: '',
   }

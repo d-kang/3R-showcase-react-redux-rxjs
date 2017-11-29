@@ -4,14 +4,14 @@
  * @Last modified time: 11.18.2017 10:03am
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import {
   List,
 } from 'material-ui';
 import Folder from 'material-ui/svg-icons/file/folder';
 import MyListItem from './MyListItem';
 
-class MyList extends Component {
+class MyList extends React.Component {
   listItems = [
     {
       route: '/pinging',

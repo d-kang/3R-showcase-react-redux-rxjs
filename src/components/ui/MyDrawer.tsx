@@ -4,7 +4,7 @@
  * @Last modified time: 11.13.2017 04:25pm
  */
 
-import React from 'react';
+import * as React from "react";
 import {
   MuiThemeProvider as MuiContainer,
   Drawer,

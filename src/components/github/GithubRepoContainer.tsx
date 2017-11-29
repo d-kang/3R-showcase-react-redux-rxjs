@@ -4,13 +4,13 @@
  * @Last modified time: 11.16.2017 02:56pm
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import GithubRepoList from './GithubRepoList';
 
-class GithubRepoContainer extends Component {
+class GithubRepoContainer extends React.Component {
   fetchAction = (val) => {
     this.props.fetchRepoAction(val);
   }

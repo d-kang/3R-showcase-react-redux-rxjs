@@ -1,4 +1,4 @@
-import youTubeSampleData from '../data/data.tsx';
+import youTubeSampleData from '../data/data2';
 console.log('youTubeSampleData', youTubeSampleData);
 
 const initialState = {

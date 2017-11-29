@@ -4,7 +4,7 @@
  * @Last modified time: 11.18.2017 11:48am
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import { fetchYoutube } from '../../actions';
 import VideoPlayer from './VideoPlayer';
@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-class YoutubeSearch extends Component {
+class YoutubeSearch extends React.Component {
   state = {
     currentVideo: 'AQBh9soLSkI',
     currentKey: null,

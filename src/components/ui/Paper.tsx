@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from "react";
 import { MuiThemeProvider, Paper } from 'material-ui';
 
 const style = {

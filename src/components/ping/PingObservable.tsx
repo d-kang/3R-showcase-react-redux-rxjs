@@ -4,7 +4,7 @@
  * @Last modified time: 11.15.2017 09:08pm
  */
 
-import React from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ping } from '../../actions';

@@ -4,7 +4,7 @@
  * @Last modified time: 11.16.2017 02:56pm
  */
 
-import React from 'react';
+import * as React from "react";
 import Loader from '../ui/Loader';
 import GithubRepo from './GithubRepo';
 

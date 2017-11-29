@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react";
 import VideoItem from './VideoItem';
 export default ({ response, setCurrentVideo, currentVideoId, setCurrentKey, currentKey }) => (
   response.map((props, i) => (
