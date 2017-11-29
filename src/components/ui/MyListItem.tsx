@@ -5,7 +5,7 @@
  */
 
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   MuiThemeProvider,
   Drawer,
@@ -19,7 +19,7 @@ import Folder from 'material-ui/svg-icons/file/folder';
 import { Link } from 'react-router-dom';
 
 
-class MyListItem extends React.Component {
+class MyListItem extends Component {
   render() {
     const {route, clicked, primaryText, leftIcon} = this.props
     return (

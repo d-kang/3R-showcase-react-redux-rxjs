@@ -1,4 +1,5 @@
-import youTubeSampleData from '../data/data.json';
+import youTubeSampleData from '../data/data.tsx';
+console.log('youTubeSampleData', youTubeSampleData);
 
 const initialState = {
   ping: {

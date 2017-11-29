@@ -39,11 +39,11 @@ const store = createStore(
 // }
 
 
-if (module.hot) {
-  module.hot.accept('../reducers', (...args) => {
-    store.replaceReducer(require('../reducers/index').default)
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('../reducers', (...args) => {
+//     store.replaceReducer(require('../reducers/index').default)
+//   });
+// }
 
 export default store;
 
