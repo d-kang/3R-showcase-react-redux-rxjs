@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import { initialState } from './initialState';
 
-export const fetchYoutubeReducer = (state = initialState.youtube, action: object) => {
+export const fetchYoutubeReducer = (state = initialState.youtube, action: { type: string, payload: object[] }) => {
   switch (action.type) {
     case types.FETCH_YOUTUBE:
       return {

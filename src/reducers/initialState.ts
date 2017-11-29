@@ -2,38 +2,38 @@ import youTubeSampleData from '../data/data2';
 console.log('youTubeSampleData', youTubeSampleData);
 
 
-interface initialStateMap {
+interface InitialStateMap {
   ping: {
-    isPinging: false,
+    isPinging: boolean,
   },
   beep: {
-    isBeeping: false,
-    someArr: [1, 2, 3, 4, 5],
+    isBeeping: boolean,
+    someArr: number[],
   },
   githubUser: {
-    isLoading: false,
-    value: '',
-    fetchUserResponse: any[],
-    error: false,
+    isLoading: boolean,
+    value: string,
+    fetchUserResponse: object[],
+    error: boolean,
   },
   githubRepos: {
-    isLoading: false,
-    value: '',
-    fetchRepoResponse: any[],
+    isLoading: boolean,
+    value: string,
+    fetchRepoResponse: object[],
   },
   listCommits: {
-    isLoading: false,
-    value: '',
-    response: any[],
+    isLoading: boolean,
+    value: string,
+    response: object[],
   },
   youtube: {
-    isLoading: false,
-    value: '',
-    fetchYoutubeResponse: any[...youTubeSampleData.items],
+    isLoading: boolean,
+    value: string,
+    fetchYoutubeResponse: object[],
   },
 };
 
-export const initialState: initialStateMap = {
+export const initialState: InitialStateMap = {
   ping: {
     isPinging: false,
   },
