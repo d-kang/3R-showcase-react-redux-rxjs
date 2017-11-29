@@ -1,8 +1,6 @@
 /**
- * @Author: wiz
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
- * @Last modified by:   wiz
  * @Last modified time: 11.18.2017 10:10am
  */
 
@@ -20,10 +18,10 @@ import epicMiddleware from '../epics';
 export const history = createBrowserHistory();
 
 declare global {
-    interface Window { MyNamespace: any; }
+    interface Window { devToolsExtension: any; }
 }
 
-window.MyNamespace = window.MyNamespace || {};
+window.devToolsExtension = window.devToolsExtension || {};
 
 const store = createStore(
   connectRouter(history)(rootReducer),
