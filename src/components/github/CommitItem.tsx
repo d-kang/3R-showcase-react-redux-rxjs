@@ -1,7 +1,19 @@
 import * as React from "react";
 import PaperUi from '../ui/Paper';
 import Loader from '../ui/Loader';
-class CommitItem extends React.Component {
+
+interface IProps {
+  dateStamp: string,
+  timeStamp: string,
+  message: string,
+  apiUrl: string,
+  url: string,
+  username: string,
+  reponame: string,
+  isLoading: boolean,
+}
+
+class CommitItem extends React.Component<IProps> {
   render() {
     const {
       dateStamp,
@@ -11,20 +23,23 @@ class CommitItem extends React.Component {
       url,
       username,
       reponame,
-      isLoading,
+      isLoading
     } = this.props;
     return (
-      url.startsWith(`https://api.github.com/repos/${username}/${reponame}`)
-      &&  <PaperUi
-            depth={2}
-            children={
-              <div>
-                <div>{message}</div>
-                <div>{`${dateStamp} ${timeStamp}`}</div>
-              </div>
-            }
-          />
-    )
+      url.startsWith(
+        `https://api.github.com/repos/${username}/${reponame}`
+      ) && (
+        <PaperUi
+          depth={2}
+          children={
+            <div>
+              <div>{message}</div>
+              <div>{`${dateStamp} ${timeStamp}`}</div>
+            </div>
+          }
+        />
+      )
+    );
   }
 }
 

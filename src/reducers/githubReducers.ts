@@ -53,7 +53,7 @@ export const fetchRepoReducer = (state = initialState.githubRepos, action: any) 
 };
 
 
-export const listCommitsReducer = (state = initialState.listCommits, action: object) => {
+export const listCommitsReducer = (state = initialState.listCommits, action: { type: string, payload: object[] }) => {
   switch (action.type) {
     case types.LIST_COMMITS:
       return {
