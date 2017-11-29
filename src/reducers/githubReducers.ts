@@ -1,5 +1,5 @@
 import * as types from '../actions/actionTypes';
-import initialState from './initialState';
+import { initialState } from './initialState';
 
 
 export const fetchUserReducer = (state = initialState.githubUser, action: any) => {

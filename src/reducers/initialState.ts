@@ -1,7 +1,7 @@
 import youTubeSampleData from '../data/data2';
 console.log('youTubeSampleData', youTubeSampleData);
 
-const initialState = {
+export interface initialState {
   ping: {
     isPinging: false,
   },
@@ -12,24 +12,24 @@ const initialState = {
   githubUser: {
     isLoading: false,
     value: '',
-    fetchUserResponse: [],
+    fetchUserResponse: any[],
     error: false,
   },
   githubRepos: {
     isLoading: false,
     value: '',
-    fetchRepoResponse: [],
+    fetchRepoResponse: any[],
   },
   listCommits: {
     isLoading: false,
     value: '',
-    response: [],
+    response: any[],
   },
   youtube: {
     isLoading: false,
     value: '',
-    fetchYoutubeResponse: [...youTubeSampleData.items],
+    fetchYoutubeResponse: any[...youTubeSampleData.items],
   },
 };
 
-export default initialState;
+// export default initialState;
