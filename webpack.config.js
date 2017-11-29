@@ -22,24 +22,24 @@ module.exports = {
     publicPath: '/static/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', 'jsx'],
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
-      },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: /(node_modules|bower_components)/,
+      //   use: [
+      //     {
+      //       loader: 'babel-loader',
+      //     },
+      //   ],
+      // },
     ],
   },
   devServer: {

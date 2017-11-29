@@ -3,9 +3,10 @@
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": false,
-    "module": "commonjs",
+    "module": "es6",
     "target": "es6",
-    "jsx": "preserve"
+    "jsx": "react",
+    "types": ["material - ui"]
   },
   "include": [
     "./src/**/*"
