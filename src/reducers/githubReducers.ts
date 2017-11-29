@@ -2,7 +2,7 @@ import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
 
-export const fetchUserReducer = (state = initialState.githubUser, action) => {
+export const fetchUserReducer = (state = initialState.githubUser, action: any) => {
   switch (action.type) {
     case types.FETCH_USER:
       return {
@@ -34,7 +34,7 @@ export const fetchUserReducer = (state = initialState.githubUser, action) => {
   }
 };
 
-export const fetchRepoReducer = (state = initialState.githubRepos, action) => {
+export const fetchRepoReducer = (state = initialState.githubRepos, action: any) => {
   switch (action.type) {
     case types.FETCH_REPO:
       return {
@@ -53,7 +53,7 @@ export const fetchRepoReducer = (state = initialState.githubRepos, action) => {
 };
 
 
-export const listCommitsReducer = (state = initialState.listCommits, action) => {
+export const listCommitsReducer = (state = initialState.listCommits, action: object) => {
   switch (action.type) {
     case types.LIST_COMMITS:
       return {

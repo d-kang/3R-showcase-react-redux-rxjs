@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export const pingReducer = (state = initialState.ping, action) => {
+export const pingReducer = (state = initialState.ping, action: object) => {
   switch (action.type) {
     case types.PING:
       return { isPinging: true };
@@ -13,7 +13,7 @@ export const pingReducer = (state = initialState.ping, action) => {
 };
 
 
-export const beepReducer = (state = initialState.beep, action) => {
+export const beepReducer = (state = initialState.beep, action: object) => {
   switch (action.type) {
     case types.BEEP:
       return {
