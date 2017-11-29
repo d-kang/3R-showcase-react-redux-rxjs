@@ -7,7 +7,6 @@
 
 import * as React from "react";
 import {
-  MuiThemeProvider,
   Drawer,
   AppBar,
   RaisedButton,
@@ -19,18 +18,18 @@ import Folder from 'material-ui/svg-icons/file/folder';
 import { Link } from 'react-router-dom';
 
 interface PropTypes {
-  route: any, 
-  clicked: any, 
-  primaryText: any, 
+  route: any,
+  clicked: any,
+  primaryText: any,
   leftIcon: any,
 }
 
 class MyListItem extends React.Component<PropTypes> {
   render() {
     const {
-      route, 
-      clicked, 
-      primaryText, 
+      route,
+      clicked,
+      primaryText,
       leftIcon,
     } = this.props
     return (

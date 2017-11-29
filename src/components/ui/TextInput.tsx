@@ -5,8 +5,8 @@
  */
 
 import * as React from "react";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
-  MuiThemeProvider,
   TextField,
 } from 'material-ui';
 import {
@@ -46,7 +46,7 @@ class TextInput extends React.Component<PropTypes> {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <MuiThemeProvider>
+        <MuiThemeProvider >
           <div>
             <TextField
               border='10px'

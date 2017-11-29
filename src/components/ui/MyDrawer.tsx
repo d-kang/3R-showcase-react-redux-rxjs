@@ -5,8 +5,9 @@
  */
 
 import * as React from "react";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {
-  MuiThemeProvider as MuiContainer,
   Drawer,
   AppBar,
   RaisedButton,
@@ -34,7 +35,7 @@ class MyDrawer extends React.Component {
 
   render() {
     return (
-      <MuiContainer>
+      <MuiThemeProvider>
         <div>
           <RaisedButton
             style={this.styling.raised}
@@ -51,7 +52,7 @@ class MyDrawer extends React.Component {
             <Divider />
           </Drawer>
         </div>
-      </MuiContainer>
+      </MuiThemeProvider>
     );
   }
 }

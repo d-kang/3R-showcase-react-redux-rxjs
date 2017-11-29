@@ -1,5 +1,7 @@
 import * as React from "react";
-import { CircularProgress, MuiThemeProvider } from 'material-ui';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { CircularProgress } from 'material-ui';
 
 export default ({ isLoading }) => (
   isLoading &&
