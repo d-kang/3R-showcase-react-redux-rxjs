@@ -10,7 +10,8 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 // const fs = require('fs');
 
 module.exports = {
-  devtool: 'cheap-eval-source-map',
+  devtool: 'source-map',
+  // devtool: 'cheap-eval-source-map',
   entry: [
     // 'webpack-hot-middleware/client',
     './src/index.tsx',

@@ -19,6 +19,12 @@ import epicMiddleware from '../epics';
 
 export const history = createBrowserHistory();
 
+declare global {
+    interface Window { MyNamespace: any; }
+}
+
+window.MyNamespace = window.MyNamespace || {};
+
 const store = createStore(
   connectRouter(history)(rootReducer),
   compose(
