@@ -32,9 +32,13 @@
     "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
     "morgan": "^1.9.0",
-    "react-test-renderer": "^16.0.0"
+    "react-test-renderer": "^16.0.0",
+    "ts-loader": "^3.1.1",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
+    "@types/react": "^16.0.25",
+    "@types/react-dom": "^16.0.3",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
     "connected-react-router": "^4.2.3",
