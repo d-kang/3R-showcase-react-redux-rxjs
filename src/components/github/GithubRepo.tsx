@@ -1,7 +1,7 @@
 import * as React from "react";
 import CommitsContainer from './CommitsContainer';
 
-class GithubRepo extends React.Component {
+class GithubRepo extends React.Component<any, any> {
 
   render() {
     const { repo } = this.props;

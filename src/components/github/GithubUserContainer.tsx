@@ -11,7 +11,7 @@ import GithubUserList from './GithubUserList';
 import TextInput from '../ui/TextInput';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
-const styling = {
+const styling: any = {
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',

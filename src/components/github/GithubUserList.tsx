@@ -7,7 +7,7 @@
  */
 import * as React from "react";
 
-class GithubUserList extends React.Component {
+class GithubUserList extends React.Component<any, any> {
   render() {
     const { fetchUserResponse } = this.props;
     return (

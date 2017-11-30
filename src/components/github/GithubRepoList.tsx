@@ -16,7 +16,7 @@ const GithubRepoList = ({ isLoading, fetchRepoResponse }) => (
           <div><img src={fetchRepoResponse[0].avatar + '&s=88'} alt=""/></div>
           <div>Username: {fetchRepoResponse[0].username}</div>
           {
-            fetchRepoResponse.map((repo, i) => (
+            fetchRepoResponse.map((repo: any, i) => (
               <GithubRepo
                 key={i}
                 repo={repo}

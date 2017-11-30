@@ -10,7 +10,7 @@ import TextInput from '../ui/TextInput';
 import { fetchRepoAction } from '../../actions';
 import GithubRepoList from './GithubRepoList';
 
-class GithubRepoContainer extends React.Component {
+class GithubRepoContainer extends React.Component<any, any> {
   fetchAction = (val) => {
     this.props.fetchRepoAction(val);
   }

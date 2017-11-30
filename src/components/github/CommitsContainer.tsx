@@ -29,7 +29,7 @@ const styling = {
   },
 };
 
-class CommitsContainer extends React.Component {
+class CommitsContainer extends React.Component<any, any> {
   foo = () => {
     this.props.listCommits(this.props.apiUrl);
   }
