@@ -1,7 +1,7 @@
 /**
  * @Date:   11.13.2017 01:02pm
  * @Filename: epics.js
- * @Last modified time: 11.18.2017 10:09am
+ * @Last modified time: 11.29.2017 04:20pm
  */
 
 import { createEpicMiddleware, combineEpics } from 'redux-observable';
@@ -9,6 +9,7 @@ import { ajax } from 'rxjs/observable/dom/ajax';
 import { Observable } from 'rxjs';
 import * as types from '../actions/actionTypes';
 import * as creators from '../actions';
+import 'rxjs/add/operator/map';
 
 const headers = {
   Accept: 'application/json, text/plain, */*',
@@ -54,7 +55,7 @@ const fetchRepoEpic = action$ => (
     .map(({ value }) => value)
     .mergeMap(value => (
       ajax.getJSON(`https://api.github.com/search/repositories?q=user:${value}+sort:updated`)
-        .map(response => response.items.map(repo => ({
+        .map((response: any) => response.items.map(repo => ({
           repo_name: repo.name,
           username: repo.owner.login,
           avatar: repo.owner.avatar_url,
@@ -71,7 +72,7 @@ const listCommitsEpic = action$ => (
   action$.ofType(types.LIST_COMMITS)
     .mergeMap(({ apiUrl }) => (
       ajax.getJSON(`${apiUrl}?per_page=100`)
-        .map(response => response.map(({ commit, comments_url }) => ({
+        .map((response: any[]) => response.map(({ commit, comments_url }) => ({
           message: commit.message,
           timeStamp: new Date(commit.author.date).toLocaleDateString(),
           dateStamp: new Date(commit.author.date).toLocaleTimeString(),

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from "react";
 import CommitItem from './CommitItem';
 
 const CommitList = ({ response, apiUrl, username, reponame, isLoading }) => (

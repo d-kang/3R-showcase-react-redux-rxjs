@@ -4,7 +4,7 @@
  * @Last modified time: 11.18.2017 10:04am
  */
 
-import React from 'react';
+import * as React from "react";
 import {
   Route,
   Switch,

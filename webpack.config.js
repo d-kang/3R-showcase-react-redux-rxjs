@@ -10,10 +10,11 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 // const fs = require('fs');
 
 module.exports = {
-  devtool: 'cheap-eval-source-map',
+  devtool: 'source-map',
+  // devtool: 'cheap-eval-source-map',
   entry: [
     // 'webpack-hot-middleware/client',
-    './src/index.jsx',
+    './src/index.tsx',
   ],
   output: {
     path: pathToBundle,
@@ -21,24 +22,24 @@ module.exports = {
     publicPath: '/static/',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.json', 'jsx'],
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
-      },
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: /(node_modules|bower_components)/,
+      //   use: [
+      //     {
+      //       loader: 'babel-loader',
+      //     },
+      //   ],
+      // },
     ],
   },
   devServer: {

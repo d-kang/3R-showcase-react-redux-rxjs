@@ -1,8 +1,6 @@
 /**
- * @Author: wiz
  * @Date:   11.12.2017 02:28pm
  * @Filename: store.js
- * @Last modified by:   wiz
  * @Last modified time: 11.18.2017 10:10am
  */
 
@@ -18,6 +16,12 @@ import rootReducer from '../reducers';
 import epicMiddleware from '../epics';
 
 export const history = createBrowserHistory();
+
+declare global {
+    interface Window { devToolsExtension: any; }
+}
+
+window.devToolsExtension = window.devToolsExtension || {};
 
 const store = createStore(
   connectRouter(history)(rootReducer),
@@ -39,11 +43,11 @@ const store = createStore(
 // }
 
 
-if (module.hot) {
-  module.hot.accept('../reducers', (...args) => {
-    store.replaceReducer(require('../reducers/index').default)
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('../reducers', (...args) => {
+//     store.replaceReducer(require('../reducers/index').default)
+//   });
+// }
 
 export default store;
 

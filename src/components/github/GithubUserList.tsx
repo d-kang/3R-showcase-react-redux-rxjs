@@ -5,9 +5,9 @@
  * @Last modified by:   wiz
  * @Last modified time: 11.15.2017 01:34pm
  */
-import React, { Component } from 'react';
+import * as React from "react";
 
-class GithubUserList extends Component {
+class GithubUserList extends React.Component<any, any> {
   render() {
     const { fetchUserResponse } = this.props;
     return (

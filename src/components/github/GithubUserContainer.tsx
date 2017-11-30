@@ -4,14 +4,14 @@
  * @Last modified time: 11.18.2017 10:09am
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import Loader from '../ui/Loader';
 import GithubUserList from './GithubUserList';
 import TextInput from '../ui/TextInput';
 import { fetchUserAction, fetchUserCancelled } from '../../actions';
 
-const styling = {
+const styling: any = {
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -31,7 +31,16 @@ const styling = {
   },
 };
 
-class GithubUserContainer extends Component {
+interface PropTypes {
+  error: boolean,
+  fetchUserAction: any,
+  value: string,
+  fetchUserResponse: object[],
+  isLoading: boolean,
+  fetchUserCancelled: any,
+}
+
+class GithubUserContainer extends React.Component<PropTypes> {
 
   render() {
     const {

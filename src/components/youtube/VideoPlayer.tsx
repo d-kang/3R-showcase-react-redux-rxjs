@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from "react";
 
-export default ({ currentVideo }) => (
+export default ({ currentVideo } : { currentVideo: string }) => (
   <iframe
     width="854"
     height="510"

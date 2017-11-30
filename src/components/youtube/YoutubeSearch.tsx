@@ -4,7 +4,7 @@
  * @Last modified time: 11.18.2017 11:48am
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import { fetchYoutube } from '../../actions';
 import VideoPlayer from './VideoPlayer';
@@ -12,7 +12,19 @@ import Loader from '../ui/Loader';
 import VideoList from './VideoList';
 import TextInput from '../ui/TextInput';
 
-const styles = {
+interface PropTypes {
+  fetchYoutubeResponse: any[],
+  isLoading: boolean,
+  fetchYoutube: void,
+}
+
+interface StateTypes {
+  currentVideo: any,
+  currentKey: any,
+}
+
+
+const styles:any = {
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -24,36 +36,30 @@ const styles = {
   },
 };
 
-class YoutubeSearch extends Component {
+class YoutubeSearch extends React.Component<PropTypes, StateTypes> {
   state = {
-    currentVideo: 'AQBh9soLSkI',
+    currentVideo: "AQBh9soLSkI",
     currentKey: null,
-  }
+  };
   setCurrentVideo = (currentVideo, currentKey) => {
     // setTimeout(() =>   this.setState({ currentVideo, currentKey }), 10000)
     this.setState({ currentVideo, currentKey });
-  }
+  };
   render() {
-    const {
-      fetchYoutubeResponse,
-      isLoading,
-      fetchYoutube
-    } = this.props;
+    const { fetchYoutubeResponse, isLoading, fetchYoutube } = this.props;
+    const { currentVideo, currentKey } = this.state;
+    const { setCurrentVideo } = this;
     return (
       <div>
         <Loader isLoading={isLoading} />
-        <TextInput
-          fetchUserAction={fetchYoutube}
-          label="Search Youtube"
-        />
-        <VideoPlayer currentVideo={this.state.currentVideo} />
+        <TextInput fetchUserAction={fetchYoutube} label="Search Youtube" />
+        <VideoPlayer currentVideo={currentVideo} />
         <div style={styles.flexContainer}>
           <VideoList
-            currentVideoId={this.state.currentVideo}
+            currentVideoId={currentVideo}
             response={fetchYoutubeResponse}
-            setCurrentVideo={this.setCurrentVideo}
-            setCurrentKey={this.setCurrentKey}
-            currentKey={this.state.currentKey}
+            setCurrentVideo={setCurrentVideo}
+            currentKey={currentKey}
           />
         </div>
       </div>
@@ -65,8 +71,8 @@ class YoutubeSearch extends Component {
 const mapState = ({ fetchYoutubeReducer: reducer }) => ({
   fetchYoutubeResponse: reducer.fetchYoutubeResponse,
   isLoading: reducer.isLoading,
-  currentVideo: reducer.currentVideo,
-  currentKey: reducer.currentKey,
+  // currentVideo: reducer.currentVideo,
+  // currentKey: reducer.currentKey,
 });
 
 

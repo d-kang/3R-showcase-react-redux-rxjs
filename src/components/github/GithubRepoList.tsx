@@ -4,7 +4,7 @@
  * @Last modified time: 11.16.2017 02:56pm
  */
 
-import React from 'react';
+import * as React from "react";
 import Loader from '../ui/Loader';
 import GithubRepo from './GithubRepo';
 
@@ -16,7 +16,7 @@ const GithubRepoList = ({ isLoading, fetchRepoResponse }) => (
           <div><img src={fetchRepoResponse[0].avatar + '&s=88'} alt=""/></div>
           <div>Username: {fetchRepoResponse[0].username}</div>
           {
-            fetchRepoResponse.map((repo, i) => (
+            fetchRepoResponse.map((repo: any, i) => (
               <GithubRepo
                 key={i}
                 repo={repo}

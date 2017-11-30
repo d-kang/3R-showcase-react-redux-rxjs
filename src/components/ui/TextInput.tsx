@@ -1,16 +1,12 @@
 /**
- * @Author: wiz
  * @Date:   11.13.2017 04:15pm
  * @Filename: GithubTextInput.jsx
- * @Last modified by:   wiz
  * @Last modified time: 11.15.2017 01:05pm
  */
 
-import React, { Component } from 'react';
-import {
-  MuiThemeProvider,
-  TextField,
-} from 'material-ui';
+import * as React from "react";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TextField from 'material-ui/TextField';
 import {
   orange500,
   blue500,
@@ -24,8 +20,12 @@ const style = {
   margin: 12,
 };
 
+interface PropTypes {
+  fetchUserAction: any,
+  label: string,
+}
 
-class TextInput extends Component {
+class TextInput extends React.Component<PropTypes> {
   state = {
     value: '',
   }
@@ -37,16 +37,16 @@ class TextInput extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.fetchUserAction(this.state.value);
+    const { fetchUserAction  } = this.props;
+    fetchUserAction(this.state.value);
     this.setState({ value: '' });
   }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <MuiThemeProvider>
+        <MuiThemeProvider >
           <div>
             <TextField
-              border='10px'
               hintStyle={styling.errorStyle}
               onChange={this.handleChange}
               floatingLabelText={this.props.label}

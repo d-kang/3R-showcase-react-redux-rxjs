@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import { MuiThemeProvider, Paper } from 'material-ui';
+import * as React from "react";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import Paper from 'material-ui/paper';
 
 const style = {
   height: 'inherit',
@@ -11,7 +14,7 @@ const style = {
 };
 
 const PaperUi = ({ children, depth }) => (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
     <Paper
       style={style}
       zDepth={depth}

@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "sourceMap": true,
-    "module": "commonjs",
-    "target": "es5",
-    "jsx": "react"
+    "noImplicitAny": false,
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "lib": ["dom", "es2015"],
+    "allowJs": true,
   },
   "include": [
-    "src"
+    "./src/**/*"
   ],
-  "compileOnSave": false
+  "exclude": [
+    "node_modules"
+  ]
 }

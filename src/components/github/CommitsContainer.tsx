@@ -4,7 +4,7 @@
  * @Last modified time: 11.16.2017 02:56pm
  */
 
-import React, { Component } from 'react';
+import * as React from "react";
 import { connect } from 'react-redux';
 import { listCommits } from '../../actions';
 import CommitList from './CommitList';
@@ -29,7 +29,7 @@ const styling = {
   },
 };
 
-class CommitsContainer extends Component {
+class CommitsContainer extends React.Component<any, any> {
   foo = () => {
     this.props.listCommits(this.props.apiUrl);
   }
