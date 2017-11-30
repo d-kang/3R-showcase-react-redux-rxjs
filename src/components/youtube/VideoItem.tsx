@@ -9,7 +9,7 @@ interface PropTypes {
 
 }
 
-class VideoItem extends React.Component<PropTypes> {
+class VideoItem extends React.Component<any, any> {
   setToPlay = () => {
     this.props.setCurrentVideo(this.props.id.videoId, this.props.myKey);
   }

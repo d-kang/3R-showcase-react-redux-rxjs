@@ -1,7 +1,7 @@
 /**
  * @Date:   11.15.2017 08:19pm
  * @Filename: actionTypes.js
- * @Last modified time: 11.18.2017 10:10am
+ * @Last modified time: 11.29.2017 04:20pm
  */
 
 import * as types from './actionTypes';
@@ -70,7 +70,7 @@ export const listCommits = (apiUrl: string) => ({
   apiUrl,
 });
 
-export const listCommitsFullfilled = (payload: string) => ({
+export const listCommitsFullfilled = (payload: any[]) => ({
   type: types.LIST_COMMITS_FULLFILLED,
   payload,
 });
