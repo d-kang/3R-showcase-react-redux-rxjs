@@ -1,10 +1,10 @@
 import * as React from "react";
 
 interface PropTypes {
-  snippet: Object, 
-  id: string, 
-  setCurrentVideo: void, 
-  myKey: number, 
+  snippet: any,
+  id: any,
+  setCurrentVideo: any,
+  myKey: number,
   currentKey: number,
 
 }

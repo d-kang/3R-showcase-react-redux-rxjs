@@ -1,12 +1,12 @@
 import * as React from "react";
 import VideoItem from './VideoItem';
-export default ({ response, setCurrentVideo, currentVideoId, setCurrentKey, currentKey } : { response: object[], setCurrentVideo: void, currentVideoId: string, setCurrentKey: void, currentKey: void  }) => (
+
+export default ({ response, setCurrentVideo, currentVideoId, currentKey } : { response: any[], setCurrentVideo: any, currentVideoId: string, currentKey: string  }) => (
   response.map((props, i) => (
     <VideoItem
       key={i}
       currentVideoId={currentVideoId}
       setCurrentVideo={setCurrentVideo}
-      setCurrentKey={setCurrentKey}
       currentKey={currentKey}
       myKey={i}
       {...props}

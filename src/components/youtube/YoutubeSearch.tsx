@@ -13,12 +13,18 @@ import VideoList from './VideoList';
 import TextInput from '../ui/TextInput';
 
 interface PropTypes {
-  fetchYoutubeResponse: object[],
+  fetchYoutubeResponse: any[],
   isLoading: boolean,
   fetchYoutube: void,
 }
 
-const styles = {
+interface StateTypes {
+  currentVideo: any,
+  currentKey: any,
+}
+
+
+const styles:any = {
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -30,10 +36,10 @@ const styles = {
   },
 };
 
-class YoutubeSearch extends React.Component<PropTypes> {
+class YoutubeSearch extends React.Component<PropTypes, StateTypes> {
   state = {
     currentVideo: "AQBh9soLSkI",
-    currentKey: null
+    currentKey: null,
   };
   setCurrentVideo = (currentVideo, currentKey) => {
     // setTimeout(() =>   this.setState({ currentVideo, currentKey }), 10000)
@@ -41,18 +47,19 @@ class YoutubeSearch extends React.Component<PropTypes> {
   };
   render() {
     const { fetchYoutubeResponse, isLoading, fetchYoutube } = this.props;
+    const { currentVideo, currentKey } = this.state;
+    const { setCurrentVideo } = this;
     return (
       <div>
         <Loader isLoading={isLoading} />
         <TextInput fetchUserAction={fetchYoutube} label="Search Youtube" />
-        <VideoPlayer currentVideo={this.state.currentVideo} />
+        <VideoPlayer currentVideo={currentVideo} />
         <div style={styles.flexContainer}>
           <VideoList
-            currentVideoId={this.state.currentVideo}
+            currentVideoId={currentVideo}
             response={fetchYoutubeResponse}
-            setCurrentVideo={this.setCurrentVideo}
-            setCurrentKey={this.setCurrentKey}
-            currentKey={this.state.currentKey}
+            setCurrentVideo={setCurrentVideo}
+            currentKey={currentKey}
           />
         </div>
       </div>
@@ -64,8 +71,8 @@ class YoutubeSearch extends React.Component<PropTypes> {
 const mapState = ({ fetchYoutubeReducer: reducer }) => ({
   fetchYoutubeResponse: reducer.fetchYoutubeResponse,
   isLoading: reducer.isLoading,
-  currentVideo: reducer.currentVideo,
-  currentKey: reducer.currentKey,
+  // currentVideo: reducer.currentVideo,
+  // currentKey: reducer.currentKey,
 });
 
 

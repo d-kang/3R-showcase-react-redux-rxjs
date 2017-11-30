@@ -7,9 +7,13 @@
     "target": "es6",
     "moduleResolution": "node",
     "jsx": "react",
+    "lib": ["dom", "es2015"],
+    "allowJs": true,
   },
   "include": [
     "./src/**/*"
   ],
-  "compileOnSave": false
+  "exclude": [
+    "node_modules"
+  ]
 }
