@@ -6,9 +6,7 @@
 
 import * as React from "react";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {
-  TextField,
-} from 'material-ui';
+import TextField from 'material-ui/TextField';
 import {
   orange500,
   blue500,
@@ -49,7 +47,6 @@ class TextInput extends React.Component<PropTypes> {
         <MuiThemeProvider >
           <div>
             <TextField
-              border='10px'
               hintStyle={styling.errorStyle}
               onChange={this.handleChange}
               floatingLabelText={this.props.label}

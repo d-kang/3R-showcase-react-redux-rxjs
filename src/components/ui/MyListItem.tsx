@@ -19,12 +19,11 @@ import { Link } from 'react-router-dom';
 
 interface PropTypes {
   route: any,
-  clicked: any,
   primaryText: any,
   leftIcon: any,
 }
 
-class MyListItem extends React.Component<PropTypes> {
+class MyListItem extends React.Component<any, any> {
   render() {
     const {
       route,
@@ -35,7 +34,6 @@ class MyListItem extends React.Component<PropTypes> {
     return (
       <Link to={route}>
         <ListItem
-          onClick={clicked}
           primaryText={primaryText}
           leftIcon={leftIcon}
         />

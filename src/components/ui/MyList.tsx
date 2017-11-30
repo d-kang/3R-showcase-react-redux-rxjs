@@ -12,11 +12,8 @@ import Folder from 'material-ui/svg-icons/file/folder';
 import MyListItem from './MyListItem';
 
 
-interface PropTypes {
-  clicked: any,
-}
 
-class MyList extends React.Component<PropTypes> {
+class MyList extends React.Component<any, any> {
   listItems = [
     {
       route: '/pinging',
@@ -44,13 +41,12 @@ class MyList extends React.Component<PropTypes> {
     return (
       <List>
         {
-          this.listItems.map(({route, primaryText}, i) => {
+          this.listItems.map(({route, primaryText} : { route: any, primaryText: any}, i) => {
             return (
               <MyListItem
                 key={i}
                 route={route}
                 primaryText={primaryText}
-                clicked={this.clicked}
                 leftIcon={<Folder />}
               />
             )
