@@ -1,7 +1,7 @@
 /**
  * @Date:   11.12.2017 01:25pm
  * @Filename: webpack.config.js
- * @Last modified time: 11.15.2017 08:27am
+ * @Last modified time: 11.29.2017 05:56pm
  */
 const path = require('path');
 const webpack = require('webpack');
