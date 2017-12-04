@@ -3,9 +3,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-const Card = ({ title, img, description }) => (
+const MyCard = ({ title, img, description }) => (
   <MuiThemeProvider>
-    <Card >
+    <Card style={{
+      display: 'block',
+      width: '30vw',
+      transitionDuration: '0.3s',
+      height: '45vw'
+    }}>
       <CardHeader
         title={title}
         subtitle="Subtitle"
@@ -28,4 +33,4 @@ const Card = ({ title, img, description }) => (
   </MuiThemeProvider>
 );
 
-export default Card;
+export default MyCard;
