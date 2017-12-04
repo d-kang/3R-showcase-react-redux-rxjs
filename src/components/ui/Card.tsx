@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
-const MyCard = ({ title, img, description }) => (
+const MyCard = ({ title, img, description, setToPlay }) => (
   <MuiThemeProvider>
     <Card style={{
       display: 'block',
@@ -26,7 +26,7 @@ const MyCard = ({ title, img, description }) => (
         {description}
       </CardText>
       <CardActions>
-        <FlatButton label="Action1" />
+        <FlatButton label="Action1" onClick={setToPlay} />
         <FlatButton label="Action2" />
       </CardActions>
     </Card>

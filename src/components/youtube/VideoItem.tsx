@@ -18,7 +18,12 @@ class VideoItem extends React.Component<any, any> {
     const { snippet, id, setCurrentVideo, myKey, currentKey } = this.props;
     return (
       <div>
-      <Card title={snippet.title} img={snippet.thumbnails.medium.url} description={snippet.description}/>
+      <Card
+        title={snippet.title}
+        img={snippet.thumbnails.medium.url}
+        description={snippet.description}
+        setToPlay={this.setToPlay}
+      />
         <img
           alt={snippet.description}
           onClick={this.setToPlay}
