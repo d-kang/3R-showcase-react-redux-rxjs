@@ -7,9 +7,9 @@ const MyCard = ({ title, subtitle, img, description, setToPlay, action1 }) => (
   <MuiThemeProvider>
     <Card style={{
       display: 'block',
-      width: '30vw',
+      width: '25vw',
       transitionDuration: '0.3s',
-      height: '45vw'
+      height: '10vw'
     }}>
       <CardHeader
         title={title}
@@ -17,6 +17,7 @@ const MyCard = ({ title, subtitle, img, description, setToPlay, action1 }) => (
         avatar={img}
       />
       <CardMedia
+        
         overlay={<CardTitle title={title} subtitle={subtitle} />}
       >
         <img src={img} alt="" />
