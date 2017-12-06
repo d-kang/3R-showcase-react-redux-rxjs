@@ -35,6 +35,10 @@ class MyList extends React.Component<any, any> {
       route: '/youtube',
       primaryText: 'Youtube Search',
     },
+    {
+      route: '/blockchain',
+      primaryText: 'Blockchain Search',
+    },
   ]
 
   render() {
