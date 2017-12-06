@@ -16,6 +16,7 @@ import GithubUserContainer from './github/GithubUserContainer';
 import GithubRepoContainer from './github/GithubRepoContainer';
 import MyDrawer from './ui/MyDrawer';
 import YoutubeSearch from './youtube/YoutubeSearch';
+import BlockChain from './blockChain/BlockChain';
 
 const Main = () => (
   <div>
@@ -28,6 +29,7 @@ const Main = () => (
       <Route exact path="/github" component={GithubUserContainer} />
       <Route exact path="/repos" component={GithubRepoContainer} />
       <Route exact path="/youtube" component={YoutubeSearch} />
+      <Route exact path="/blockchain" component={BlockChain} />
     </Switch>
   </div>
 );
