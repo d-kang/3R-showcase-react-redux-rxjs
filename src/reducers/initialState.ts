@@ -1,6 +1,4 @@
 import youTubeSampleData from '../data/data2';
-console.log('youTubeSampleData', youTubeSampleData);
-
 
 interface InitialStateMap {
   ping: {
