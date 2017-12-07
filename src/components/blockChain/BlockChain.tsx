@@ -14,19 +14,22 @@ class BlockChain extends React.Component {
       .catch(err => (console.log('err', err), err))
   }
   timer = () => {
-
     setInterval(() => {
       console.log('timer ran')
       this.fetchExchangeRates()
-    },1000);
+    },15000);
   }
   render() {
+    const { USD } = this.state.data
     return (
       <div>
         <h1>BlockChain</h1>
         <button
           onClick={this.timer}
-        >Get Data</button>
+        >Update Rates Every Second</button>
+
+        <div>BITCOIN PRICE: ${USD && USD.buy}</div>
+
       </div>
     );
   }
