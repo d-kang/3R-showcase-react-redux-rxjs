@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class BlockChain extends React.Component {
+class BlockChain extends React.Component<any, any> {
   state = {
     data: {},
     holding: 0,

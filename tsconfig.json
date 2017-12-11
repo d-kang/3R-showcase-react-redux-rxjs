@@ -7,7 +7,7 @@
     "target": "es6",
     "moduleResolution": "node",
     "jsx": "react",
-    "lib": ["dom", "es2015"],
+    "lib": ["es6", "dom"],
     "allowJs": true,
   },
   "include": [
