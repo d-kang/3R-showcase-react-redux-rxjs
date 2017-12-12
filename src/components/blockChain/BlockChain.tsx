@@ -13,7 +13,8 @@ class BlockChain extends React.Component<any, any> {
   fetchExchangeRates = () => {
     fetch(' https://blockchain.info/ticker')
       .then(data => data.json())
-      .then(data => (console.log('data', data), this.setState({data})))
+      .then(data => (this.setState({data}), data))
+      .then(data => console.log('data', data))
       .catch(err => (console.log('err', err), err))
   }
   timer = () => {
