@@ -15,13 +15,32 @@ import { YOUTUBE_API_KEY } from './config/youtube-api';
 const app = express();
 const port = process.env.PORT || 3500;
 const youTube = new YouTube();
-
+import db from '../db';
 youTube.setKey(YOUTUBE_API_KEY);
 
 app.use(cors());
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+
+app.use(
+  morgan(':method :url :status :res[content-length] - :response-time ms'),
+  bodyParser.json(),
+  bodyParser.urlencoded({ extended: false })
+);
+
+// app.use((req, res, next) => {
+//   morgan(':method :url :status :res[content-length] - :response-time ms')(req, res, next);
+// });
+//
+// app.use((req, res, next) => {
+//   bodyParser.urlencoded({ extended: false })(req, res, next);
+// });
+// app.use((req, res, next) => {
+//   bodyParser.json()(req, res, next);
+// });
+
+
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
 app.post('/api/youtube', (req, res) => {

@@ -52,6 +52,12 @@ class YoutubeSearch extends React.Component<PropTypes, StateTypes> {
     return (
       <div>
         <Loader isLoading={isLoading} />
+        <button
+          onClick={() => history.back()}
+        >go back</button>
+        <button
+          onClick={() => history.forward()}
+        >go forward</button>
         <TextInput fetchUserAction={fetchYoutube} label="Search Youtube" />
         <VideoPlayer currentVideo={currentVideo} />
         <div style={styles.flexContainer}>
@@ -61,6 +67,7 @@ class YoutubeSearch extends React.Component<PropTypes, StateTypes> {
             setCurrentVideo={setCurrentVideo}
             currentKey={currentKey}
           />
+
         </div>
       </div>
     );
