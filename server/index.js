@@ -15,7 +15,7 @@ import { YOUTUBE_API_KEY } from './config/youtube-api';
 const app = express();
 const port = process.env.PORT || 3500;
 const youTube = new YouTube();
-import db from '../db';
+import Cat from '../db/schema';
 youTube.setKey(YOUTUBE_API_KEY);
 
 app.use(cors());
@@ -62,6 +62,18 @@ app.get('/api/ping', (req, res) => {
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
 });
+
+
+var kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
+kitty.save(function (err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('meow');
+  }
+});
+
+
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
