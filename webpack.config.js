@@ -14,7 +14,7 @@ module.exports = {
   // devtool: 'cheap-eval-source-map',
   entry: [
     // 'webpack-hot-middleware/client',
-    './src/index.tsx',
+    './src/index.jsx',
   ],
   output: {
     path: pathToBundle,
@@ -22,24 +22,19 @@ module.exports = {
     publicPath: '/static/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', 'jsx'],
+    extensions: ['.js', '.json', '.jsx'],
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+        ],
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   use: [
-      //     {
-      //       loader: 'babel-loader',
-      //     },
-      //   ],
-      // },
     ],
   },
   devServer: {

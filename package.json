@@ -16,7 +16,6 @@
   "author": "David Kang",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^8.0.53",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
@@ -33,18 +32,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
-    "morgan": "^1.9.0",
     "react-test-renderer": "^16.0.0",
-    "source-map-loader": "^0.2.3",
-    "ts-loader": "^3.1.1",
-    "typescript": "^2.6.2"
+    "source-map-loader": "^0.2.3"
   },
   "dependencies": {
-    "@types/history": "^4.6.2",
-    "@types/material-ui": "^0.18.5",
-    "@types/react": "^16.0.25",
-    "@types/react-dom": "^16.0.3",
-    "@types/redux-logger": "^3.0.5",
+    "morgan": "^1.9.0",
     "babel-polyfill": "^6.26.0",
     "body-parser": "^1.18.2",
     "connected-react-router": "^4.2.3",
