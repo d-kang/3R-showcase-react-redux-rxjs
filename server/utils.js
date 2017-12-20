@@ -1,5 +1,7 @@
 import YouTube from 'youtube-node';
 import { YOUTUBE_API_KEY } from './config/youtube-api';
+import Cat from '../db/schema';
+
 
 const youTube = new YouTube();
 youTube.setKey(YOUTUBE_API_KEY);
@@ -23,13 +25,14 @@ export const ping = (req, res) => {
   setTimeout(() => res.send('hi'), 3500);
 };
 
+export const addKitty = (req, res) => {
+  var kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
+  kitty.save(function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send('meow');
+    }
+  });
 
-
-// var kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
-// kitty.save(function (err) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log('meow');
-//   }
-// });
+}
