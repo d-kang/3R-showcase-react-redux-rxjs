@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+
 var options = {
   useMongoClient: true,
   autoIndex: false, // Don't build indexes

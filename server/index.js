@@ -9,55 +9,26 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
-// import fetch from 'node-fetch';
-import YouTube from 'youtube-node';
-import { YOUTUBE_API_KEY } from './config/youtube-api';
+import Cat from '../db/schema';
+import { youtube, ping } from './utils';
+
 const app = express();
 const port = process.env.PORT || 3500;
-const youTube = new YouTube();
-import Cat from '../db/schema';
-youTube.setKey(YOUTUBE_API_KEY);
+
+
+
 
 app.use(cors());
-// app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-
-app.use(
-  morgan(':method :url :status :res[content-length] - :response-time ms'),
-  bodyParser.json(),
-  bodyParser.urlencoded({ extended: false })
-);
-
-// app.use((req, res, next) => {
-//   morgan(':method :url :status :res[content-length] - :response-time ms')(req, res, next);
-// });
-//
-// app.use((req, res, next) => {
-//   bodyParser.urlencoded({ extended: false })(req, res, next);
-// });
-// app.use((req, res, next) => {
-//   bodyParser.json()(req, res, next);
-// });
-
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 
-app.post('/api/youtube', (req, res) => {
-  const { payload } = req.body;
-  youTube.search(payload, 15, (err, result) => {
-    if (err) {
-      console.error('err>>>', err);
-      res.send(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
 
-app.get('/api/ping', (req, res) => {
-  setTimeout(() => res.send('hi'), 3500);
-});
+app.post('/api/youtube', youtube);
+
+app.get('/api/ping', ping);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
