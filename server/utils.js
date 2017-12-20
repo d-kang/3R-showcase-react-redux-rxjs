@@ -2,14 +2,10 @@ import YouTube from 'youtube-node';
 import { YOUTUBE_API_KEY } from './config/youtube-api';
 import Cat from '../db/schema';
 
-
 const youTube = new YouTube();
 youTube.setKey(YOUTUBE_API_KEY);
 
 export const youtube = (req, res) => {
-  console.log('hi from youtube')
-  console.log('req.body', req.body);
-
   const { payload } = req.body;
   youTube.search(payload, 15, (err, result) => {
     if (err) {
@@ -26,13 +22,12 @@ export const ping = (req, res) => {
 };
 
 export const addKitty = (req, res) => {
-  var kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
-  kitty.save(function (err) {
+  const kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
+  kitty.save((err) => {
     if (err) {
       console.log(err);
     } else {
       res.send('meow');
     }
   });
-
-}
+};
