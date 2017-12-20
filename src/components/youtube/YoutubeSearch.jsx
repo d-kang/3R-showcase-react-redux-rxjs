@@ -6,7 +6,7 @@ import Loader from '../ui/Loader';
 import VideoList from './VideoList';
 import TextInput from '../ui/TextInput';
 
-const styles:any = {
+const styles = {
   flexContainer: {
     display: 'flex',
     flexDirection: 'row',
