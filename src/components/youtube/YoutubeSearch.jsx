@@ -8,13 +8,15 @@ import TextInput from '../ui/TextInput';
 
 const styles = {
   flexContainer: {
+    minWidth: '200px',
+    maxWidth: '400px',
+    flexBasis: 'auto', /* default value */
+    flexGrow: 5,
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
     flexFlow: 'row wrap',
-    alignContent: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
   },
 };
 
