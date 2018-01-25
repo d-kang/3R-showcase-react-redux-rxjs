@@ -12,12 +12,7 @@ export const pingReducer = (state = initialState.ping, action) => {
   }
 };
 
-interface Beepsss {
-  isBeeping: boolean,
-  someArr: any[],
-  foo: string,
-}
-const myNextStateExample: Beepsss = {
+const myNextStateExample = {
   isBeeping: true,
   someArr: [],
   foo: 'ooooo',

@@ -1,6 +1,6 @@
 import YouTube from 'youtube-node';
 import { YOUTUBE_API_KEY } from './config/youtube-api';
-import Cat from '../db/schema';
+import Playlist from '../db/schema';
 
 const youTube = new YouTube();
 youTube.setKey(YOUTUBE_API_KEY);
@@ -21,13 +21,15 @@ export const ping = (req, res) => {
   setTimeout(() => res.send('hi'), 3500);
 };
 
-export const addKitty = (req, res) => {
-  const kitty = new Cat({ name: 'Zildjian', type: 'fluffykins' });
-  kitty.save((err) => {
+export const addPlaylist = (req, res) => {
+  // const { payload } = req.body;
+  const payload = { name: 'Hello', type: 'world' };
+  const title = new Playlist(payload);
+  title.save((err) => {
     if (err) {
       console.log(err);
     } else {
-      res.send('meow');
+      res.send(payload);
     }
   });
 };

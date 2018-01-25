@@ -2,17 +2,6 @@ import React from 'react';
 import PaperUi from '../ui/Paper';
 import Loader from '../ui/Loader';
 
-interface IProps {
-  dateStamp: string,
-  timeStamp: string,
-  message: string,
-  apiUrl: string,
-  url: string,
-  username: string,
-  reponame: string,
-  isLoading: boolean,
-}
-
 class CommitItem extends React.Component {
   render() {
     const {

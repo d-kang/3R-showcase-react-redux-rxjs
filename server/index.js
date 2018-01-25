@@ -1,15 +1,9 @@
-/**
- * @Date:   11.13.2017 07:23pm
- * @Filename: index.js
- * @Last modified time: 11.18.2017 11:49am
- */
-
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
-import { youtube, ping, addKitty } from './utils';
+import { youtube, ping, addPlaylist } from './utils';
 
 const app = express();
 const port = process.env.PORT || 3500;
@@ -26,7 +20,7 @@ app.post('/api/youtube', youtube);
 
 app.get('/api/ping', ping);
 
-app.get('/api/kitty', addKitty);
+app.get('/api/playlist', addPlaylist);
 
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));

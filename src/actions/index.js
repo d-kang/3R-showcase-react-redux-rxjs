@@ -1,9 +1,3 @@
-/**
- * @Date:   11.15.2017 08:19pm
- * @Filename: actionTypes.js
- * @Last modified time: 11.29.2017 04:20pm
- */
-
 import * as types from './actionTypes';
 
 // ping beep

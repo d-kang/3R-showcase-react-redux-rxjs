@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 const Schema = mongoose.Schema;
 
-const catSchema = new Schema({ name: String, type: String });
-const Cat = mongoose.model('Cat', catSchema);
+const playlistSchema = new Schema({ name: String, type: String });
+const Playlist = mongoose.model('Playlist', playlistSchema);
 
-export default Cat;
+export default Playlist;
