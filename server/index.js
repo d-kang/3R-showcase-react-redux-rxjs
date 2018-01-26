@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import { youtube, ping, addPlaylist } from './utils';
 
 const app = express();
-const port = process.env.PORT || 3500;
+const port = process.env.PORT || 3100;
 
 app.use(cors());
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));

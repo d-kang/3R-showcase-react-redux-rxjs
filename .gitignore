@@ -4,3 +4,5 @@ bundle.js
 **/dist/*.hot-updates.json
 
 youtube-api.js
+bundle.js
+bundle.js.map

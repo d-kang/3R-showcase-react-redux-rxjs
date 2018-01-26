@@ -4,13 +4,10 @@ const pathToBundle = path.resolve(__dirname, 'dist');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    './src/index.jsx',
-  ],
+  entry: './src/index.jsx',
   output: {
     path: pathToBundle,
     filename: 'bundle.js',
-    publicPath: '/static/',
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
